@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechInsight Hub - Premium Digital Products & Resources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== DESIGN 1: MODERN MINIMALIST ========== */
+
+        :root {
+            --color-primary: #000000;
+            --color-accent: #6366f1;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #999999;
+
+            --bg-white: #ffffff;
+            --bg-gray: #f5f5f5;
+            --bg-dark: #1a1a1a;
+
+            --border: #e0e0e0;
+            --shadow: 0 2px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+
+            --font-body: 'Poppins', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+
+            --radius: 16px;
+            --radius-sm: 8px;
+            --spacing: 1.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hidden { display: none !important; }
+
+        /* ========== HEADER ========== */
+        .top-strip {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 0;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .top-strip strong {
+            color: var(--color-accent);
+        }
+
+        .header {
+            background: var(--bg-white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-primary);
+            transition: 0.3s;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-badge .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* ========== TRUST STATS ========== */
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        /* ========== CATEGORY FILTER ========== */
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.75rem;
+            background: var(--bg-gray);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+
+        .filter-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* ========== BLOG CARDS ========== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .blog-image {
+            height: 240px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .blog-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: white;
+            color: var(--color-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-body {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .read-more {
+            color: var(--color-accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== PRODUCT CARDS ========== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-warning);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--color-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .product-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .product-btn:hover {
+            background: var(--color-accent);
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--bg-gray);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent), #8b5cf6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #999;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #666;
+        }
+
+        .certification-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #999;
+        }
+
+        /* ========== PAGES ========== */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .trust-stats { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-hover);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .trust-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .blog-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .category-filter {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Strip -->
+    <div class="top-strip">
+        🎉 Limited Time Offer: Get <strong>30% OFF</strong> on all digital products! Use code: <strong>DIGITAL30</strong>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Tech<span>Insight</span></div>
+
+                <button class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" class="active" onclick="showPage('home')" data-page="home">Home</a></li>
+                    <li><a href="#" onclick="showPage('blog')" data-page="blog">Blog</a></li>
+                    <li><a href="#" onclick="showPage('products')" data-page="products">Products</a></li>
+                    <li><a href="#" onclick="showPage('about')" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-cta" onclick="showPage('contact')">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page active">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        Trusted by 15,000+ Professionals
+                    </div>
+                    <h1>
+                        Master the Digital World with <span class="hero-gradient">Expert Knowledge</span>
+                    </h1>
+                    <p>
+                        Explore cutting-edge insights on Hosting, Business, AI, and SEO.
+                        Premium digital products and resources to accelerate your success.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showPage('blog')">Explore Articles</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('products')">View Products</a>
+                    </div>
+
+                    <div class="trust-stats">
+                        <div class="stat">
+                            <span class="stat-number">600+</span>
+                            <span class="stat-label">Expert Articles</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">75+</span>
+                            <span class="stat-label">Premium Products</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9★</span>
+                            <span class="stat-label">Average Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Blogs -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Insights</h2>
+                    <p class="section-subtitle">Stay updated with expert knowledge and industry trends</p>
+                </div>
+
+                <div class="blog-grid" id="featuredBlogs"></div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-primary" onclick="showPage('blog')">View All Articles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p class="section-subtitle">Join thousands of satisfied professionals</p>
+                </div>
+
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The quality of content and products is exceptional. This platform has become my go-to resource for digital insights."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">JD</div>
+                            <div class="testimonial-info">
+                                <h4>John Davis</h4>
+                                <p>CEO, Digital Ventures</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Outstanding resources! The SEO guides alone increased our organic traffic by 250%. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SM</div>
+                            <div class="testimonial-info">
+                                <h4>Sarah Mitchell</h4>
+                                <p>Marketing Director, TechFlow</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Professional, actionable, and up-to-date. The best investment I've made for my business growth."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MC</div>
+                            <div class="testimonial-info">
+                                <h4>Michael Chen</h4>
+                                <p>Founder, AI Innovations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="blog-page" class="page">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Knowledge Hub</h2>
+                    <p class="section-subtitle">Expert insights across multiple domains</p>
+                </div>
+
+                <div class="category-filter">
+                    <button class="filter-btn active" onclick="filterBlogs('all')">All Articles</button>
+                    <button class="filter-btn" onclick="filterBlogs('hosting')">Hosting</button>
+                    <button class="filter-btn" onclick="filterBlogs('business')">Business</button>
+                    <button class="filter-btn" onclick="filterBlogs('ai')">AI</button>
+                    <button class="filter-btn" onclick="filterBlogs('seo')">SEO</button>
+                </div>
+
+                <div class="blog-grid" id="allBlogs"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRODUCTS PAGE -->
+    <div id="products-page" class="page">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Premium Products</h2>
+                    <p class="section-subtitle">Professional tools and resources for your success</p>
+                </div>
+
+                <div class="product-grid" id="allProducts"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-page" class="page">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About TechInsight</h2>
+                    <p class="section-subtitle">Your trusted partner in digital excellence</p>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto; font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">
+                    <p style="margin-bottom: 1.5rem;">
+                        Founded in 2010, TechInsight Hub has been at the forefront of digital education and innovation. Our mission is to empower professionals and businesses with cutting-edge knowledge and premium digital products.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        With over 15,000 satisfied customers worldwide, we've established ourselves as a trusted authority in Hosting, Business Strategy, Artificial Intelligence, and Search Engine Optimization.
+                    </p>
+                    <div class="trust-stats" style="margin-top: 3rem;">
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Expert Authors</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact-page" class="page">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">We'd love to hear from you</p>
+                </div>
+
+                <div style="max-width: 600px; margin: 0 auto; background: white; padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    <form onsubmit="handleSubmit(event)">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name</label>
+                            <input type="text" required style="width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+                            <input type="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
+                            <textarea required rows="5" style="width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>TechInsight</h3>
+                    <p>Empowering digital excellence through expert knowledge and premium products since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                        <li><a href="#" onclick="showPage('products')">Products</a></li>
+                        <li><a href="#" onclick="showPage('about')">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Hosting</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">AI</a></li>
+                        <li><a href="#">SEO</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="certification-badges">
+                <div class="cert-badge">✓ SSL Secured</div>
+                <div class="cert-badge">✓ GDPR Compliant</div>
+                <div class="cert-badge">✓ ISO Certified</div>
+                <div class="cert-badge">✓ PCI DSS</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechInsight Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data
+        const blogs = [
+            {id:1,category:'hosting',title:'Ultimate Guide to Cloud Hosting Solutions 2024',excerpt:'Comprehensive overview of cloud hosting platforms, performance optimization, and cost management strategies.',author:'David Chen',date:'2024-12-06',time:'9 min',icon:'☁️',gradient:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'},
+            {id:2,category:'hosting',title:'VPS vs Dedicated Servers: Complete Comparison',excerpt:'Detailed analysis to help you choose the right hosting solution for your business needs.',author:'Lisa Wang',date:'2024-12-04',time:'7 min',icon:'🖥️',gradient:'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'},
+            {id:3,category:'hosting',title:'WordPress Hosting Performance Optimization',excerpt:'Advanced techniques to maximize WordPress speed, security, and reliability.',author:'Tom Brown',date:'2024-12-02',time:'11 min',icon:'⚡',gradient:'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'},
+            {id:4,category:'business',title:'Digital Transformation Strategy for CEOs',excerpt:'Strategic framework for leading successful digital transformation in modern enterprises.',author:'Jennifer Lee',date:'2024-12-05',time:'12 min',icon:'📊',gradient:'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'},
+            {id:5,category:'business',title:'E-commerce Growth Hacking Techniques',excerpt:'Proven strategies to scale your online store and boost conversion rates.',author:'Robert Taylor',date:'2024-12-03',time:'10 min',icon:'🛒',gradient:'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'},
+            {id:6,category:'business',title:'Remote Team Management Best Practices',excerpt:'Build productive and engaged remote teams with these proven methodologies.',author:'Emily White',date:'2024-12-01',time:'8 min',icon:'💼',gradient:'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'},
+            {id:7,category:'ai',title:'AI Implementation Roadmap for Business',excerpt:'Step-by-step guide to integrating AI into your operations with measurable ROI.',author:'Dr. Alan Foster',date:'2024-12-06',time:'13 min',icon:'🤖',gradient:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'},
+            {id:8,category:'ai',title:'Machine Learning for Data Analytics',excerpt:'Leverage ML algorithms to unlock powerful insights from your business data.',author:'Maria Garcia',date:'2024-12-04',time:'11 min',icon:'📈',gradient:'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'},
+            {id:9,category:'ai',title:'ChatGPT for Content Marketing Success',excerpt:'Master AI-powered content creation while maintaining quality and authenticity.',author:'Kevin Park',date:'2024-12-02',time:'9 min',icon:'✍️',gradient:'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'},
+            {id:10,category:'seo',title:'SEO Strategy for 2024: Complete Guide',excerpt:'Latest techniques and algorithm updates to dominate search rankings.',author:'Marcus Williams',date:'2024-12-05',time:'10 min',icon:'🔍',gradient:'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'},
+            {id:11,category:'seo',title:'Technical SEO Audit Checklist',excerpt:'Comprehensive technical SEO guide covering all critical optimization factors.',author:'Anna Martinez',date:'2024-12-03',time:'14 min',icon:'🔧',gradient:'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'},
+            {id:12,category:'seo',title:'Link Building Strategies That Work',excerpt:'Ethical and effective link building tactics for sustainable SEO success.',author:'Chris Johnson',date:'2024-12-01',time:'12 min',icon:'🔗',gradient:'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'}
+        ];
+
+        const products = [
+            {id:1,name:'SEO Mastery Bundle',category:'SEO',desc:'Complete SEO training and tools',price:299.99,rating:4.9,reviews:1456,badge:'Bestseller',icon:'🎓',gradient:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'},
+            {id:2,name:'Cloud Hosting Toolkit',category:'Hosting',desc:'Essential cloud management tools',price:149.99,rating:4.8,reviews:982,badge:'Popular',icon:'☁️',gradient:'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'},
+            {id:3,name:'AI Business Suite',category:'AI',desc:'AI automation and workflows',price:399.99,rating:4.9,reviews:1678,badge:'New',icon:'🤖',gradient:'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'},
+            {id:4,name:'Business Plan Templates',category:'Business',desc:'Professional business templates',price:179.99,rating:4.7,reviews:845,icon:'📊',gradient:'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'},
+            {id:5,name:'Server Security Pro',category:'Hosting',desc:'Complete security solution',price:229.99,rating:4.8,reviews:623,icon:'🔒',gradient:'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'},
+            {id:6,name:'Content AI Generator',category:'AI',desc:'AI-powered content creation',price:249.99,rating:4.9,reviews:1234,badge:'Trending',icon:'✍️',gradient:'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'},
+            {id:7,name:'E-commerce Starter',category:'Business',desc:'Complete store setup kit',price:349.99,rating:4.8,reviews:956,icon:'🛒',gradient:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'},
+            {id:8,name:'Keyword Research Pro',category:'SEO',desc:'Advanced keyword analysis',price:129.99,rating:4.7,reviews:2145,badge:'Bestseller',icon:'🔍',gradient:'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}
+        ];
+
+        // Functions
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(page + '-page').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
+            document.getElementById('navLinks').classList.remove('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function renderBlogs(blogList, containerId) {
+            const html = blogList.map(b => `
+                <div class="blog-card">
+                    <div class="blog-image" style="background: ${b.gradient}">
+                        <span>${b.icon}</span>
+                        <div class="blog-tag">${b.category}</div>
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-meta">
+                            <span>📅 ${b.date}</span>
+                            <span>⏱️ ${b.time}</span>
+                        </div>
+                        <h3 class="blog-title">${b.title}</h3>
+                        <p class="blog-excerpt">${b.excerpt}</p>
+                        <div class="blog-footer">
+                            <div class="author">
+                                <div class="author-avatar">${b.author.split(' ').map(n=>n[0]).join('')}</div>
+                                <div class="author-name">${b.author}</div>
+                            </div>
+                            <a href="#" class="read-more">Read →</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById(containerId).innerHTML = html;
+        }
+
+        function renderProducts() {
+            const html = products.map(p => `
+                <div class="product-card">
+                    ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+                    <div class="product-image" style="background: ${p.gradient}">
+                        <span>${p.icon}</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-category">${p.category}</div>
+                        <h3 class="product-title">${p.name}</h3>
+                        <p class="product-desc">${p.desc}</p>
+                        <div class="product-price-row">
+                            <div class="product-price">$${p.price}</div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span>${p.rating}</span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="alert('Product details for ${p.name}')">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('allProducts').innerHTML = html;
+        }
+
+        function filterBlogs(cat) {
+            const filtered = cat === 'all' ? blogs : blogs.filter(b => b.category === cat);
+            renderBlogs(filtered, 'allBlogs');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! We\'ll get back to you soon.');
+            e.target.reset();
+        }
+
+        // Initialize
+        renderBlogs(blogs.slice(0, 3), 'featuredBlogs');
+        renderBlogs(blogs, 'allBlogs');
+        renderProducts();
+    </script>
+</body>
+</html>
