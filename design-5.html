@@ -298,9 +298,17 @@
 
         @media (max-width: 768px) {
             .hero-banner {
-                min-height: 500px;
+                min-height: auto;
                 height: auto;
-                padding: 40px 0;
+                padding: 50px 20px 30px 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                margin-bottom: 0;
             }
 
             .hero-title {
@@ -324,13 +332,13 @@
             }
 
             .trust-badges {
-                position: relative;
-                bottom: auto;
-                margin-top: 40px;
+                position: static;
+                transform: none;
+                margin-top: 35px;
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 width: 100%;
-                padding: 0 20px;
+                max-width: 400px;
             }
 
             .trust-badge {
@@ -340,6 +348,7 @@
                 border-radius: 25px;
                 backdrop-filter: blur(5px);
                 justify-content: center;
+                width: 100%;
             }
 
             .badge-icon {
@@ -352,12 +361,21 @@
         }
 
         @media (max-width: 480px) {
+            .hero-banner {
+                padding: 40px 15px 25px 15px;
+            }
+
             .hero-title {
                 font-size: 1.5rem;
             }
 
             .hero-subtitle {
                 font-size: 0.9rem;
+            }
+
+            .trust-badges {
+                margin-top: 30px;
+                gap: 10px;
             }
 
             .trust-badge {
