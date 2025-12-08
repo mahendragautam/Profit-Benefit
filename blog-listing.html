@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Tools.ProfitBenefit.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2e4a;
+            --secondary: #2d6a4f;
+            --accent: #40916c;
+            --accent-light: #52b788;
+            --light: #f8f9fa;
+            --gray: #8895a7;
+            --border: #dee2e6;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 13px;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo svg {
+            height: 50px;
+            width: auto;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 50px;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .blog-card {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 30px 30px 30px 0;
+        }
+
+        .blog-card-category {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .blog-card-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .blog-card-title a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .blog-card-title a:hover {
+            color: var(--secondary);
+        }
+
+        .blog-card-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .blog-card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .blog-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+
+        .pagination a,
+        .pagination span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .pagination a:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .pagination .active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+
+        .sidebar-widget {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            padding: 12px 20px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: var(--accent);
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .category-link:hover {
+            color: var(--secondary);
+        }
+
+        .category-count {
+            background: var(--secondary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .popular-posts {
+            list-style: none;
+        }
+
+        .popular-post {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .popular-post:last-child {
+            border-bottom: none;
+        }
+
+        .popular-post-link {
+            display: flex;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .popular-post-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .popular-post-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .popular-post-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: white;
+            color: var(--text-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-widget h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-widget p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr 300px;
+                gap: 30px;
+            }
+
+            .blog-card {
+                grid-template-columns: 320px 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .blog-card {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-card-image {
+                height: 250px;
+            }
+
+            .blog-card-content {
+                padding: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .top-bar-links a {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .blog-card-title {
+                font-size: 1.4rem;
+            }
+
+            .blog-card-image {
+                height: 220px;
+            }
+
+            .sidebar-widget {
+                padding: 20px;
+            }
+
+            .pagination {
+                gap: 5px;
+            }
+
+            .pagination a,
+            .pagination span {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div>📧 hello@profitbenefit.com</div>
+            <div class="top-bar-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2000" viewBox="0 0 1500 449.999984">
+                    <path fill="#2d6a4f" d="M 312.511719 182.871094 L 312.511719 363.582031 L 214.480469 363.582031 L 214.480469 182.871094 L 132.160156 182.871094 L 132.160156 104.933594 L 394.832031 104.933594 L 394.832031 182.871094 Z M 312.511719 182.871094"/>
+                    <text fill="#2d6a4f" font-family="Arial, sans-serif" font-size="180" font-weight="bold" x="380" y="360">Benefit.co</text>
+                    <text fill="#8895a7" font-family="Arial, sans-serif" font-size="120" font-weight="300" x="380" y="210">Tools.</text>
+                </svg>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog-listing.html" class="active">Blog</a></li>
+                    <li><a href="index.html#products">Tools</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Latest Articles & Guides</h1>
+            <p class="page-subtitle">Expert insights on business tools, software reviews, and productivity tips</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Blog Grid -->
+                <div class="blog-grid">
+                    <!-- Blog Card 1 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="CRM Dashboard" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Business Tools</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">How to Choose the Right CRM for Your Business in 2024</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 John Doe</span>
+                                <span class="blog-card-meta-item">📅 Dec 8, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 8 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Choosing the right CRM system can transform how you manage customer relationships. Learn the key features to look for and compare top options for 2024.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 2 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project Management" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Productivity</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Top 10 Project Management Tools for Remote Teams</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Sarah Miller</span>
+                                <span class="blog-card-meta-item">📅 Dec 5, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 10 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Discover the best project management software for distributed teams. Compare features, pricing, and find the perfect fit for your workflow.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 3 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Email Marketing" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Marketing Tools</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Email Marketing Platforms: Complete Comparison Guide</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Mike Johnson</span>
+                                <span class="blog-card-meta-item">📅 Dec 3, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 12 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                From Mailchimp to ConvertKit - we've tested them all. Get an honest comparison of features, pricing, deliverability, and ease of use.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 4 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop" alt="Accounting Software" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Finance</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Best Accounting Software for Small Businesses</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Emma Davis</span>
+                                <span class="blog-card-meta-item">📅 Dec 1, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 9 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Streamline your finances with the right accounting software. Compare QuickBooks, Xero, FreshBooks and more for small business needs.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 5 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="Team Collaboration" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Collaboration</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Slack vs. Microsoft Teams: Which is Right for You?</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Alex Thompson</span>
+                                <span class="blog-card-meta-item">📅 Nov 28, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 7 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                The ultimate showdown between two leading team communication platforms. Features, integrations, pricing, and our verdict.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Search</h3>
+                        <form class="search-form">
+                            <input type="text" class="search-input" placeholder="Search articles...">
+                            <button type="submit" class="search-btn">🔍</button>
+                        </form>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="category-list">
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Business Tools</span>
+                                    <span class="category-count">45</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>CRM Software</span>
+                                    <span class="category-count">32</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Marketing Tools</span>
+                                    <span class="category-count">28</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Productivity</span>
+                                    <span class="category-count">56</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Project Management</span>
+                                    <span class="category-count">39</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Analytics</span>
+                                    <span class="category-count">24</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Posts</h3>
+                        <ul class="popular-posts">
+                            <li class="popular-post">
+                                <a href="#" class="popular-post-link">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                                    <div class="popular-post-info">
+                                        <h4>Top 10 Project Management Tools for 2024</h4>
+                                        <span class="popular-post-date">Dec 5, 2024</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="popular-post">
+                                <a href="#" class="popular-post-link">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                                    <div class="popular-post-info">
+                                        <h4>Email Marketing Platforms Compared</h4>
+                                        <span class="popular-post-date">Dec 3, 2024</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="popular-post">
+                                <a href="#" class="popular-post-link">
+                                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                                    <div class="popular-post-info">
+                                        <h4>Best Accounting Software for Small Businesses</h4>
+                                        <span class="popular-post-date">Dec 1, 2024</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Tags</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag">CRM</a>
+                            <a href="#" class="tag">SaaS</a>
+                            <a href="#" class="tag">Marketing</a>
+                            <a href="#" class="tag">Sales</a>
+                            <a href="#" class="tag">Analytics</a>
+                            <a href="#" class="tag">Automation</a>
+                            <a href="#" class="tag">Productivity</a>
+                            <a href="#" class="tag">Cloud</a>
+                            <a href="#" class="tag">Email</a>
+                            <a href="#" class="tag">AI Tools</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#">‹</a>
+                <span class="active">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <span>...</span>
+                <a href="#">10</a>
+                <a href="#">›</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h3>Tools.ProfitBenefit.com</h3>
+                    <p>Your trusted source for business tool reviews and comparisons. Find the perfect software for your needs.</p>
+                </div>
+                <div class="footer-widget">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tools Directory</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">CRM Software</a></li>
+                        <li><a href="#">Marketing Tools</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Affiliate Disclosure</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tools.ProfitBenefit.com - All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
