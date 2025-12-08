@@ -637,29 +637,58 @@
            INTERACTIVE HERO ANIMATIONS
            ============================================ */
         
-        /* Ripple effect on click */
+        /* Business growth effect on click */
         .hero-banner {
             cursor: pointer;
             position: relative;
         }
 
-        .ripple {
+        .growth-indicator {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(0);
-            animation: rippleEffect 0.6s ease-out;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
             pointer-events: none;
+            animation: growthRise 1s ease-out forwards;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        @keyframes rippleEffect {
-            to {
-                transform: scale(4);
+        @keyframes growthRise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-80px) scale(1);
                 opacity: 0;
             }
         }
 
-        /* Button click animation - particle burst */
+        .shine-effect {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: quickShine 0.4s ease-out forwards;
+        }
+
+        @keyframes quickShine {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Button click animation - subtle sparkle */
         .hero-button {
             position: relative;
             overflow: hidden;
@@ -673,14 +702,25 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.4);
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.3s ease-out, height 0.3s ease-out;
         }
 
         .hero-button:active::before {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
+            transition: width 0.5s ease-out, height 0.5s ease-out;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 6px #fff;
         }
 
         /* Subtle scale on hover for hero content */
@@ -3300,27 +3340,32 @@
             const heroBanner = document.querySelector('.hero-banner');
             if (!heroBanner) return;
 
-            // Ripple effect on click
+            // Business growth effect on click
             heroBanner.addEventListener('click', function(e) {
-                // Don't create ripple if clicking on buttons
+                // Don't create effect if clicking on buttons
                 if (e.target.closest('.hero-button')) return;
                 
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                
                 const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
+                // Quick shine effect
+                const shine = document.createElement('div');
+                shine.classList.add('shine-effect');
+                shine.style.left = (x - 50) + 'px';
+                shine.style.top = (y - 50) + 'px';
+                this.appendChild(shine);
+                setTimeout(() => shine.remove(), 400);
                 
-                this.appendChild(ripple);
-                
-                // Remove ripple after animation
-                setTimeout(() => ripple.remove(), 600);
+                // Growth indicator (randomly show +1, ↑, ✓, or ★)
+                const indicators = ['+1', '↑', '✓', '★', '+'];
+                const indicator = document.createElement('div');
+                indicator.classList.add('growth-indicator');
+                indicator.textContent = indicators[Math.floor(Math.random() * indicators.length)];
+                indicator.style.left = x + 'px';
+                indicator.style.top = y + 'px';
+                this.appendChild(indicator);
+                setTimeout(() => indicator.remove(), 1000);
             });
 
             // Track mouse position for glow effect (desktop only)
@@ -3335,44 +3380,39 @@
                 });
             }
 
-            // Particle burst on button click
+            // Subtle sparkle on button click
             const heroButtons = document.querySelectorAll('.hero-button');
             heroButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    // Create mini particle burst
-                    for (let i = 0; i < 8; i++) {
-                        const particle = document.createElement('div');
-                        particle.style.position = 'absolute';
-                        particle.style.width = '4px';
-                        particle.style.height = '4px';
-                        particle.style.background = 'white';
-                        particle.style.borderRadius = '50%';
-                        particle.style.pointerEvents = 'none';
+                    // Create subtle sparkles
+                    const sparkleCount = 5;
+                    for (let i = 0; i < sparkleCount; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.classList.add('sparkle');
                         
                         const rect = button.getBoundingClientRect();
-                        particle.style.left = (e.clientX - rect.left) + 'px';
-                        particle.style.top = (e.clientY - rect.top) + 'px';
+                        const offsetX = (Math.random() - 0.5) * 60;
+                        const offsetY = (Math.random() - 0.5) * 60;
                         
-                        button.appendChild(particle);
+                        sparkle.style.left = (e.clientX - rect.left + offsetX) + 'px';
+                        sparkle.style.top = (e.clientY - rect.top + offsetY) + 'px';
                         
-                        const angle = (i / 8) * Math.PI * 2;
-                        const velocity = 50;
-                        const vx = Math.cos(angle) * velocity;
-                        const vy = Math.sin(angle) * velocity;
+                        button.appendChild(sparkle);
                         
-                        particle.animate([
+                        sparkle.animate([
                             { 
                                 transform: 'translate(0, 0) scale(1)', 
                                 opacity: 1 
                             },
                             { 
-                                transform: `translate(${vx}px, ${vy}px) scale(0)`, 
+                                transform: `translate(0, -30px) scale(0)`, 
                                 opacity: 0 
                             }
                         ], {
-                            duration: 600,
-                            easing: 'cubic-bezier(0, .9, .57, 1)'
-                        }).onfinish = () => particle.remove();
+                            duration: 400,
+                            delay: i * 50,
+                            easing: 'ease-out'
+                        }).onfinish = () => sparkle.remove();
                     }
                 });
             });
