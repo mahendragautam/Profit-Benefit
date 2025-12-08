@@ -362,6 +362,253 @@
             color: #999;
         }
 
+        /* TRENDING NOW SECTION */
+        .trending-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .trending-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .trending-scroll {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .trending-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .trending-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .trending-scroll::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .trending-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .trending-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trending-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 36px;
+            height: 36px;
+            background: var(--secondary);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .trending-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .trending-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .trending-info {
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .trending-category {
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .trending-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--primary);
+            transition: color 0.3s;
+        }
+
+        .trending-card:hover .trending-title {
+            color: var(--secondary);
+        }
+
+        /* CATEGORY GRID SECTION */
+        .category-grid-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .category-column {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .category-column-header {
+            padding: 18px 25px;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .category-column:nth-child(1) .category-column-header {
+            border-color: #e74c3c;
+        }
+
+        .category-column:nth-child(2) .category-column-header {
+            border-color: #3498db;
+        }
+
+        .category-column:nth-child(3) .category-column-header {
+            border-color: #27ae60;
+        }
+
+        .category-column-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .category-column-header a {
+            color: var(--gray);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .category-column-header a:hover {
+            color: var(--secondary);
+        }
+
+        .category-featured {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-featured img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-column:hover .category-featured img {
+            transform: scale(1.05);
+        }
+
+        .category-featured-content {
+            padding: 20px;
+        }
+
+        .category-featured-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+            color: var(--primary);
+        }
+
+        .category-featured-title:hover {
+            color: var(--secondary);
+        }
+
+        .category-featured-date {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .category-list {
+            padding: 0 20px 20px;
+        }
+
+        .category-list-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: padding-left 0.3s;
+        }
+
+        .category-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-list-item:hover {
+            padding-left: 10px;
+        }
+
+        .category-list-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--primary);
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .category-list-item:hover .category-list-title {
+            color: var(--secondary);
+        }
+
+        .category-list-date {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
         /* Blog Grid */
         .blog-grid {
             display: grid;
@@ -737,6 +984,11 @@
                 font-size: 24px;
             }
 
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -797,6 +1049,15 @@
                 height: 240px;
             }
 
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .trending-card {
+                flex: 0 0 240px;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -838,6 +1099,32 @@
 
             .featured-image-wrapper {
                 aspect-ratio: 16 / 11;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .trending-card {
+                flex: 0 0 220px;
+            }
+
+            .trending-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .trending-card img {
+                height: 160px;
+            }
+
+            .trending-info {
+                padding: 15px;
+            }
+
+            .trending-title {
+                font-size: 14px;
             }
 
             .blog-card-title {
@@ -1232,6 +1519,218 @@
             </div>
         </div>
     </div>
+
+    <!-- TRENDING NOW Section -->
+    <section class="trending-section">
+        <h2 class="section-title">🔥 Trending Now</h2>
+        <div class="trending-container">
+            <div class="trending-scroll">
+                <!-- Trending Card 1 -->
+                <div class="trending-card">
+                    <div class="trending-number">1</div>
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop" alt="VPS Hosting">
+                    <div class="trending-info">
+                        <div class="trending-category">Hosting</div>
+                        <h3 class="trending-title">Best VPS Hosting Providers for 2024</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 2 -->
+                <div class="trending-card">
+                    <div class="trending-number">2</div>
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="CRM Tools">
+                    <div class="trending-info">
+                        <div class="trending-category">CRM</div>
+                        <h3 class="trending-title">Salesforce vs HubSpot: Complete Comparison</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 3 -->
+                <div class="trending-card">
+                    <div class="trending-number">3</div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project Management">
+                    <div class="trending-info">
+                        <div class="trending-category">Productivity</div>
+                        <h3 class="trending-title">Top 10 Project Management Tools</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 4 -->
+                <div class="trending-card">
+                    <div class="trending-number">4</div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Email Marketing">
+                    <div class="trending-info">
+                        <div class="trending-category">Marketing</div>
+                        <h3 class="trending-title">Email Marketing Platforms Comparison</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 5 -->
+                <div class="trending-card">
+                    <div class="trending-number">5</div>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="SEO Tools">
+                    <div class="trending-info">
+                        <div class="trending-category">SEO</div>
+                        <h3 class="trending-title">Best SEO Tools for 2024</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 6 -->
+                <div class="trending-card">
+                    <div class="trending-number">6</div>
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Accounting">
+                    <div class="trending-info">
+                        <div class="trending-category">Finance</div>
+                        <h3 class="trending-title">QuickBooks vs Xero: Which is Better?</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 7 -->
+                <div class="trending-card">
+                    <div class="trending-number">7</div>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Team Collaboration">
+                    <div class="trending-info">
+                        <div class="trending-category">Collaboration</div>
+                        <h3 class="trending-title">Slack vs Microsoft Teams Review</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 8 -->
+                <div class="trending-card">
+                    <div class="trending-number">8</div>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop" alt="Cloud Storage">
+                    <div class="trending-info">
+                        <div class="trending-category">Storage</div>
+                        <h3 class="trending-title">Cloud Storage: Dropbox vs Google Drive</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 9 -->
+                <div class="trending-card">
+                    <div class="trending-number">9</div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics">
+                    <div class="trending-info">
+                        <div class="trending-category">Analytics</div>
+                        <h3 class="trending-title">Google Analytics 4 Migration Guide</h3>
+                    </div>
+                </div>
+
+                <!-- Trending Card 10 -->
+                <div class="trending-card">
+                    <div class="trending-number">10</div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Design Tools">
+                    <div class="trending-info">
+                        <div class="trending-category">Design</div>
+                        <h3 class="trending-title">Figma vs Adobe XD Comparison</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY GRID Section -->
+    <section class="category-grid-section">
+        <div class="category-grid">
+            <!-- CRM Tools Column -->
+            <div class="category-column">
+                <div class="category-column-header">
+                    <h3 class="category-column-title">CRM Tools</h3>
+                    <a href="#">View All →</a>
+                </div>
+                <div class="category-featured">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="CRM Dashboard">
+                    <div class="category-featured-content">
+                        <h4 class="category-featured-title">How to Choose the Right CRM for Your Business</h4>
+                        <p class="category-featured-date">December 8, 2024</p>
+                    </div>
+                </div>
+                <div class="category-list">
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Salesforce vs HubSpot: Which is Better?</h5>
+                        <p class="category-list-date">December 6, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Pipedrive Review: Best for Small Teams?</h5>
+                        <p class="category-list-date">December 4, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Zoho CRM Complete Guide</h5>
+                        <p class="category-list-date">December 2, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">CRM Integration Best Practices</h5>
+                        <p class="category-list-date">November 30, 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Tools Column -->
+            <div class="category-column">
+                <div class="category-column-header">
+                    <h3 class="category-column-title">Marketing Tools</h3>
+                    <a href="#">View All →</a>
+                </div>
+                <div class="category-featured">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Marketing Analytics">
+                    <div class="category-featured-content">
+                        <h4 class="category-featured-title">Email Marketing Platforms: Complete Comparison</h4>
+                        <p class="category-featured-date">December 3, 2024</p>
+                    </div>
+                </div>
+                <div class="category-list">
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Best SEO Tools for 2024</h5>
+                        <p class="category-list-date">November 28, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Social Media Management Tools</h5>
+                        <p class="category-list-date">November 25, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Content Marketing Tools 2024</h5>
+                        <p class="category-list-date">November 20, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Marketing Analytics Comparison</h5>
+                        <p class="category-list-date">November 18, 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Management Column -->
+            <div class="category-column">
+                <div class="category-column-header">
+                    <h3 class="category-column-title">Project Management</h3>
+                    <a href="#">View All →</a>
+                </div>
+                <div class="category-featured">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project Dashboard">
+                    <div class="category-featured-content">
+                        <h4 class="category-featured-title">Top 10 Project Management Tools for Remote Teams</h4>
+                        <p class="category-featured-date">December 5, 2024</p>
+                    </div>
+                </div>
+                <div class="category-list">
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Asana vs Monday.com: Which is Better?</h5>
+                        <p class="category-list-date">December 1, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">ClickUp Complete Review</h5>
+                        <p class="category-list-date">November 27, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Trello vs Notion Comparison</h5>
+                        <p class="category-list-date">November 23, 2024</p>
+                    </div>
+                    <div class="category-list-item">
+                        <h5 class="category-list-title">Jira for Agile Teams Guide</h5>
+                        <p class="category-list-date">November 19, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Main Content -->
     <main class="main-content">
