@@ -146,19 +146,19 @@
         /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
         .blog-card {
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 30px;
+            display: flex;
+            flex-direction: column;
             background: white;
             border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s;
+            height: 100%;
         }
 
         .blog-card:hover {
@@ -168,12 +168,15 @@
 
         .blog-card-image {
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
         }
 
         .blog-card-content {
-            padding: 30px 30px 30px 0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .blog-card-category {
@@ -191,16 +194,20 @@
 
         .blog-card-title {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.75rem;
+            font-size: 1.35rem;
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .blog-card-title a {
             color: var(--primary);
             text-decoration: none;
             transition: color 0.3s;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .blog-card-title a:hover {
@@ -209,29 +216,35 @@
 
         .blog-card-excerpt {
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.6;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
         }
 
         .blog-card-meta {
             display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 14px;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .blog-card-meta-item {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .blog-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
         }
 
         .read-more {
@@ -487,12 +500,13 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .content-grid {
-                grid-template-columns: 1fr 300px;
+                grid-template-columns: 1fr 280px;
                 gap: 30px;
             }
 
-            .blog-card {
-                grid-template-columns: 320px 1fr;
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
 
             .footer-grid {
@@ -522,16 +536,13 @@
                 position: static;
             }
 
-            .blog-card {
+            .blog-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .blog-card-image {
-                height: 250px;
-            }
-
-            .blog-card-content {
-                padding: 25px;
+                height: 240px;
             }
 
             .footer-grid {
@@ -560,11 +571,20 @@
             }
 
             .blog-card-title {
-                font-size: 1.4rem;
+                font-size: 1.25rem;
             }
 
             .blog-card-image {
-                height: 220px;
+                height: 200px;
+            }
+
+            .blog-card-content {
+                padding: 20px;
+            }
+
+            .blog-card-meta {
+                font-size: 12px;
+                gap: 10px;
             }
 
             .sidebar-widget {
@@ -737,6 +757,94 @@
                             </div>
                             <p class="blog-card-excerpt">
                                 The ultimate showdown between two leading team communication platforms. Features, integrations, pricing, and our verdict.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 6 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop" alt="Video Conferencing" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Communication</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-vps-hosting.html">Best VPS Hosting Providers for 2024 - Complete Guide</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 David Chen</span>
+                                <span class="blog-card-meta-item">📅 Nov 25, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 15 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Comprehensive comparison of top VPS hosting providers including DigitalOcean, Vultr, Linode, AWS Lightsail, and more with pricing tables.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-vps-hosting.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 7 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="SEO Tools" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">SEO</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Top SEO Tools Every Marketer Should Use in 2024</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Lisa Anderson</span>
+                                <span class="blog-card-meta-item">📅 Nov 22, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 11 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                From keyword research to rank tracking, discover the essential SEO tools that will boost your organic traffic and search rankings.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 8 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Cloud Storage" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Storage</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Cloud Storage Comparison: Dropbox vs Google Drive vs OneDrive</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Robert Kim</span>
+                                <span class="blog-card-meta-item">📅 Nov 20, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 9 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Which cloud storage provider offers the best value? Compare storage limits, pricing, features, and security across top platforms.
+                            </p>
+                            <div class="blog-card-footer">
+                                <a href="blog-post.html" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 9 -->
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Design Tools" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Design</span>
+                            <h2 class="blog-card-title">
+                                <a href="blog-post.html">Figma vs Adobe XD: Which Design Tool is Better?</a>
+                            </h2>
+                            <div class="blog-card-meta">
+                                <span class="blog-card-meta-item">👤 Jessica Wong</span>
+                                <span class="blog-card-meta-item">📅 Nov 18, 2024</span>
+                                <span class="blog-card-meta-item">⏱️ 10 min read</span>
+                            </div>
+                            <p class="blog-card-excerpt">
+                                Both are powerful design tools, but which one is right for your team? We compare features, collaboration, pricing, and workflows.
                             </p>
                             <div class="blog-card-footer">
                                 <a href="blog-post.html" class="read-more">Read More →</a>
