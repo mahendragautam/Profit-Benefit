@@ -139,8 +139,8 @@
 
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 50px;
+            grid-template-columns: 280px 1fr 350px;
+            gap: 40px;
         }
 
         /* DON'T MISS SECTION */
@@ -360,6 +360,85 @@
         .article-date {
             font-size: 13px;
             color: #999;
+        }
+
+        /* WIDGETS ROW */
+        .widgets-row-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .widgets-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        /* OTHER BLOG POSTS SIDEBAR */
+        .other-posts-sidebar {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .other-posts-sidebar .widget-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .other-posts-list {
+            list-style: none;
+        }
+
+        .other-post-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .other-post-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .other-post-link {
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .other-post-category {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .other-post-title {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .other-post-link:hover .other-post-title {
+            color: var(--secondary);
+        }
+
+        .other-post-meta {
+            font-size: 12px;
+            color: var(--gray);
         }
 
         /* TRENDING NOW SECTION */
@@ -989,6 +1068,15 @@
                 gap: 25px;
             }
 
+            .widgets-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .other-posts-sidebar {
+                display: none;
+            }
+
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1056,6 +1144,11 @@
 
             .trending-card {
                 flex: 0 0 240px;
+            }
+
+            .widgets-row {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .footer-grid {
@@ -1520,6 +1613,114 @@
         </div>
     </div>
 
+    <!-- Widgets Row Section -->
+    <section class="widgets-row-section">
+        <div class="widgets-row">
+            <!-- Search Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Search</h3>
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search articles...">
+                    <button type="submit" class="search-btn">🔍</button>
+                </form>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Business Tools</span>
+                            <span class="category-count">45</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>CRM Software</span>
+                            <span class="category-count">32</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Marketing Tools</span>
+                            <span class="category-count">28</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Productivity</span>
+                            <span class="category-count">56</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Project Management</span>
+                            <span class="category-count">39</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Analytics</span>
+                            <span class="category-count">24</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Posts</h3>
+                <ul class="popular-posts">
+                    <li class="popular-post">
+                        <a href="#" class="popular-post-link">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                            <div class="popular-post-info">
+                                <h4>Top 10 Project Management Tools for 2024</h4>
+                                <span class="popular-post-date">Dec 5, 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="popular-post">
+                        <a href="#" class="popular-post-link">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                            <div class="popular-post-info">
+                                <h4>Email Marketing Platforms Compared</h4>
+                                <span class="popular-post-date">Dec 3, 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="popular-post">
+                        <a href="#" class="popular-post-link">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                            <div class="popular-post-info">
+                                <h4>Best Accounting Software for Small Businesses</h4>
+                                <span class="popular-post-date">Dec 1, 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Tags</h3>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">CRM</a>
+                    <a href="#" class="tag">SaaS</a>
+                    <a href="#" class="tag">Marketing</a>
+                    <a href="#" class="tag">Sales</a>
+                    <a href="#" class="tag">Analytics</a>
+                    <a href="#" class="tag">Automation</a>
+                    <a href="#" class="tag">Productivity</a>
+                    <a href="#" class="tag">Cloud</a>
+                    <a href="#" class="tag">Email</a>
+                    <a href="#" class="tag">AI Tools</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- TRENDING NOW Section -->
     <section class="trending-section">
         <h2 class="section-title">🔥 Trending Now</h2>
@@ -1736,6 +1937,55 @@
     <main class="main-content">
         <div class="container">
             <div class="content-grid">
+                <!-- Other Blog Posts Sidebar -->
+                <aside class="other-posts-sidebar">
+                    <h3 class="widget-title">Other Articles</h3>
+                    <ul class="other-posts-list">
+                        <li class="other-post-item">
+                            <a href="blog-vps-hosting.html" class="other-post-link">
+                                <span class="other-post-category">Hosting</span>
+                                <h4 class="other-post-title">Best VPS Hosting Providers for 2024</h4>
+                                <p class="other-post-meta">Nov 25, 2024 • 15 min read</p>
+                            </a>
+                        </li>
+                        <li class="other-post-item">
+                            <a href="#" class="other-post-link">
+                                <span class="other-post-category">Security</span>
+                                <h4 class="other-post-title">Cybersecurity Tools Every Business Needs</h4>
+                                <p class="other-post-meta">Dec 7, 2024 • 9 min read</p>
+                            </a>
+                        </li>
+                        <li class="other-post-item">
+                            <a href="#" class="other-post-link">
+                                <span class="other-post-category">Finance</span>
+                                <h4 class="other-post-title">Expense Tracking Apps Comparison</h4>
+                                <p class="other-post-meta">Nov 30, 2024 • 7 min read</p>
+                            </a>
+                        </li>
+                        <li class="other-post-item">
+                            <a href="#" class="other-post-link">
+                                <span class="other-post-category">Design</span>
+                                <h4 class="other-post-title">Graphic Design Software for Beginners</h4>
+                                <p class="other-post-meta">Nov 28, 2024 • 11 min read</p>
+                            </a>
+                        </li>
+                        <li class="other-post-item">
+                            <a href="#" class="other-post-link">
+                                <span class="other-post-category">E-commerce</span>
+                                <h4 class="other-post-title">Shopify vs WooCommerce: Complete Guide</h4>
+                                <p class="other-post-meta">Nov 24, 2024 • 13 min read</p>
+                            </a>
+                        </li>
+                        <li class="other-post-item">
+                            <a href="#" class="other-post-link">
+                                <span class="other-post-category">Communication</span>
+                                <h4 class="other-post-title">Video Conferencing Tools Compared</h4>
+                                <p class="other-post-meta">Nov 21, 2024 • 8 min read</p>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+
                 <!-- Blog Grid -->
                 <div class="blog-grid">
                     <!-- Blog Card 1 -->
