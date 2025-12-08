@@ -17,6 +17,26 @@
             }
         }
 
+
+        /* Prevent layout shift during resize */
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .related-articles {
+            contain: layout;
+        }
+
+        .article-item {
+            contain: layout style;
+        }
+
         .content-wrapper {
             contain: layout style;
         }
@@ -2647,13 +2667,25 @@
                 }
                 lastVisibleCount = visibleTabs.length;
                 
-                // Store current scroll position
+                // Enhanced scroll position tracking
                 const scrollX = window.scrollX;
                 const scrollY = window.scrollY;
+                
+                // Track position of dont-miss-section relative to viewport
+                const dontMissSection = document.querySelector('.dont-miss-section');
+                const beforeRect = dontMissSection ? dontMissSection.getBoundingClientRect() : null;
+                const beforeOffsetTop = dontMissSection ? dontMissSection.offsetTop : 0;
                 
                 // Lock the category header height to prevent layout shift
                 const headerHeight = categoryHeader.offsetHeight;
                 categoryHeader.style.minHeight = headerHeight + 'px';
+                
+                // Also lock content wrapper heights temporarily
+                const activeContent = document.querySelector('.content-wrapper.active');
+                const activeContentHeight = activeContent ? activeContent.offsetHeight : 0;
+                if (activeContent && activeContentHeight > 0) {
+                    activeContent.style.minHeight = activeContentHeight + 'px';
+                }
                 
                 // Clear and rebuild tabs container
                 categoryTabs.innerHTML = '';
@@ -2710,15 +2742,41 @@
                     categoryTabs.appendChild(dropdown);
                 }
                 
-                // Restore scroll position immediately
-                window.scrollTo(scrollX, scrollY);
-                
-                // Remove the min-height lock after a frame and restore scroll
+                // Restore scroll position with element tracking
                 requestAnimationFrame(() => {
-                    categoryHeader.style.minHeight = '';
-                    // Restore scroll position after layout completes
-                    requestAnimationFrame(() => {
+                    // Calculate position shift
+                    if (dontMissSection) {
+                        const afterOffsetTop = dontMissSection.offsetTop;
+                        const positionShift = afterOffsetTop - beforeOffsetTop;
+                        const targetScrollY = scrollY + positionShift;
+                        
+                        window.scrollTo({
+                            top: targetScrollY,
+                            left: scrollX,
+                            behavior: 'instant'
+                        });
+                    } else {
                         window.scrollTo(scrollX, scrollY);
+                    }
+                    
+                    // Remove height locks after restoration
+                    requestAnimationFrame(() => {
+                        categoryHeader.style.minHeight = '';
+                        if (activeContent) {
+                            activeContent.style.minHeight = '';
+                        }
+                        
+                        // Final scroll adjustment
+                        if (dontMissSection) {
+                            const finalOffsetTop = dontMissSection.offsetTop;
+                            const finalShift = finalOffsetTop - beforeOffsetTop;
+                            const finalScrollY = scrollY + finalShift;
+                            window.scrollTo({
+                                top: finalScrollY,
+                                left: scrollX,
+                                behavior: 'instant'
+                            });
+                        }
                     });
                 });
                 
@@ -2782,10 +2840,57 @@
                 buildTabs(true);
             }
             
-            // Handle resize - only rebuild if tab count actually changes
-            const handleResize = debounce(() => {
-                buildTabs(false);
-            }, 16); // ~60fps
+            // Enhanced resize handler with scroll position preservation
+            let beforeResizeData = null;
+            
+            const captureScrollPosition = () => {
+                const dontMissSection = document.querySelector('.dont-miss-section');
+                if (!dontMissSection) return null;
+                
+                const rect = dontMissSection.getBoundingClientRect();
+                return {
+                    scrollY: window.scrollY,
+                    elementTop: rect.top,
+                    elementOffsetTop: dontMissSection.offsetTop
+                };
+            };
+            
+            const restoreScrollPosition = () => {
+                if (!beforeResizeData) return;
+                
+                requestAnimationFrame(() => {
+                    const dontMissSection = document.querySelector('.dont-miss-section');
+                    if (!dontMissSection) return;
+                    
+                    // Calculate how much the element moved
+                    const afterOffsetTop = dontMissSection.offsetTop;
+                    const elementShift = afterOffsetTop - beforeResizeData.elementOffsetTop;
+                    
+                    // Adjust scroll position to maintain the element's position in viewport
+                    const targetScroll = beforeResizeData.scrollY + elementShift;
+                    
+                    window.scrollTo({
+                        top: targetScroll,
+                        left: 0,
+                        behavior: 'instant'
+                    });
+                    
+                    beforeResizeData = null;
+                });
+            };
+            
+            const handleResize = () => {
+                // Capture position before any changes
+                beforeResizeData = captureScrollPosition();
+                
+                // Use debounce for the actual rebuild
+                clearTimeout(window.resizeDebounceTimer);
+                window.resizeDebounceTimer = setTimeout(() => {
+                    buildTabs(false);
+                    // Restore position after rebuild
+                    restoreScrollPosition();
+                }, 16); // ~60fps
+            };
             
             window.addEventListener('resize', handleResize);
             
