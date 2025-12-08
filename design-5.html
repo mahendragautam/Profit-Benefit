@@ -632,6 +632,102 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+
+        /* ============================================
+           INTERACTIVE HERO ANIMATIONS
+           ============================================ */
+        
+        /* Ripple effect on click */
+        .hero-banner {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Button click animation - particle burst */
+        .hero-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .hero-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Subtle scale on hover for hero content */
+        .hero-content {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-banner:hover .hero-content {
+            transform: translateY(-5px);
+        }
+
+        /* Interactive particle - they move toward cursor on hover */
+        .hero-banner:hover .particle {
+            animation-play-state: paused;
+        }
+
+        /* Glow effect on hero banner when interacting */
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                        rgba(255, 255, 255, 0.1) 0%, 
+                        transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .hero-banner:hover::after {
+            opacity: 1;
+        }
+
+        /* Mobile: disable some hover effects */
+        @media (max-width: 768px) {
+            .hero-banner:hover .hero-content {
+                transform: none;
+            }
+            
+            .hero-banner::after {
+                display: none;
+            }
+        }
+
         /* Featured Article */
         .featured-article {
             position: relative;
@@ -3197,5 +3293,90 @@
 
         console.log('🚀 NewsPaper Template Fully Initialized');
     </script>
-</body>
+
+        <script>
+        // Lightweight interactive animations for hero banner
+        (function() {
+            const heroBanner = document.querySelector('.hero-banner');
+            if (!heroBanner) return;
+
+            // Ripple effect on click
+            heroBanner.addEventListener('click', function(e) {
+                // Don't create ripple if clicking on buttons
+                if (e.target.closest('.hero-button')) return;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => ripple.remove(), 600);
+            });
+
+            // Track mouse position for glow effect (desktop only)
+            if (window.innerWidth > 768) {
+                heroBanner.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    
+                    this.style.setProperty('--mouse-x', x + '%');
+                    this.style.setProperty('--mouse-y', y + '%');
+                });
+            }
+
+            // Particle burst on button click
+            const heroButtons = document.querySelectorAll('.hero-button');
+            heroButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create mini particle burst
+                    for (let i = 0; i < 8; i++) {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.width = '4px';
+                        particle.style.height = '4px';
+                        particle.style.background = 'white';
+                        particle.style.borderRadius = '50%';
+                        particle.style.pointerEvents = 'none';
+                        
+                        const rect = button.getBoundingClientRect();
+                        particle.style.left = (e.clientX - rect.left) + 'px';
+                        particle.style.top = (e.clientY - rect.top) + 'px';
+                        
+                        button.appendChild(particle);
+                        
+                        const angle = (i / 8) * Math.PI * 2;
+                        const velocity = 50;
+                        const vx = Math.cos(angle) * velocity;
+                        const vy = Math.sin(angle) * velocity;
+                        
+                        particle.animate([
+                            { 
+                                transform: 'translate(0, 0) scale(1)', 
+                                opacity: 1 
+                            },
+                            { 
+                                transform: `translate(${vx}px, ${vy}px) scale(0)`, 
+                                opacity: 0 
+                            }
+                        ], {
+                            duration: 600,
+                            easing: 'cubic-bezier(0, .9, .57, 1)'
+                        }).onfinish = () => particle.remove();
+                    }
+                });
+            });
+        })();
+        </script>
+    </body>
 </html>
