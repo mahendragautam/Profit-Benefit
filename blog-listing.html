@@ -362,17 +362,63 @@
             color: #999;
         }
 
-        /* WIDGETS ROW */
-        .widgets-row-section {
+        /* WIDGETS GRID LAYOUT */
+        .widgets-grid-section {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .widgets-row {
+        .widgets-grid-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .widget-box {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .widget-box-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .widget-box-list {
+            list-style: none;
+        }
+
+        .widget-box-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .widget-box-item:last-child {
+            border-bottom: none;
+        }
+
+        .widget-box-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+        }
+
+        .widget-box-link:hover {
+            color: var(--secondary);
+        }
+
+        .widget-empty {
+            background: transparent;
+            padding: 0;
         }
 
         /* OTHER BLOG POSTS SIDEBAR */
@@ -1068,9 +1114,9 @@
                 gap: 25px;
             }
 
-            .widgets-row {
+            .widgets-grid-container {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+                gap: 20px;
             }
 
             .other-posts-sidebar {
@@ -1146,9 +1192,9 @@
                 flex: 0 0 240px;
             }
 
-            .widgets-row {
+            .widgets-grid-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
 
             .footer-grid {
@@ -1613,21 +1659,57 @@
         </div>
     </div>
 
-    <!-- Widgets Row Section -->
-    <section class="widgets-row-section">
-        <div class="widgets-row">
-            <!-- Search Widget -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Search</h3>
+    <!-- Widgets Grid Section -->
+    <section class="widgets-grid-section">
+        <div class="widgets-grid-container">
+            <!-- Row 1, Col 1: Trending -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">🔥 Trending</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="blog-vps-hosting.html" class="widget-box-link">Best VPS Hosting Providers 2024</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Salesforce vs HubSpot Comparison</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Top 10 Project Management Tools</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Email Marketing Platforms Guide</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 1, Col 2: Empty -->
+            <div class="widget-empty"></div>
+
+            <!-- Row 1, Col 3: Search -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Search</h3>
                 <form class="search-form">
                     <input type="text" class="search-input" placeholder="Search articles...">
                     <button type="submit" class="search-btn">🔍</button>
                 </form>
             </div>
 
-            <!-- Categories Widget -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Categories</h3>
+            <!-- Row 2, Col 1: CRM -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">CRM</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Salesforce Complete Guide</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">HubSpot CRM Review</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Pipedrive for Small Teams</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Zoho CRM Features</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 2, Col 2: Marketing Tools -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Marketing Tools</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Mailchimp vs ConvertKit</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">SEO Tools Comparison</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Social Media Schedulers</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Content Marketing Tools</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 2, Col 3: Categories -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Categories</h3>
                 <ul class="category-list">
                     <li class="category-item">
                         <a href="#" class="category-link">
@@ -1643,7 +1725,7 @@
                     </li>
                     <li class="category-item">
                         <a href="#" class="category-link">
-                            <span>Marketing Tools</span>
+                            <span>Marketing</span>
                             <span class="category-count">28</span>
                         </a>
                     </li>
@@ -1653,30 +1735,40 @@
                             <span class="category-count">56</span>
                         </a>
                     </li>
-                    <li class="category-item">
-                        <a href="#" class="category-link">
-                            <span>Project Management</span>
-                            <span class="category-count">39</span>
-                        </a>
-                    </li>
-                    <li class="category-item">
-                        <a href="#" class="category-link">
-                            <span>Analytics</span>
-                            <span class="category-count">24</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
 
-            <!-- Popular Posts Widget -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Popular Posts</h3>
+            <!-- Row 3, Col 1: Projects -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Projects</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Asana vs Monday.com</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">ClickUp Complete Review</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Trello vs Notion</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Jira for Agile Teams</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 3, Col 2: Finance -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Finance</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">QuickBooks vs Xero</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">FreshBooks Review</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Wave Accounting Guide</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Best Invoicing Software</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 3, Col 3: Popular Post -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Popular Post</h3>
                 <ul class="popular-posts">
                     <li class="popular-post">
                         <a href="#" class="popular-post-link">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
                             <div class="popular-post-info">
-                                <h4>Top 10 Project Management Tools for 2024</h4>
+                                <h4>Top Project Management Tools</h4>
                                 <span class="popular-post-date">Dec 5, 2024</span>
                             </div>
                         </a>
@@ -1685,26 +1777,39 @@
                         <a href="#" class="popular-post-link">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
                             <div class="popular-post-info">
-                                <h4>Email Marketing Platforms Compared</h4>
+                                <h4>Email Marketing Platforms</h4>
                                 <span class="popular-post-date">Dec 3, 2024</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="popular-post">
-                        <a href="#" class="popular-post-link">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
-                            <div class="popular-post-info">
-                                <h4>Best Accounting Software for Small Businesses</h4>
-                                <span class="popular-post-date">Dec 1, 2024</span>
                             </div>
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <!-- Tags Widget -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Popular Tags</h3>
+            <!-- Row 4, Col 1: SEO -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">SEO</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Best SEO Tools 2024</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Ahrefs vs SEMrush</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Moz Pro Review</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Keyword Research Tools</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 4, Col 2: Productivity -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Productivity</h3>
+                <ul class="widget-box-list">
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Slack vs Microsoft Teams</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Notion Complete Guide</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Time Tracking Apps</a></li>
+                    <li class="widget-box-item"><a href="#" class="widget-box-link">Note-Taking Software</a></li>
+                </ul>
+            </div>
+
+            <!-- Row 4, Col 3: Popular Tags -->
+            <div class="widget-box">
+                <h3 class="widget-box-title">Popular Tags</h3>
                 <div class="tag-cloud">
                     <a href="#" class="tag">CRM</a>
                     <a href="#" class="tag">SaaS</a>
