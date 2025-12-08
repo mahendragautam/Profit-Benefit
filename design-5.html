@@ -2868,94 +2868,121 @@
                 buildTabs(true);
             }
             
-            // Enhanced resize handler with scroll position preservation
-            let beforeResizeData = null;
+            // Bulletproof real-time scroll position correction during resize
+            let scrollAnchor = null;
+            let isResizing = false;
+            let resizeEndTimer = null;
+            let correctionAnimationFrame = null;
             
-            const captureScrollPosition = () => {
+            // Capture and lock scroll anchor
+            const captureScrollAnchor = () => {
                 const dontMissSection = document.querySelector('.dont-miss-section');
                 if (!dontMissSection) return null;
                 
-                // Find the element that's currently at the top of the viewport
+                // Find element closest to viewport center
                 const viewportCenter = window.scrollY + (window.innerHeight / 2);
+                const trackables = dontMissSection.querySelectorAll('.featured-article, .article-item, .category-header, .featured-image, .article-thumbnail');
                 
-                // Get all trackable elements within the don't miss section
-                const trackableElements = dontMissSection.querySelectorAll('.featured-article, .article-item, .category-header');
                 let closestElement = null;
                 let closestDistance = Infinity;
                 
-                // Find the element closest to viewport center
-                trackableElements.forEach(el => {
-                    const elTop = el.getBoundingClientRect().top + window.scrollY;
-                    const distance = Math.abs(elTop - viewportCenter);
+                trackables.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const elCenter = rect.top + window.scrollY + (rect.height / 2);
+                    const distance = Math.abs(elCenter - viewportCenter);
+                    
                     if (distance < closestDistance) {
                         closestDistance = distance;
                         closestElement = el;
                     }
                 });
                 
-                // If we found an element to track, use it; otherwise fall back to section
-                const trackingElement = closestElement || dontMissSection;
-                const rect = trackingElement.getBoundingClientRect();
+                const anchorElement = closestElement || dontMissSection;
+                const anchorRect = anchorElement.getBoundingClientRect();
                 
                 return {
-                    scrollY: window.scrollY,
-                    scrollX: window.scrollX,
-                    viewportTop: rect.top, // Position in viewport
-                    elementOffsetTop: trackingElement.offsetTop, // Position in document
-                    trackingElement: trackingElement
+                    element: anchorElement,
+                    viewportTop: anchorRect.top,  // Where it appears on screen
+                    initialScrollY: window.scrollY,
+                    initialScrollX: window.scrollX
                 };
             };
             
-            const restoreScrollPosition = () => {
-                if (!beforeResizeData || !beforeResizeData.trackingElement) return;
+            // Continuously correct scroll position during resize
+            const maintainScrollPosition = () => {
+                if (!scrollAnchor || !scrollAnchor.element) return;
                 
-                requestAnimationFrame(() => {
-                    const trackedElement = beforeResizeData.trackingElement;
-                    
-                    // Calculate the element's new position in the document
-                    const afterOffsetTop = trackedElement.offsetTop;
-                    const positionShift = afterOffsetTop - beforeResizeData.elementOffsetTop;
-                    
-                    // Calculate target scroll to maintain element's viewport position
-                    // We want the element to appear at the same position in viewport as before
-                    const targetScrollY = beforeResizeData.scrollY + positionShift;
-                    
+                // Calculate where the anchor element is now
+                const currentRect = scrollAnchor.element.getBoundingClientRect();
+                const viewportDiff = currentRect.top - scrollAnchor.viewportTop;
+                
+                // If element moved in viewport, correct it immediately
+                if (Math.abs(viewportDiff) > 0.5) {
                     window.scrollTo({
-                        top: targetScrollY,
-                        left: beforeResizeData.scrollX,
+                        top: window.scrollY - viewportDiff,
+                        left: scrollAnchor.initialScrollX,
                         behavior: 'instant'
                     });
+                }
+                
+                // Continue monitoring while resizing
+                if (isResizing) {
+                    correctionAnimationFrame = requestAnimationFrame(maintainScrollPosition);
+                }
+            };
+            
+            // Handle resize start
+            const onResizeStart = () => {
+                if (!isResizing) {
+                    isResizing = true;
+                    scrollAnchor = captureScrollAnchor();
                     
-                    // Second pass for precision after all layouts settle
+                    // Start continuous position correction
+                    if (correctionAnimationFrame) {
+                        cancelAnimationFrame(correctionAnimationFrame);
+                    }
+                    correctionAnimationFrame = requestAnimationFrame(maintainScrollPosition);
+                }
+            };
+            
+            // Handle resize end
+            const onResizeEnd = () => {
+                // Final tab rebuild
+                buildTabs(false);
+                
+                // Final position correction
+                if (scrollAnchor && scrollAnchor.element) {
                     requestAnimationFrame(() => {
-                        const currentRect = trackedElement.getBoundingClientRect();
-                        const viewportTopDiff = currentRect.top - beforeResizeData.viewportTop;
+                        const finalRect = scrollAnchor.element.getBoundingClientRect();
+                        const finalDiff = finalRect.top - scrollAnchor.viewportTop;
                         
-                        // Fine-tune if there's still a difference
-                        if (Math.abs(viewportTopDiff) > 1) {
+                        if (Math.abs(finalDiff) > 0.5) {
                             window.scrollTo({
-                                top: window.scrollY - viewportTopDiff,
-                                left: window.scrollX,
+                                top: window.scrollY - finalDiff,
+                                left: scrollAnchor.initialScrollX,
                                 behavior: 'instant'
                             });
                         }
+                        
+                        // Clean up
+                        isResizing = false;
+                        scrollAnchor = null;
+                        
+                        if (correctionAnimationFrame) {
+                            cancelAnimationFrame(correctionAnimationFrame);
+                            correctionAnimationFrame = null;
+                        }
                     });
-                    
-                    beforeResizeData = null;
-                });
+                }
             };
             
+            // Main resize handler
             const handleResize = () => {
-                // Capture position before any changes
-                beforeResizeData = captureScrollPosition();
+                onResizeStart();
                 
-                // Use debounce for the actual rebuild
-                clearTimeout(window.resizeDebounceTimer);
-                window.resizeDebounceTimer = setTimeout(() => {
-                    buildTabs(false);
-                    // Restore position after rebuild
-                    restoreScrollPosition();
-                }, 16); // ~60fps
+                // Debounce the resize end detection
+                clearTimeout(resizeEndTimer);
+                resizeEndTimer = setTimeout(onResizeEnd, 100);
             };
             
             window.addEventListener('resize', handleResize);
