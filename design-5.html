@@ -2658,7 +2658,7 @@
             }
             
             // Build tabs dynamically based on available width
-            function buildTabs(forceRebuild = false) {
+            function buildTabs(forceRebuild = false, skipScrollCorrection = false) {
                 const { visibleTabs, hiddenTabs } = calculateVisibleTabs();
                 
                 // Only rebuild if the number of visible tabs changed (prevents scroll jumping)
@@ -2767,10 +2767,11 @@
                     categoryTabs.appendChild(dropdown);
                 }
                 
-                // Restore scroll position with precise element tracking
-                requestAnimationFrame(() => {
-                    // Calculate position shift of tracked element
-                    if (trackedElement) {
+                // Restore scroll position with precise element tracking (skip during resize)
+                if (!skipScrollCorrection) {
+                    requestAnimationFrame(() => {
+                        // Calculate position shift of tracked element
+                        if (trackedElement) {
                         const afterOffsetTop = trackedElement.offsetTop;
                         const positionShift = afterOffsetTop - beforeOffsetTop;
                         const targetScrollY = scrollY + positionShift;
@@ -2804,9 +2805,18 @@
                                     behavior: 'instant'
                                 });
                             }
+                            }
+                        });
+                    });
+                } else {
+                    // During resize, skip scroll correction entirely
+                    requestAnimationFrame(() => {
+                        categoryHeader.style.minHeight = '';
+                        if (activeContent) {
+                            activeContent.style.minHeight = '';
                         }
                     });
-                });
+                }
                 
                 isInitialized = true;
             }
@@ -2868,121 +2878,75 @@
                 buildTabs(true);
             }
             
-            // Bulletproof real-time scroll position correction during resize
-            let scrollAnchor = null;
-            let isResizing = false;
-            let resizeEndTimer = null;
-            let correctionAnimationFrame = null;
+            // Safe scroll position maintenance during resize
+            let resizeScrollData = {
+                isResizing: false,
+                section: null,
+                sectionOffsetTop: 0,
+                scrollY: 0,
+                scrollX: 0,
+                targetViewportTop: 0,
+                correctionFrame: null,
+                endTimer: null
+            };
             
-            // Capture and lock scroll anchor
-            const captureScrollAnchor = () => {
-                const dontMissSection = document.querySelector('.dont-miss-section');
-                if (!dontMissSection) return null;
+            // Capture scroll position relative to don't miss section
+            const captureResizeScrollState = () => {
+                const section = document.querySelector('.dont-miss-section');
+                if (!section) return false;
                 
-                // Find element closest to viewport center
-                const viewportCenter = window.scrollY + (window.innerHeight / 2);
-                const trackables = dontMissSection.querySelectorAll('.featured-article, .article-item, .category-header, .featured-image, .article-thumbnail');
+                const sectionRect = section.getBoundingClientRect();
+                const sectionOffsetTop = section.offsetTop;
+                const currentScrollY = window.scrollY;
+                const currentScrollX = window.scrollX;
                 
-                let closestElement = null;
-                let closestDistance = Infinity;
+                // Calculate how far down we are scrolled relative to the section
+                const targetViewportTop = sectionRect.top;
                 
-                trackables.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    const elCenter = rect.top + window.scrollY + (rect.height / 2);
-                    const distance = Math.abs(elCenter - viewportCenter);
-                    
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestElement = el;
-                    }
-                });
-                
-                const anchorElement = closestElement || dontMissSection;
-                const anchorRect = anchorElement.getBoundingClientRect();
-                
-                return {
-                    element: anchorElement,
-                    viewportTop: anchorRect.top,  // Where it appears on screen
-                    initialScrollY: window.scrollY,
-                    initialScrollX: window.scrollX
+                // Store state
+                resizeScrollData = {
+                    isResizing: true,
+                    section: section,
+                    sectionOffsetTop: sectionOffsetTop,
+                    scrollY: currentScrollY,
+                    scrollX: currentScrollX,
+                    targetViewportTop: targetViewportTop,
+                    correctionFrame: resizeScrollData.correctionFrame,
+                    endTimer: resizeScrollData.endTimer
                 };
+                
+                return true;
             };
             
-            // Continuously correct scroll position during resize
-            const maintainScrollPosition = () => {
-                if (!scrollAnchor || !scrollAnchor.element) return;
-                
-                // Calculate where the anchor element is now
-                const currentRect = scrollAnchor.element.getBoundingClientRect();
-                const viewportDiff = currentRect.top - scrollAnchor.viewportTop;
-                
-                // If element moved in viewport, correct it immediately
-                if (Math.abs(viewportDiff) > 0.5) {
-                    window.scrollTo({
-                        top: window.scrollY - viewportDiff,
-                        left: scrollAnchor.initialScrollX,
-                        behavior: 'instant'
-                    });
-                }
-                
-                // Continue monitoring while resizing
-                if (isResizing) {
-                    correctionAnimationFrame = requestAnimationFrame(maintainScrollPosition);
-                }
+            // NO scroll correction during resize - let CSS handle it
+            const maintainPositionDuringResize = () => {
+                // Disabled - was causing jumps to header
+                // Just wait for resize to end
+                return;
             };
             
-            // Handle resize start
-            const onResizeStart = () => {
-                if (!isResizing) {
-                    isResizing = true;
-                    scrollAnchor = captureScrollAnchor();
-                    
-                    // Start continuous position correction
-                    if (correctionAnimationFrame) {
-                        cancelAnimationFrame(correctionAnimationFrame);
-                    }
-                    correctionAnimationFrame = requestAnimationFrame(maintainScrollPosition);
-                }
-            };
-            
-            // Handle resize end
-            const onResizeEnd = () => {
-                // Final tab rebuild
-                buildTabs(false);
-                
-                // Final position correction
-                if (scrollAnchor && scrollAnchor.element) {
-                    requestAnimationFrame(() => {
-                        const finalRect = scrollAnchor.element.getBoundingClientRect();
-                        const finalDiff = finalRect.top - scrollAnchor.viewportTop;
-                        
-                        if (Math.abs(finalDiff) > 0.5) {
-                            window.scrollTo({
-                                top: window.scrollY - finalDiff,
-                                left: scrollAnchor.initialScrollX,
-                                behavior: 'instant'
-                            });
-                        }
-                        
-                        // Clean up
-                        isResizing = false;
-                        scrollAnchor = null;
-                        
-                        if (correctionAnimationFrame) {
-                            cancelAnimationFrame(correctionAnimationFrame);
-                            correctionAnimationFrame = null;
-                        }
-                    });
-                }
-            };
-            
-            // Main resize handler
+            // Handle resize event
             const handleResize = () => {
-                onResizeStart();
+                // First resize event - just mark that we're resizing
+                if (!resizeScrollData.isResizing) {
+                    resizeScrollData.isResizing = true;
+                    // Don't start correction loop - was causing jumps
+                }
                 
-                // Debounce the resize end detection
-                clearTimeout(resizeEndTimer);
-                resizeEndTimer = setTimeout(onResizeEnd, 100);
+                // Reset the end timer
+                clearTimeout(resizeScrollData.endTimer);
+                resizeScrollData.endTimer = setTimeout(() => {
+                    // Resize ended - rebuild tabs without scroll correction
+                    buildTabs(false, true);  // skipScrollCorrection = true
+                    
+                    // Just clean up
+                    if (resizeScrollData.correctionFrame) {
+                        cancelAnimationFrame(resizeScrollData.correctionFrame);
+                    }
+                    resizeScrollData.isResizing = false;
+                    resizeScrollData.section = null;
+                    resizeScrollData.correctionFrame = null;
+                }, 150);
             };
             
             window.addEventListener('resize', handleResize);
