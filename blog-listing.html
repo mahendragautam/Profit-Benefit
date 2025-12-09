@@ -362,68 +362,33 @@
             color: #999;
         }
 
-        /* WIDGETS GRID LAYOUT */
-        .widgets-grid-section {
+        /* WIDGETS AND CATEGORIES LAYOUT */
+        .widgets-categories-section {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .widgets-grid-container {
+        .widgets-categories-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
             gap: 25px;
         }
 
-        .widget-box {
-            background: var(--light);
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .widget-box-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--secondary);
-        }
-
-        .widget-box-list {
-            list-style: none;
-        }
-
-        .widget-box-item {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .widget-box-item:last-child {
-            border-bottom: none;
-        }
-
-        .widget-box-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: block;
-        }
-
-        .widget-box-link:hover {
-            color: var(--secondary);
-        }
-
-        .widget-empty {
-            background: transparent;
-            padding: 0;
-        }
-
-        /* Trending box spans 2 columns */
+        /* TRENDING BOX */
         .trending-box {
-            grid-column: span 2;
             background: white;
             border-radius: 12px;
             padding: 25px;
@@ -570,17 +535,134 @@
             color: var(--secondary);
         }
 
-        /* Category Boxes Section (2 columns) */
-        .category-boxes-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
+        /* Category Boxes Grid (2 columns, DON'T MISS format) */
         .category-boxes-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 30px;
+        }
+
+        .category-box-dontmiss {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .category-box-dontmiss .featured-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+        }
+
+        .category-box-dontmiss .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-box-dontmiss:hover .featured-image {
+            transform: scale(1.05);
+        }
+
+        .category-box-dontmiss .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .category-box-dontmiss .featured-content {
+            padding: 20px;
+        }
+
+        .category-box-dontmiss .featured-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .category-box-dontmiss .featured-title a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .category-box-dontmiss .featured-title a:hover {
+            color: var(--secondary);
+        }
+
+        .category-box-dontmiss .featured-meta {
+            display: flex;
+            gap: 10px;
+            color: var(--gray);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .category-box-dontmiss .featured-excerpt {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .category-box-dontmiss .related-articles {
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+        }
+
+        .category-box-dontmiss .article-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .category-box-dontmiss .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-box-dontmiss .article-item:hover {
+            background: #f8f9fa;
+        }
+
+        .category-box-dontmiss .article-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .category-box-dontmiss .article-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--primary);
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+
+        .category-box-dontmiss .article-item:hover .article-info h3 {
+            color: var(--secondary);
+        }
+
+        .category-box-dontmiss .article-date {
+            font-size: 12px;
+            color: #999;
         }
 
         /* OTHER BLOG POSTS SIDEBAR */
@@ -1835,9 +1917,11 @@
         </div>
     </div>
 
-    <!-- Widgets Grid Section -->
-    <section class="widgets-grid-section">
-        <div class="widgets-grid-container">
+    <!-- Widgets and Categories Section -->
+    <section class="widgets-categories-section">
+        <div class="widgets-categories-grid">
+            <!-- Left Content: Trending + Category Boxes -->
+            <div class="left-content">
             <!-- Row 1: TRENDING NOW (spans 2 columns) + Search Widget -->
             <div class="trending-box">
                 <h3 class="trending-box-title">🔥 Trending Now</h3>
