@@ -570,6 +570,19 @@
             color: var(--secondary);
         }
 
+        /* Category Boxes Section (2 columns) */
+        .category-boxes-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .category-boxes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
         /* OTHER BLOG POSTS SIDEBAR */
         .other-posts-sidebar {
             background: var(--light);
@@ -1272,6 +1285,11 @@
                 grid-column: span 2;
             }
 
+            .category-boxes-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
             .other-posts-sidebar {
                 display: none;
             }
@@ -1346,6 +1364,11 @@
             }
 
             .widgets-grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .category-boxes-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -1909,26 +1932,9 @@
                 </form>
             </div>
 
-            <!-- Row 2: CRM + Marketing + Categories -->
-            <div class="category-box">
-                <h3 class="category-box-title">CRM Tools</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">Salesforce Complete Guide</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">HubSpot CRM Review</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Pipedrive for Small Teams</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Zoho CRM Features</a></li>
-                </ul>
-            </div>
-
-            <div class="category-box">
-                <h3 class="category-box-title">Marketing Tools</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">Mailchimp vs ConvertKit</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">SEO Tools Comparison</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Social Media Schedulers</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Content Marketing Tools</a></li>
-                </ul>
-            </div>
+            <!-- Empty for spacing -->
+            <div class="widget-empty"></div>
+            <div class="widget-empty"></div>
 
             <div class="sidebar-widget">
                 <h3 class="widget-title">Categories</h3>
@@ -1972,26 +1978,9 @@
                 </ul>
             </div>
 
-            <!-- Row 3: Projects + Finance + Popular Posts -->
-            <div class="category-box">
-                <h3 class="category-box-title">Project Management</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">Asana vs Monday.com</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">ClickUp Complete Review</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Trello vs Notion</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Jira for Agile Teams</a></li>
-                </ul>
-            </div>
-
-            <div class="category-box">
-                <h3 class="category-box-title">Finance Tools</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">QuickBooks vs Xero</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">FreshBooks Review</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Wave Accounting Guide</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Best Invoicing Software</a></li>
-                </ul>
-            </div>
+            <!-- Empty for spacing -->
+            <div class="widget-empty"></div>
+            <div class="widget-empty"></div>
 
             <div class="sidebar-widget">
                 <h3 class="widget-title">Popular Posts</h3>
@@ -2026,26 +2015,9 @@
                 </ul>
             </div>
 
-            <!-- Row 4: SEO + Productivity + Popular Tags -->
-            <div class="category-box">
-                <h3 class="category-box-title">SEO Tools</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">Best SEO Tools 2024</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Ahrefs vs SEMrush</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Moz Pro Review</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Keyword Research Tools</a></li>
-                </ul>
-            </div>
-
-            <div class="category-box">
-                <h3 class="category-box-title">Productivity</h3>
-                <ul class="category-box-list">
-                    <li class="category-box-item"><a href="#" class="category-box-link">Slack vs Microsoft Teams</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Notion Complete Guide</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Time Tracking Apps</a></li>
-                    <li class="category-box-item"><a href="#" class="category-box-link">Note-Taking Software</a></li>
-                </ul>
-            </div>
+            <!-- Empty for spacing -->
+            <div class="widget-empty"></div>
+            <div class="widget-empty"></div>
 
             <div class="sidebar-widget">
                 <h3 class="widget-title">Popular Tags</h3>
@@ -2065,106 +2037,73 @@
         </div>
     </section>
 
-    <!-- CATEGORY GRID Section -->
-    <section class="category-grid-section">
-        <div class="category-grid">
-            <!-- CRM Tools Column -->
-            <div class="category-column">
-                <div class="category-column-header">
-                    <h3 class="category-column-title">CRM Tools</h3>
-                    <a href="#">View All →</a>
-                </div>
-                <div class="category-featured">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="CRM Dashboard">
-                    <div class="category-featured-content">
-                        <h4 class="category-featured-title">How to Choose the Right CRM for Your Business</h4>
-                        <p class="category-featured-date">December 8, 2024</p>
-                    </div>
-                </div>
-                <div class="category-list">
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Salesforce vs HubSpot: Which is Better?</h5>
-                        <p class="category-list-date">December 6, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Pipedrive Review: Best for Small Teams?</h5>
-                        <p class="category-list-date">December 4, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Zoho CRM Complete Guide</h5>
-                        <p class="category-list-date">December 2, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">CRM Integration Best Practices</h5>
-                        <p class="category-list-date">November 30, 2024</p>
-                    </div>
-                </div>
+    <!-- Category Boxes Section (2 columns) -->
+    <section class="category-boxes-section">
+        <div class="category-boxes-grid">
+            <!-- CRM Tools -->
+            <div class="category-box">
+                <h3 class="category-box-title">CRM Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Salesforce Complete Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">HubSpot CRM Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Pipedrive for Small Teams</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Zoho CRM Features</a></li>
+                </ul>
             </div>
 
-            <!-- Marketing Tools Column -->
-            <div class="category-column">
-                <div class="category-column-header">
-                    <h3 class="category-column-title">Marketing Tools</h3>
-                    <a href="#">View All →</a>
-                </div>
-                <div class="category-featured">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Marketing Analytics">
-                    <div class="category-featured-content">
-                        <h4 class="category-featured-title">Email Marketing Platforms: Complete Comparison</h4>
-                        <p class="category-featured-date">December 3, 2024</p>
-                    </div>
-                </div>
-                <div class="category-list">
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Best SEO Tools for 2024</h5>
-                        <p class="category-list-date">November 28, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Social Media Management Tools</h5>
-                        <p class="category-list-date">November 25, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Content Marketing Tools 2024</h5>
-                        <p class="category-list-date">November 20, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Marketing Analytics Comparison</h5>
-                        <p class="category-list-date">November 18, 2024</p>
-                    </div>
-                </div>
+            <!-- Marketing Tools -->
+            <div class="category-box">
+                <h3 class="category-box-title">Marketing Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Mailchimp vs ConvertKit</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">SEO Tools Comparison</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Social Media Schedulers</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Content Marketing Tools</a></li>
+                </ul>
             </div>
 
-            <!-- Project Management Column -->
-            <div class="category-column">
-                <div class="category-column-header">
-                    <h3 class="category-column-title">Project Management</h3>
-                    <a href="#">View All →</a>
-                </div>
-                <div class="category-featured">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project Dashboard">
-                    <div class="category-featured-content">
-                        <h4 class="category-featured-title">Top 10 Project Management Tools for Remote Teams</h4>
-                        <p class="category-featured-date">December 5, 2024</p>
-                    </div>
-                </div>
-                <div class="category-list">
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Asana vs Monday.com: Which is Better?</h5>
-                        <p class="category-list-date">December 1, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">ClickUp Complete Review</h5>
-                        <p class="category-list-date">November 27, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Trello vs Notion Comparison</h5>
-                        <p class="category-list-date">November 23, 2024</p>
-                    </div>
-                    <div class="category-list-item">
-                        <h5 class="category-list-title">Jira for Agile Teams Guide</h5>
-                        <p class="category-list-date">November 19, 2024</p>
-                    </div>
-                </div>
+            <!-- Project Management -->
+            <div class="category-box">
+                <h3 class="category-box-title">Project Management</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Asana vs Monday.com</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">ClickUp Complete Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Trello vs Notion</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Jira for Agile Teams</a></li>
+                </ul>
+            </div>
+
+            <!-- Finance Tools -->
+            <div class="category-box">
+                <h3 class="category-box-title">Finance Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">QuickBooks vs Xero</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">FreshBooks Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Wave Accounting Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Best Invoicing Software</a></li>
+                </ul>
+            </div>
+
+            <!-- SEO Tools -->
+            <div class="category-box">
+                <h3 class="category-box-title">SEO Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Best SEO Tools 2024</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Ahrefs vs SEMrush</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Moz Pro Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Keyword Research Tools</a></li>
+                </ul>
+            </div>
+
+            <!-- Productivity -->
+            <div class="category-box">
+                <h3 class="category-box-title">Productivity</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Slack vs Microsoft Teams</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Notion Complete Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Time Tracking Apps</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Note-Taking Software</a></li>
+                </ul>
             </div>
         </div>
     </section>
