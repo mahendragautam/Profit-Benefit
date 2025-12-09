@@ -421,6 +421,155 @@
             padding: 0;
         }
 
+        /* Trending box spans 2 columns */
+        .trending-box {
+            grid-column: span 2;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .trending-box-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .trending-box .trending-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .trending-box .trending-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .trending-box .trending-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .trending-box .trending-scroll::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .trending-box .trending-card {
+            flex: 0 0 220px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .trending-box .trending-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .trending-box .trending-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .trending-box .trending-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .trending-box .trending-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .trending-box .trending-info {
+            padding: 12px;
+            background: #f8f9fa;
+        }
+
+        .trending-box .trending-category {
+            color: var(--secondary);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .trending-box .trending-title {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary);
+            transition: color 0.3s;
+        }
+
+        .trending-box .trending-card:hover .trending-title {
+            color: var(--secondary);
+        }
+
+        /* Category boxes */
+        .category-box {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .category-box-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .category-box-list {
+            list-style: none;
+        }
+
+        .category-box-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-box-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-box-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+        }
+
+        .category-box-link:hover {
+            color: var(--secondary);
+        }
+
         /* OTHER BLOG POSTS SIDEBAR */
         .other-posts-sidebar {
             background: var(--light);
@@ -1119,6 +1268,10 @@
                 gap: 20px;
             }
 
+            .trending-box {
+                grid-column: span 2;
+            }
+
             .other-posts-sidebar {
                 display: none;
             }
@@ -1662,54 +1815,123 @@
     <!-- Widgets Grid Section -->
     <section class="widgets-grid-section">
         <div class="widgets-grid-container">
-            <!-- Row 1, Col 1: Trending -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">🔥 Trending</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="blog-vps-hosting.html" class="widget-box-link">Best VPS Hosting Providers 2024</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Salesforce vs HubSpot Comparison</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Top 10 Project Management Tools</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Email Marketing Platforms Guide</a></li>
-                </ul>
+            <!-- Row 1: TRENDING NOW (spans 2 columns) + Search Widget -->
+            <div class="trending-box">
+                <h3 class="trending-box-title">🔥 Trending Now</h3>
+                <div class="trending-scroll">
+                    <!-- Trending Card 1 -->
+                    <div class="trending-card">
+                        <div class="trending-number">1</div>
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop" alt="VPS Hosting">
+                        <div class="trending-info">
+                            <div class="trending-category">Hosting</div>
+                            <h3 class="trending-title">Best VPS Hosting Providers for 2024</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 2 -->
+                    <div class="trending-card">
+                        <div class="trending-number">2</div>
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="CRM Tools">
+                        <div class="trending-info">
+                            <div class="trending-category">CRM</div>
+                            <h3 class="trending-title">Salesforce vs HubSpot Comparison</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 3 -->
+                    <div class="trending-card">
+                        <div class="trending-number">3</div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project Management">
+                        <div class="trending-info">
+                            <div class="trending-category">Productivity</div>
+                            <h3 class="trending-title">Top 10 Project Management Tools</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 4 -->
+                    <div class="trending-card">
+                        <div class="trending-number">4</div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Email Marketing">
+                        <div class="trending-info">
+                            <div class="trending-category">Marketing</div>
+                            <h3 class="trending-title">Email Marketing Platforms</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 5 -->
+                    <div class="trending-card">
+                        <div class="trending-number">5</div>
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="SEO Tools">
+                        <div class="trending-info">
+                            <div class="trending-category">SEO</div>
+                            <h3 class="trending-title">Best SEO Tools for 2024</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 6 -->
+                    <div class="trending-card">
+                        <div class="trending-number">6</div>
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Accounting">
+                        <div class="trending-info">
+                            <div class="trending-category">Finance</div>
+                            <h3 class="trending-title">QuickBooks vs Xero</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 7 -->
+                    <div class="trending-card">
+                        <div class="trending-number">7</div>
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Team Collaboration">
+                        <div class="trending-info">
+                            <div class="trending-category">Collaboration</div>
+                            <h3 class="trending-title">Slack vs Teams</h3>
+                        </div>
+                    </div>
+
+                    <!-- Trending Card 8 -->
+                    <div class="trending-card">
+                        <div class="trending-number">8</div>
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop" alt="Cloud Storage">
+                        <div class="trending-info">
+                            <div class="trending-category">Storage</div>
+                            <h3 class="trending-title">Dropbox vs Google Drive</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Row 1, Col 2: Empty -->
-            <div class="widget-empty"></div>
-
-            <!-- Row 1, Col 3: Search -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Search</h3>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Search</h3>
                 <form class="search-form">
                     <input type="text" class="search-input" placeholder="Search articles...">
                     <button type="submit" class="search-btn">🔍</button>
                 </form>
             </div>
 
-            <!-- Row 2, Col 1: CRM -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">CRM</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Salesforce Complete Guide</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">HubSpot CRM Review</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Pipedrive for Small Teams</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Zoho CRM Features</a></li>
+            <!-- Row 2: CRM + Marketing + Categories -->
+            <div class="category-box">
+                <h3 class="category-box-title">CRM Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Salesforce Complete Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">HubSpot CRM Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Pipedrive for Small Teams</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Zoho CRM Features</a></li>
                 </ul>
             </div>
 
-            <!-- Row 2, Col 2: Marketing Tools -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Marketing Tools</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Mailchimp vs ConvertKit</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">SEO Tools Comparison</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Social Media Schedulers</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Content Marketing Tools</a></li>
+            <div class="category-box">
+                <h3 class="category-box-title">Marketing Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Mailchimp vs ConvertKit</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">SEO Tools Comparison</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Social Media Schedulers</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Content Marketing Tools</a></li>
                 </ul>
             </div>
 
-            <!-- Row 2, Col 3: Categories -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Categories</h3>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Categories</h3>
                 <ul class="category-list">
                     <li class="category-item">
                         <a href="#" class="category-link">
@@ -1725,7 +1947,7 @@
                     </li>
                     <li class="category-item">
                         <a href="#" class="category-link">
-                            <span>Marketing</span>
+                            <span>Marketing Tools</span>
                             <span class="category-count">28</span>
                         </a>
                     </li>
@@ -1735,40 +1957,50 @@
                             <span class="category-count">56</span>
                         </a>
                     </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Project Management</span>
+                            <span class="category-count">39</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#" class="category-link">
+                            <span>Analytics</span>
+                            <span class="category-count">24</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
-            <!-- Row 3, Col 1: Projects -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Projects</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Asana vs Monday.com</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">ClickUp Complete Review</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Trello vs Notion</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Jira for Agile Teams</a></li>
+            <!-- Row 3: Projects + Finance + Popular Posts -->
+            <div class="category-box">
+                <h3 class="category-box-title">Project Management</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Asana vs Monday.com</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">ClickUp Complete Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Trello vs Notion</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Jira for Agile Teams</a></li>
                 </ul>
             </div>
 
-            <!-- Row 3, Col 2: Finance -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Finance</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">QuickBooks vs Xero</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">FreshBooks Review</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Wave Accounting Guide</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Best Invoicing Software</a></li>
+            <div class="category-box">
+                <h3 class="category-box-title">Finance Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">QuickBooks vs Xero</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">FreshBooks Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Wave Accounting Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Best Invoicing Software</a></li>
                 </ul>
             </div>
 
-            <!-- Row 3, Col 3: Popular Post -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Popular Post</h3>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Posts</h3>
                 <ul class="popular-posts">
                     <li class="popular-post">
                         <a href="#" class="popular-post-link">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
                             <div class="popular-post-info">
-                                <h4>Top Project Management Tools</h4>
+                                <h4>Top 10 Project Management Tools for 2024</h4>
                                 <span class="popular-post-date">Dec 5, 2024</span>
                             </div>
                         </a>
@@ -1777,39 +2009,46 @@
                         <a href="#" class="popular-post-link">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
                             <div class="popular-post-info">
-                                <h4>Email Marketing Platforms</h4>
+                                <h4>Email Marketing Platforms Compared</h4>
                                 <span class="popular-post-date">Dec 3, 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="popular-post">
+                        <a href="#" class="popular-post-link">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=150&h=150&fit=crop" alt="Post" class="popular-post-thumb">
+                            <div class="popular-post-info">
+                                <h4>Best Accounting Software for Small Businesses</h4>
+                                <span class="popular-post-date">Dec 1, 2024</span>
                             </div>
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <!-- Row 4, Col 1: SEO -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">SEO</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Best SEO Tools 2024</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Ahrefs vs SEMrush</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Moz Pro Review</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Keyword Research Tools</a></li>
+            <!-- Row 4: SEO + Productivity + Popular Tags -->
+            <div class="category-box">
+                <h3 class="category-box-title">SEO Tools</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Best SEO Tools 2024</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Ahrefs vs SEMrush</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Moz Pro Review</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Keyword Research Tools</a></li>
                 </ul>
             </div>
 
-            <!-- Row 4, Col 2: Productivity -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Productivity</h3>
-                <ul class="widget-box-list">
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Slack vs Microsoft Teams</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Notion Complete Guide</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Time Tracking Apps</a></li>
-                    <li class="widget-box-item"><a href="#" class="widget-box-link">Note-Taking Software</a></li>
+            <div class="category-box">
+                <h3 class="category-box-title">Productivity</h3>
+                <ul class="category-box-list">
+                    <li class="category-box-item"><a href="#" class="category-box-link">Slack vs Microsoft Teams</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Notion Complete Guide</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Time Tracking Apps</a></li>
+                    <li class="category-box-item"><a href="#" class="category-box-link">Note-Taking Software</a></li>
                 </ul>
             </div>
 
-            <!-- Row 4, Col 3: Popular Tags -->
-            <div class="widget-box">
-                <h3 class="widget-box-title">Popular Tags</h3>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Tags</h3>
                 <div class="tag-cloud">
                     <a href="#" class="tag">CRM</a>
                     <a href="#" class="tag">SaaS</a>
@@ -1821,114 +2060,6 @@
                     <a href="#" class="tag">Cloud</a>
                     <a href="#" class="tag">Email</a>
                     <a href="#" class="tag">AI Tools</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRENDING NOW Section -->
-    <section class="trending-section">
-        <h2 class="section-title">🔥 Trending Now</h2>
-        <div class="trending-container">
-            <div class="trending-scroll">
-                <!-- Trending Card 1 -->
-                <div class="trending-card">
-                    <div class="trending-number">1</div>
-                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop" alt="VPS Hosting">
-                    <div class="trending-info">
-                        <div class="trending-category">Hosting</div>
-                        <h3 class="trending-title">Best VPS Hosting Providers for 2024</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 2 -->
-                <div class="trending-card">
-                    <div class="trending-number">2</div>
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="CRM Tools">
-                    <div class="trending-info">
-                        <div class="trending-category">CRM</div>
-                        <h3 class="trending-title">Salesforce vs HubSpot: Complete Comparison</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 3 -->
-                <div class="trending-card">
-                    <div class="trending-number">3</div>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project Management">
-                    <div class="trending-info">
-                        <div class="trending-category">Productivity</div>
-                        <h3 class="trending-title">Top 10 Project Management Tools</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 4 -->
-                <div class="trending-card">
-                    <div class="trending-number">4</div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Email Marketing">
-                    <div class="trending-info">
-                        <div class="trending-category">Marketing</div>
-                        <h3 class="trending-title">Email Marketing Platforms Comparison</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 5 -->
-                <div class="trending-card">
-                    <div class="trending-number">5</div>
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="SEO Tools">
-                    <div class="trending-info">
-                        <div class="trending-category">SEO</div>
-                        <h3 class="trending-title">Best SEO Tools for 2024</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 6 -->
-                <div class="trending-card">
-                    <div class="trending-number">6</div>
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Accounting">
-                    <div class="trending-info">
-                        <div class="trending-category">Finance</div>
-                        <h3 class="trending-title">QuickBooks vs Xero: Which is Better?</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 7 -->
-                <div class="trending-card">
-                    <div class="trending-number">7</div>
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Team Collaboration">
-                    <div class="trending-info">
-                        <div class="trending-category">Collaboration</div>
-                        <h3 class="trending-title">Slack vs Microsoft Teams Review</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 8 -->
-                <div class="trending-card">
-                    <div class="trending-number">8</div>
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop" alt="Cloud Storage">
-                    <div class="trending-info">
-                        <div class="trending-category">Storage</div>
-                        <h3 class="trending-title">Cloud Storage: Dropbox vs Google Drive</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 9 -->
-                <div class="trending-card">
-                    <div class="trending-number">9</div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics">
-                    <div class="trending-info">
-                        <div class="trending-category">Analytics</div>
-                        <h3 class="trending-title">Google Analytics 4 Migration Guide</h3>
-                    </div>
-                </div>
-
-                <!-- Trending Card 10 -->
-                <div class="trending-card">
-                    <div class="trending-number">10</div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Design Tools">
-                    <div class="trending-info">
-                        <div class="trending-category">Design</div>
-                        <h3 class="trending-title">Figma vs Adobe XD Comparison</h3>
-                    </div>
                 </div>
             </div>
         </div>
