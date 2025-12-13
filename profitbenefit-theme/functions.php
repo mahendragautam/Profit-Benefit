@@ -210,6 +210,100 @@ function profitbenefit_customize_register( $wp_customize ) {
         'section' => 'title_tagline',
         'type'    => 'textarea',
     ) );
+
+    // Hero Banner Section
+    $wp_customize->add_section( 'hero_banner_section', array(
+        'title'    => __( 'Hero Banner Settings', 'profitbenefit-theme' ),
+        'priority' => 30,
+    ) );
+
+    // Hero Highlight Text
+    $wp_customize->add_setting( 'hero_highlight_text', array(
+        'default'           => 'Stop Googling',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_highlight_text', array(
+        'label'   => __( 'Hero Highlight Text', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Hero Title Text
+    $wp_customize->add_setting( 'hero_title_text', array(
+        'default'           => 'for Business Tools',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_title_text', array(
+        'label'   => __( 'Hero Title Text', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Hero Subtitle
+    $wp_customize->add_setting( 'hero_subtitle_text', array(
+        'default'           => 'Everything in one place — ratings, prices, and real user reviews',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_subtitle_text', array(
+        'label'   => __( 'Hero Subtitle', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Hero Button Text
+    $wp_customize->add_setting( 'hero_button_text', array(
+        'default'           => 'Browse Tools',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_button_text', array(
+        'label'   => __( 'Hero Button Text', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Hero Button URL
+    $wp_customize->add_setting( 'hero_button_url', array(
+        'default'           => '#products',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'hero_button_url', array(
+        'label'   => __( 'Hero Button URL', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'url',
+    ) );
+
+    // Trust Badge 1
+    $wp_customize->add_setting( 'trust_badge_1', array(
+        'default'           => '500+ Tools Reviewed',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'trust_badge_1', array(
+        'label'   => __( 'Trust Badge 1', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Trust Badge 2
+    $wp_customize->add_setting( 'trust_badge_2', array(
+        'default'           => 'Expert Comparisons',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'trust_badge_2', array(
+        'label'   => __( 'Trust Badge 2', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
+
+    // Trust Badge 3
+    $wp_customize->add_setting( 'trust_badge_3', array(
+        'default'           => 'Updated Weekly',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'trust_badge_3', array(
+        'label'   => __( 'Trust Badge 3', 'profitbenefit-theme' ),
+        'section' => 'hero_banner_section',
+        'type'    => 'text',
+    ) );
 }
 add_action( 'customize_register', 'profitbenefit_customize_register' );
 

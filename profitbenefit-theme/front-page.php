@@ -8,13 +8,46 @@
 get_header();
 ?>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'homepage_title', 'Latest Articles & Guides' ) ); ?></h1>
-            <p class="page-subtitle"><?php echo esc_html( get_theme_mod( 'homepage_subtitle', 'Expert insights on business tools, software reviews, and productivity tips' ) ); ?></p>
+    <!-- Animated Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-background"></div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-    </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="highlight"><?php echo esc_html( get_theme_mod( 'hero_highlight_text', 'Stop Googling' ) ); ?></span>
+                <?php echo esc_html( get_theme_mod( 'hero_title_text', 'for Business Tools' ) ); ?>
+            </h1>
+            <p class="hero-subtitle"><?php echo esc_html( get_theme_mod( 'hero_subtitle_text', 'Everything in one place — ratings, prices, and real user reviews' ) ); ?></p>
+            <div class="hero-cta">
+                <a href="<?php echo esc_url( get_theme_mod( 'hero_button_url', '#products' ) ); ?>" class="hero-button hero-button-primary">
+                    <?php echo esc_html( get_theme_mod( 'hero_button_text', 'Browse Tools' ) ); ?>
+                </a>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span class="badge-icon">✓</span>
+                <span><?php echo esc_html( get_theme_mod( 'trust_badge_1', '500+ Tools Reviewed' ) ); ?></span>
+            </div>
+            <div class="trust-badge">
+                <span class="badge-icon">★</span>
+                <span><?php echo esc_html( get_theme_mod( 'trust_badge_2', 'Expert Comparisons' ) ); ?></span>
+            </div>
+            <div class="trust-badge">
+                <span class="badge-icon">⚡</span>
+                <span><?php echo esc_html( get_theme_mod( 'trust_badge_3', 'Updated Weekly' ) ); ?></span>
+            </div>
+        </div>
+    </section>
 
     <!-- DON'T MISS Section -->
     <?php get_template_part( 'template-parts/dont-miss-section' ); ?>

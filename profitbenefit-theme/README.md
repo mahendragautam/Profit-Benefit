@@ -5,6 +5,7 @@ A professional WordPress theme for digital products blogging with magazine-style
 ## Features
 
 ### Design & Layout
+- **Animated Hero Banner**: Eye-catching gradient banner with floating particles and customizable CTA
 - **Magazine-Style Layout**: Professional multi-column blog grid
 - **DON'T MISS Section**: Tabbed featured content showcase with related articles
 - **Trending Posts**: Horizontal scrolling carousel of trending content
@@ -26,6 +27,7 @@ A professional WordPress theme for digital products blogging with magazine-style
 - Breadcrumb-ready structure
 
 ### Customization
+- **Hero Banner Customization**: Customize all hero text, button text/URL, and trust badges via Customizer
 - Custom logo support
 - Custom header email address
 - Custom footer description
@@ -70,6 +72,7 @@ Go to **Appearance → Widgets** and add widgets to:
 
 #### 4. Customize Theme
 Navigate to **Appearance → Customize**:
+- **Hero Banner Settings**: Customize hero title, subtitle, button text/URL, and trust badges
 - Set your site logo
 - Update header email address
 - Modify footer description
@@ -156,6 +159,7 @@ For issues, questions, or feature requests, please contact the theme developer.
 
 ### Version 1.0.0
 - Initial release
+- **Animated hero banner** with gradient background, floating particles, and customizable CTA
 - Magazine-style layout
 - DON'T MISS section with tabs
 - Trending posts carousel
@@ -165,6 +169,7 @@ For issues, questions, or feature requests, please contact the theme developer.
 - Custom logo support
 - Post view tracking
 - Reading time calculation
+- **Hero banner customizer** with 7 customizable fields (title, subtitle, button, trust badges)
 
 ## License
 This theme is licensed under the GNU General Public License v2 or later.
