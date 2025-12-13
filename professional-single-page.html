@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Insights Pro - Expert Digital Products & Knowledge Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== ROOT VARIABLES ========== */
+        :root {
+            --primary-color: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary-color: #059669;
+            --accent-gold: #d97706;
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #0f172a;
+            --bg-light-blue: #eff6ff;
+
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Playfair Display', serif;
+
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        /* ========== UTILITIES ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .container-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-sm {
+            padding: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .display-1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .display-2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 1.125rem 2.5rem;
+            font-size: 1.125rem;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        .header {
+            background-color: var(--bg-primary);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-bar {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .trust-badge-icon {
+            color: var(--secondary-color);
+        }
+
+        .nav {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 0.3rem;
+            background: none;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            width: 1.5rem;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* ========== TRUST SECTION ========== */
+        .trust-section {
+            background-color: var(--bg-secondary);
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .trust-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .trust-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== SECTION HEADERS ========== */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: var(--bg-light-blue);
+            color: var(--primary-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== CATEGORY TABS ========== */
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .category-tab {
+            padding: 0.875rem 2rem;
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .category-tab:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .category-tab.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* ========== BLOG GRID ========== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background-color: var(--bg-primary);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .blog-image {
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-category-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.375rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .blog-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* ========== PRODUCT SECTION ========== */
+        .product-showcase {
+            background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: var(--bg-primary);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-gold);
+            color: white;
+            padding: 0.375rem 0.875rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .product-content {
+            padding: 1.25rem;
+        }
+
+        .product-category {
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .product-cta {
+            width: 100%;
+            padding: 0.875rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .product-cta:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background-color: var(--bg-light-blue);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1.125rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-certifications {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .certification-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-primary);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .display-1,
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                flex-direction: column;
+            }
+
+            .category-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ========== PAGE SECTIONS ========== */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== TOP BAR ========== -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">✓</span>
+                        <span>10,000+ Satisfied Customers</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">✓</span>
+                        <span>Industry Certified</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">✓</span>
+                        <span>Money-Back Guarantee</span>
+                    </div>
+                </div>
+                <div>
+                    <span>📧 support@digitalinsightspro.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HEADER & NAVIGATION ========== -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-container">
+                    <a href="#" class="logo" onclick="showPage('home')" style="display: flex; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 1500 450" preserveAspectRatio="xMidYMid meet" style="height: 60px; width: auto;">
+                            <path fill="#2d6a4f" d="M 312.511719 182.871094 C 312.515625 182.871094 322.023438 192.1875 326.855469 197.117188 C 327.226562 208.3125 321.878906 221.914062 301.703125 235.304688 C 332.011719 249.703125 338.535156 275.308594 333.730469 301.539062 C 329.132812 326.636719 306.140625 347.820312 269.996094 351.085938 C 258.457031 352.128906 124.066406 351.890625 124.050781 351.878906 C 124.046875 351.871094 124.300781 281.125 124.300781 281.117188 C 124.304688 281.113281 151.554688 252.132812 151.558594 252.132812 C 151.558594 252.132812 167.164062 267.425781 167.164062 267.425781 C 167.167969 267.429688 167.464844 312.242188 167.46875 312.242188 C 167.472656 312.25 242.226562 312.148438 262.089844 311.863281 C 285.152344 309.144531 290.203125 297.339844 290.863281 284.503906 C 290.472656 268.976562 282.953125 252.210938 244.210938 255.285156 C 244.109375 255.292969 312.503906 182.871094 312.511719 182.871094 Z M 312.511719 182.871094" fill-opacity="1" fill-rule="evenodd"/>
+                            <path fill="#2d6a4f" d="M 46.230469 283.371094 C 69.714844 257.769531 125.195312 206.699219 151.15625 175.050781 C 165.171875 188.316406 185.761719 210.226562 199.496094 224.804688 C 214.738281 207.847656 264.195312 158.648438 282.644531 135.039062 C 281.339844 133.398438 270.984375 124.769531 262.910156 116.75 C 281.082031 113.328125 344.835938 96.808594 346.417969 97.65625 C 347.332031 101.460938 334.875 174.683594 333.65625 181.933594 C 329.113281 176.816406 317.472656 166.609375 312.105469 161.910156 C 286.90625 187.921875 231.316406 245.402344 201.359375 278.792969 C 188.074219 266.074219 168.578125 247.574219 151.691406 231.496094 C 133.992188 250.339844 104.660156 278.992188 88.8125 296.007812 C 88.355469 311.492188 88.804688 333.65625 89.605469 351.183594 C 74.25 351.859375 71.644531 351.054688 45.882812 351.722656 C 46.089844 337.445312 46.023438 304.277344 46.230469 283.371094 Z M 46.230469 283.371094" fill-opacity="1" fill-rule="evenodd"/>
+                            <path fill="#1a2e4a" d="M 190.800781 98.75 C 219.804688 100.152344 242.09375 114.015625 258.621094 142.933594 C 258.636719 143.964844 221.402344 181.628906 218.9375 184.328125 C 222.011719 170.039062 218.234375 145.96875 191.6875 138.929688 C 190.78125 138.691406 89.527344 136.96875 89.535156 137.929688 C 89.550781 140.402344 89.488281 219.410156 89.355469 220.355469 C 89.226562 221.265625 46.773438 265.738281 46.363281 265.429688 C 45.957031 265.125 46.929688 150.332031 45.714844 98.386719 C 61.554688 97.46875 184.242188 98.429688 190.800781 98.75 Z M 190.800781 98.75" fill-opacity="1" fill-rule="evenodd"/>
+                            <text fill="#2d6a4f" x="380" y="360" font-family="Roboto, sans-serif" font-size="50" font-weight="700">Benefit.co</text>
+                            <text fill="#8895a7" x="380" y="210" font-family="Roboto, sans-serif" font-size="35" font-weight="400">Tools.</text>
+                        </svg>
+                    </a>
+
+                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#" class="nav-link active" onclick="showPage('home')" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" onclick="showPage('blog')" data-page="blog">Blog</a></li>
+                        <li><a href="#" class="nav-link" onclick="showPage('products')" data-page="products">Products</a></li>
+                        <li><a href="#" class="nav-link" onclick="showPage('about')" data-page="about">About</a></li>
+                        <li><a href="#" class="btn btn-primary" onclick="showPage('contact')">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========== HOME PAGE ========== -->
+    <div id="home-page" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">Trusted by 10,000+ Professionals</div>
+                    <h1 class="hero-title">Premium Digital Products & Expert Knowledge Hub</h1>
+                    <p class="hero-subtitle">
+                        Access industry-leading insights on Hosting, Business, AI, and SEO.
+                        Transform your digital journey with our curated products and expert content.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-lg" onclick="showPage('blog')">Explore Blog</button>
+                        <button class="btn btn-secondary btn-lg" onclick="showPage('products')">View Products</button>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">500+</span>
+                            <span class="hero-stat-label">Expert Articles</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">50+</span>
+                            <span class="hero-stat-label">Premium Products</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">10K+</span>
+                            <span class="hero-stat-label">Happy Customers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="trust-section">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">🏆</div>
+                        <div class="trust-title">Award Winning</div>
+                        <div class="trust-desc">Recognized by industry leaders</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🔒</div>
+                        <div class="trust-title">100% Secure</div>
+                        <div class="trust-desc">Enterprise-grade security</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">💼</div>
+                        <div class="trust-title">Expert Team</div>
+                        <div class="trust-desc">15+ years experience</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">⚡</div>
+                        <div class="trust-title">Instant Access</div>
+                        <div class="trust-desc">Download immediately</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Blog Preview -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Latest Insights</span>
+                    <h2 class="section-title">Featured Articles</h2>
+                    <p class="section-description">Stay ahead with expert insights on hosting, business growth, AI innovation, and SEO strategies</p>
+                </div>
+
+                <div class="blog-grid" id="featuredBlogs">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="text-center" style="margin-top: 2rem;">
+                    <button class="btn btn-primary btn-lg" onclick="showPage('blog')">View All Articles</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Testimonials</span>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p class="section-description">Don't just take our word for it - hear from professionals who've transformed their business</p>
+                </div>
+
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The SEO insights have completely transformed our online presence. Our traffic increased by 300% in just 3 months. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SM</div>
+                            <div class="testimonial-info">
+                                <h4>Sarah Mitchell</h4>
+                                <p>Marketing Director, TechCorp</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Outstanding quality products and incredibly valuable content. The hosting guides saved us thousands in infrastructure costs."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">JD</div>
+                            <div class="testimonial-info">
+                                <h4>James Davidson</h4>
+                                <p>CTO, StartupHub</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The AI implementation guides are phenomenal. Clear, actionable, and backed by real-world experience. Worth every penny!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MC</div>
+                            <div class="testimonial-info">
+                                <h4>Maria Chen</h4>
+                                <p>Founder, AI Solutions Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== BLOG PAGE ========== -->
+    <div id="blog-page" class="page-section">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Knowledge Hub</span>
+                    <h2 class="section-title">Expert Insights & Articles</h2>
+                    <p class="section-description">Deep-dive into the latest trends, strategies, and best practices across multiple domains</p>
+                </div>
+
+                <div class="category-tabs">
+                    <button class="category-tab active" onclick="filterBlogs('all')">All Articles</button>
+                    <button class="category-tab" onclick="filterBlogs('hosting')">Hosting</button>
+                    <button class="category-tab" onclick="filterBlogs('business')">Business</button>
+                    <button class="category-tab" onclick="filterBlogs('ai')">AI</button>
+                    <button class="category-tab" onclick="filterBlogs('seo')">SEO</button>
+                </div>
+
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PRODUCTS PAGE ========== -->
+    <div id="products-page" class="page-section">
+        <section class="section product-showcase">
+            <div class="container-wide">
+                <div class="section-header">
+                    <span class="section-badge">Premium Collection</span>
+                    <h2 class="section-title">Professional Digital Products</h2>
+                    <p class="section-description">Hand-crafted tools, templates, and resources to accelerate your success</p>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== ABOUT PAGE ========== -->
+    <div id="about-page" class="page-section">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">About Us</span>
+                    <h2 class="section-title">Your Trusted Digital Partner</h2>
+                    <p class="section-description">Empowering businesses with cutting-edge digital solutions since 2010</p>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8; color: var(--text-secondary); font-size: 1.125rem;">
+                    <p style="margin-bottom: 1.5rem;">
+                        At Digital Insights Pro, we're more than just a content platform - we're your strategic partner in digital transformation. With over 15 years of combined expertise, our team of industry veterans brings you actionable insights and premium products that drive real results.
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--text-primary);">Our Mission:</strong> To democratize access to world-class digital knowledge and tools, helping businesses and professionals stay ahead in an ever-evolving digital landscape.
+                    </p>
+
+                    <div class="trust-grid" style="margin: 3rem 0;">
+                        <div class="trust-item">
+                            <div class="trust-icon">🎓</div>
+                            <div class="trust-title">Industry Certified</div>
+                            <div class="trust-desc">Certified professionals across all domains</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">📊</div>
+                            <div class="trust-title">Data-Driven</div>
+                            <div class="trust-desc">Research-backed insights and strategies</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">🤝</div>
+                            <div class="trust-title">Client-First</div>
+                            <div class="trust-desc">Your success is our priority</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">🔄</div>
+                            <div class="trust-title">Always Updated</div>
+                            <div class="trust-desc">Content refreshed regularly</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== CONTACT PAGE ========== -->
+    <div id="contact-page" class="page-section">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Get In Touch</span>
+                    <h2 class="section-title">Contact Our Team</h2>
+                    <p class="section-description">Have questions? We're here to help you succeed</p>
+                </div>
+
+                <div style="max-width: 600px; margin: 0 auto; background: var(--bg-primary); padding: 3rem; border-radius: 1rem; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color);">
+                    <form id="contactForm" onsubmit="handleContact(event)">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
+                            <input type="text" required style="width: 100%; padding: 0.875rem; border: 2px solid var(--border-color); border-radius: 0.5rem; font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email Address</label>
+                            <input type="email" required style="width: 100%; padding: 0.875rem; border: 2px solid var(--border-color); border-radius: 0.5rem; font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subject</label>
+                            <input type="text" required style="width: 100%; padding: 0.875rem; border: 2px solid var(--border-color); border-radius: 0.5rem; font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
+                            <textarea required rows="5" style="width: 100%; padding: 0.875rem; border: 2px solid var(--border-color); border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Message</button>
+                    </form>
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Or reach us directly:</p>
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">📧 support@digitalinsightspro.com</p>
+                        <p style="font-weight: 600;">📞 +1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Digital Insights Pro</h3>
+                    <p>Your trusted partner for premium digital products and expert knowledge. Empowering businesses since 2010 with cutting-edge insights and tools.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                        <li><a href="#" onclick="showPage('products')">Products</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('blog'); filterBlogs('hosting');">Hosting</a></li>
+                        <li><a href="#" onclick="showPage('blog'); filterBlogs('business');">Business</a></li>
+                        <li><a href="#" onclick="showPage('blog'); filterBlogs('ai');">AI</a></li>
+                        <li><a href="#" onclick="showPage('blog'); filterBlogs('seo');">SEO</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">License Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-certifications">
+                <div class="certification-badge">
+                    <span>✓</span>
+                    <span>SSL Secured</span>
+                </div>
+                <div class="certification-badge">
+                    <span>✓</span>
+                    <span>GDPR Compliant</span>
+                </div>
+                <div class="certification-badge">
+                    <span>✓</span>
+                    <span>ISO Certified</span>
+                </div>
+                <div class="certification-badge">
+                    <span>✓</span>
+                    <span>PCI DSS</span>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Digital Insights Pro. All rights reserved. | Empowering digital excellence since 2010.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // ========== DATA ==========
+        const blogData = [
+            // Hosting
+            {
+                id: 1,
+                category: 'hosting',
+                title: 'Complete Guide to Cloud Hosting in 2024',
+                excerpt: 'Discover the latest cloud hosting solutions, performance optimization techniques, and cost-effective strategies for scaling your infrastructure.',
+                author: 'David Chen',
+                date: '2024-12-05',
+                readTime: '8 min',
+                icon: '☁️',
+                gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            },
+            {
+                id: 2,
+                category: 'hosting',
+                title: 'VPS vs Dedicated Servers: Making the Right Choice',
+                excerpt: 'An in-depth comparison of VPS and dedicated hosting solutions, helping you choose the perfect infrastructure for your needs.',
+                author: 'Sarah Johnson',
+                date: '2024-12-03',
+                readTime: '6 min',
+                icon: '🖥️',
+                gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+            },
+            {
+                id: 3,
+                category: 'hosting',
+                title: 'WordPress Hosting: Performance Optimization Guide',
+                excerpt: 'Master WordPress hosting with our comprehensive guide covering speed optimization, security hardening, and scalability strategies.',
+                author: 'Michael Brown',
+                date: '2024-12-01',
+                readTime: '10 min',
+                icon: '⚡',
+                gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+            },
+
+            // Business
+            {
+                id: 4,
+                category: 'business',
+                title: 'Digital Transformation: A CEO\'s Playbook',
+                excerpt: 'Strategic insights on leading successful digital transformation initiatives and building resilient organizations for the future.',
+                author: 'Jennifer Lee',
+                date: '2024-12-04',
+                readTime: '12 min',
+                icon: '📊',
+                gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+            },
+            {
+                id: 5,
+                category: 'business',
+                title: 'E-commerce Growth Strategies for 2024',
+                excerpt: 'Proven tactics to scale your online store, increase conversion rates, and build lasting customer relationships.',
+                author: 'Robert Taylor',
+                date: '2024-12-02',
+                readTime: '9 min',
+                icon: '🛒',
+                gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+            },
+            {
+                id: 6,
+                category: 'business',
+                title: 'Building a Remote-First Company Culture',
+                excerpt: 'Best practices for creating productive, engaged, and happy remote teams in the modern workplace.',
+                author: 'Emily White',
+                date: '2024-11-30',
+                readTime: '7 min',
+                icon: '💼',
+                gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+            },
+
+            // AI
+            {
+                id: 7,
+                category: 'ai',
+                title: 'AI Implementation: From Strategy to Execution',
+                excerpt: 'A practical roadmap for integrating artificial intelligence into your business operations and achieving measurable ROI.',
+                author: 'Dr. Alan Foster',
+                date: '2024-12-06',
+                readTime: '11 min',
+                icon: '🤖',
+                gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            },
+            {
+                id: 8,
+                category: 'ai',
+                title: 'Machine Learning for Business Analytics',
+                excerpt: 'Leverage ML algorithms to unlock insights from your data and make smarter, faster business decisions.',
+                author: 'Lisa Anderson',
+                date: '2024-12-04',
+                readTime: '10 min',
+                icon: '📈',
+                gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+            },
+            {
+                id: 9,
+                category: 'ai',
+                title: 'ChatGPT for Content Marketing: Complete Guide',
+                excerpt: 'Master AI-powered content creation while maintaining authenticity, quality, and brand voice.',
+                author: 'Tom Rodriguez',
+                date: '2024-12-01',
+                readTime: '8 min',
+                icon: '✍️',
+                gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+            },
+
+            // SEO
+            {
+                id: 10,
+                category: 'seo',
+                title: 'SEO in 2024: Core Updates and New Strategies',
+                excerpt: 'Stay ahead of algorithm changes with cutting-edge SEO techniques that drive organic traffic and rankings.',
+                author: 'Marcus Williams',
+                date: '2024-12-05',
+                readTime: '9 min',
+                icon: '🔍',
+                gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+            },
+            {
+                id: 11,
+                category: 'seo',
+                title: 'Technical SEO Audit: Complete Checklist',
+                excerpt: 'Comprehensive technical SEO guide covering site speed, mobile optimization, structured data, and more.',
+                author: 'Anna Martinez',
+                date: '2024-12-03',
+                readTime: '12 min',
+                icon: '🔧',
+                gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+            },
+            {
+                id: 12,
+                category: 'seo',
+                title: 'Link Building Strategies That Actually Work',
+                excerpt: 'Ethical, effective link building tactics to boost domain authority and improve search rankings sustainably.',
+                author: 'Kevin Park',
+                date: '2024-12-02',
+                readTime: '10 min',
+                icon: '🔗',
+                gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+            }
+        ];
+
+        const productData = [
+            {
+                id: 1,
+                name: 'SEO Mastery Course',
+                category: 'SEO',
+                description: 'Complete SEO training from basics to advanced strategies',
+                price: 299.99,
+                rating: 4.9,
+                reviews: 1247,
+                badge: 'Bestseller',
+                icon: '🎓',
+                gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            },
+            {
+                id: 2,
+                name: 'Cloud Hosting Toolkit',
+                category: 'Hosting',
+                description: 'Essential tools and scripts for cloud infrastructure',
+                price: 149.99,
+                rating: 4.8,
+                reviews: 892,
+                badge: 'Popular',
+                icon: '☁️',
+                gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+            },
+            {
+                id: 3,
+                name: 'AI Business Templates',
+                category: 'AI',
+                description: 'Ready-to-use AI prompts and automation workflows',
+                price: 199.99,
+                rating: 4.9,
+                reviews: 1563,
+                badge: 'New',
+                icon: '🤖',
+                gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+            },
+            {
+                id: 4,
+                name: 'Business Plan Bundle',
+                category: 'Business',
+                description: 'Professional templates for startups and enterprises',
+                price: 179.99,
+                rating: 4.7,
+                reviews: 678,
+                badge: 'Premium',
+                icon: '📊',
+                gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+            },
+            {
+                id: 5,
+                name: 'Server Security Suite',
+                category: 'Hosting',
+                description: 'Complete security hardening scripts and guides',
+                price: 129.99,
+                rating: 4.8,
+                reviews: 534,
+                icon: '🔒',
+                gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+            },
+            {
+                id: 6,
+                name: 'Content Marketing AI',
+                category: 'AI',
+                description: 'AI-powered content creation and optimization tools',
+                price: 249.99,
+                rating: 4.9,
+                reviews: 1102,
+                badge: 'Trending',
+                icon: '✍️',
+                gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+            },
+            {
+                id: 7,
+                name: 'E-commerce Startup Kit',
+                category: 'Business',
+                description: 'Everything needed to launch your online store',
+                price: 349.99,
+                rating: 4.8,
+                reviews: 789,
+                badge: 'Complete',
+                icon: '🛒',
+                gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            },
+            {
+                id: 8,
+                name: 'Keyword Research Pro',
+                category: 'SEO',
+                description: 'Advanced keyword research and analysis toolkit',
+                price: 89.99,
+                rating: 4.7,
+                reviews: 2341,
+                badge: 'Bestseller',
+                icon: '🔍',
+                gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+            }
+        ];
+
+        // ========== NAVIGATION ==========
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageName + '-page').classList.add('active');
+
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Close mobile menu
+            document.getElementById('navMenu').classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // ========== BLOG FUNCTIONS ==========
+        function renderBlogs(blogs, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            blogs.forEach(blog => {
+                const blogCard = `
+                    <div class="blog-card fade-in-up">
+                        <div class="blog-image" style="background: ${blog.gradient}">
+                            <span>${blog.icon}</span>
+                            <div class="blog-category-badge">${blog.category}</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <div class="blog-meta-item">
+                                    <span>📅</span>
+                                    <span>${formatDate(blog.date)}</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <span>⏱️</span>
+                                    <span>${blog.readTime}</span>
+                                </div>
+                            </div>
+                            <h3 class="blog-title">${blog.title}</h3>
+                            <p class="blog-excerpt">${blog.excerpt}</p>
+                            <div class="blog-footer">
+                                <div class="blog-author">
+                                    <div class="author-avatar">${getInitials(blog.author)}</div>
+                                    <div class="author-name">${blog.author}</div>
+                                </div>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += blogCard;
+            });
+        }
+
+        function filterBlogs(category) {
+            const filteredBlogs = category === 'all'
+                ? blogData
+                : blogData.filter(blog => blog.category === category);
+
+            renderBlogs(filteredBlogs, 'blogGrid');
+
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // ========== PRODUCT FUNCTIONS ==========
+        function renderProducts() {
+            const container = document.getElementById('productGrid');
+            container.innerHTML = '';
+
+            productData.forEach(product => {
+                const productCard = `
+                    <div class="product-card fade-in-up">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                        <div class="product-image" style="background: ${product.gradient}">
+                            <span>${product.icon}</span>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-desc">${product.description}</p>
+                            <div class="product-price-section">
+                                <div class="product-price">$${product.price.toFixed(2)}</div>
+                                <div class="product-rating">
+                                    <span class="stars">${generateStars(product.rating)}</span>
+                                    <span>${product.rating}</span>
+                                </div>
+                            </div>
+                            <button class="product-cta" onclick="handleProductClick('${product.name}')">View Details</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productCard;
+            });
+        }
+
+        function handleProductClick(productName) {
+            alert(`Product details for "${productName}" would open here.\n\nThis is a demo - in production, this would navigate to a detailed product page.`);
+        }
+
+        // ========== HELPER FUNCTIONS ==========
+        function formatDate(dateString) {
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('');
+        }
+
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalf = rating % 1 >= 0.5;
+            let stars = '★'.repeat(fullStars);
+            if (hasHalf) stars += '★';
+            stars += '☆'.repeat(5 - Math.ceil(rating));
+            return stars;
+        }
+
+        function handleContact(event) {
+            event.preventDefault();
+            alert('Thank you for your message!\n\nWe\'ll get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render featured blogs on homepage (first 3)
+            renderBlogs(blogData.slice(0, 3), 'featuredBlogs');
+
+            // Render all blogs on blog page
+            renderBlogs(blogData, 'blogGrid');
+
+            // Render products
+            renderProducts();
+
+            // Prevent default link behavior for demo
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('read-more')) {
+                    e.preventDefault();
+                    alert('Blog post would open here.\n\nThis is a demo - in production, this would navigate to the full article.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

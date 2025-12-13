@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Product Hub - Premium Digital Products & Resources</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Digital Product Hub</span>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="btn-primary">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover Premium <span class="gradient-text">Digital Products</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Explore curated digital products, tools, and resources to boost your productivity and creativity
+                </p>
+                <div class="hero-cta">
+                    <a href="#products" class="btn btn-large btn-primary">Browse Products</a>
+                    <a href="#blog" class="btn btn-large btn-secondary">Read Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Hand-picked digital products for creators and professionals</p>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Category</h2>
+                <p class="section-subtitle">Find exactly what you need</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Design Assets</h3>
+                    <p>Templates, UI kits, icons</p>
+                    <span class="category-count">24 products</span>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Developer Tools</h3>
+                    <p>Code snippets, plugins</p>
+                    <span class="category-count">18 products</span>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3>E-books</h3>
+                    <p>Guides, tutorials, courses</p>
+                    <span class="category-count">32 products</span>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎵</div>
+                    <h3>Audio & Video</h3>
+                    <p>Music, sound effects, footage</p>
+                    <span class="category-count">15 products</span>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📸</div>
+                    <h3>Photography</h3>
+                    <p>Presets, filters, stock photos</p>
+                    <span class="category-count">28 products</span>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>Productivity</h3>
+                    <p>Templates, planners, tools</p>
+                    <span class="category-count">21 products</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest from Our Blog</h2>
+                <p class="section-subtitle">Tips, tutorials, and industry insights</p>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-category">Tutorial</span>
+                        <h3>How to Create Stunning UI Designs in 2024</h3>
+                        <p>Learn the latest trends and techniques for creating beautiful user interfaces...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Dec 5, 2024</span>
+                            <span class="blog-read-time">5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-category">Guide</span>
+                        <h3>Best Digital Products to Sell Online</h3>
+                        <p>Discover the most profitable digital products you can create and sell...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Dec 3, 2024</span>
+                            <span class="blog-read-time">8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-category">Resources</span>
+                        <h3>Top 10 Tools for Digital Creators</h3>
+                        <p>Essential tools every digital creator should have in their toolkit...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Dec 1, 2024</span>
+                            <span class="blog-read-time">6 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Digital Product Hub</h3>
+                    <p>Your one-stop shop for premium digital products and resources.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new products</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Digital Product Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
