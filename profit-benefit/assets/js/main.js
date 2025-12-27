@@ -148,10 +148,11 @@
                     const btn = document.createElement('button');
                     btn.className = 'tab-button' + (activeCategory === cat.id ? ' active' : '');
                     btn.dataset.category = cat.id;
-                    // Compute numeric label based on global category order
-                    const numericIndex = allCategories.findIndex(c => c.id === cat.id) + 1;
+                    // Use the category label text for the tab (short label)
                     btn.setAttribute('aria-label', cat.label);
-                    btn.innerHTML = '<span class="tab-number">' + numericIndex + '</span>';
+                    // Use a short label for visual tab text; keep long label in aria
+                    const shortLabel = (cat.label.length > 12) ? cat.label.split(' ')[0] : cat.label;
+                    btn.innerHTML = '<span class="tab-label">' + shortLabel + '</span>';
                     btn.addEventListener('click', () => switchCategory(cat.id));
                     categoryTabs.appendChild(btn);
                 });
