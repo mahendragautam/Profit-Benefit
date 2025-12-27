@@ -1,0 +1,33 @@
+name: Protect agent & CI files
+
+on:
+  push:
+    branches-ignore: []
+  pull_request:
+
+jobs:
+  protect:
+    name: Block changes to protected files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute changed files
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed.txt || true
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin ${{ github.event.pull_request.base.ref }} --depth=1 || true
+            git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > changed.txt || true
+          else
+            git diff --name-only origin/${{ github.ref_name }}...HEAD > changed.txt || true
+          fi
+          echo "Changed files:"; cat changed.txt || true
+
+      - name: Check protected files
+        run: |
+          cat changed.txt | python3 scripts/check_protected_files.py

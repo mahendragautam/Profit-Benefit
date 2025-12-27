@@ -1,0 +1,235 @@
+#!/usr/bin/env node
+const fs = require('fs');
+// Backup of original tools/agent-manager.js prior to replacement on 2025-12-26
+// Original file preserved for recovery if needed.
+
+/* Original contents:
+#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+
+const AGENTS_DIR = path.join(__dirname, '..', '.github', 'agents');
+const AGENTS_TOPICS_DIR = path.join(AGENTS_DIR, 'topics');
+const COPILOT_PATH = path.join(__dirname, '..', '.github', 'copilot-instructions.md');
+const ACTIVE_PATH = path.join(AGENTS_DIR, 'active.json');
+
+function readAgentFiles() {
+  const results = [];
+  if (fs.existsSync(AGENTS_DIR)) {
+    for (const f of fs.readdirSync(AGENTS_DIR).filter(f => f.endsWith('.md'))) {
+      const p = path.join(AGENTS_DIR, f);
+      const content = fs.readFileSync(p, 'utf8');
+      const meta = parseFrontmatter(content);
+      results.push({ filename: f, path: p, content, meta, source: 'agents' });
+    }
+  }
+  if (fs.existsSync(AGENTS_TOPICS_DIR)) {
+    for (const f of fs.readdirSync(AGENTS_TOPICS_DIR).filter(f => f.endsWith('.md'))) {
+      const p = path.join(AGENTS_TOPICS_DIR, f);
+      const content = fs.readFileSync(p, 'utf8');
+      const meta = parseFrontmatter(content);
+      results.push({ filename: f, path: p, content, meta, source: 'topics' });
+    }
+  }
+  return results;
+}
+
+function parseFrontmatter(content) {
+  // Look for a YAML frontmatter block marked with leading '---' and trailing '---'
+  // Accept the block anywhere near the top of the file (not necessarily at pos 0).
+  let first = content.indexOf('---');
+  if (first === -1) return {};
+  // ensure it's a standalone marker (start of line)
+  const beforeChar = first === 0 ? '\n' : content[first - 1];
+  if (beforeChar !== '\n' && first !== 0) {
+    // try to find next '---' that starts a line
+    const regex = /(^|\r?\n)---/g;
+    let m;
+    let found = -1;
+    while ((m = regex.exec(content)) !== null) {
+      found = m.index + (m[1] ? m[1].length : 0);
+      break;
+    }
+    if (found === -1) return {};
+    // set first to found
+    first = found;
+  }
+  const rest = content.slice(first + 3);
+  let endMarker = rest.indexOf('\n---');
+  if (endMarker === -1) endMarker = rest.indexOf('\r\n---');
+  if (endMarker === -1) return {};
+  const block = rest.slice(0, endMarker).trim();
+  const lines = block.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const out = {};
+  for (const line of lines) {
+    const m = line.match(/^([^:]+):\s*(.*)$/);
+    if (m) out[m[1].trim()] = parseValue(m[2].trim());
+  }
+  return out;
+}
+
+function parseValue(v) {
+  if (v === 'true') return true;
+  if (v === 'false') return false;
+  if (/^\d+$/.test(v)) return Number(v);
+  return v;
+}
+
+function findAgentByName(name) {
+  const list = readAgentFiles();
+  const key = name.toLowerCase();
+  return list.find(a => {
+    const base = path.basename(a.filename, '.md').toLowerCase();
+    const metaName = (a.meta && a.meta.name || '').toLowerCase();
+    return base === key || metaName === key || a.filename.toLowerCase() === name.toLowerCase();
+  });
+}
+
+function listAgents() {
+  const list = readAgentFiles();
+  const active = readActive();
+  console.log('Available agents:');
+  for (const a of list) {
+    const base = path.basename(a.filename);
+    const hidden = a.meta && a.meta.hidden ? 'hidden' : 'visible';
+    const metaName = a.meta && a.meta.name ? `(${a.meta.name})` : '';
+    const core = a.source === 'agents' && base.toLowerCase().includes('wordpress.dev');
+    const src = a.source === 'topics' ? ' (topics)' : '';
+    const key = (a.meta && a.meta.name) ? a.meta.name : path.basename(a.filename, '.md');
+    const activeMark = active.find(x => x.toLowerCase() === key.toLowerCase()) ? ' (active)' : '';
+    console.log(`- ${base} ${metaName} : ${hidden}${core ? ' [core]' : ''}${src}${activeMark}`);
+  }
+}
+
+function showAgent(name) {
+  const a = findAgentByName(name);
+  if (!a) { console.error('Agent not found:', name); process.exit(2); }
+  console.log(a.content);
+}
+
+function activateAgent(name) {
+  const a = findAgentByName(name);
+  if (!a) { console.error('Agent not found:', name); process.exit(2); }
+  // Add to active list (idempotent)
+  const active = readActive();
+  const key = (a.meta && a.meta.name) ? a.meta.name : path.basename(a.filename, '.md');
+  if (!active.includes(key)) active.push(key);
+  writeActive(active);
+  // backup existing copilot file if present
+  if (fs.existsSync(COPILOT_PATH)) {
+    const bak = COPILOT_PATH + '.bak.' + Date.now();
+    fs.copyFileSync(COPILOT_PATH, bak);
+    console.log('Backed up existing copilot-instructions to', bak);
+  }
+  // Write all active agent contents into copilot-instructions.md (core + topics merged)
+  writeActiveToCopilot(active);
+  console.log('Activated agent', a.filename, '-> .github/copilot-instructions.md');
+}
+
+function readActive() {
+  try {
+    if (!fs.existsSync(ACTIVE_PATH)) return [];
+    const raw = fs.readFileSync(ACTIVE_PATH, 'utf8');
+    return JSON.parse(raw || '[]');
+  } catch (err) { return []; }
+}
+
+function writeActive(list) {
+  try {
+    fs.mkdirSync(AGENTS_DIR, { recursive: true });
+    fs.writeFileSync(ACTIVE_PATH, JSON.stringify(list, null, 2), 'utf8');
+  } catch (err) { console.error('Failed to write active.json', err); }
+}
+
+function writeActiveToCopilot(activeList) {
+  // build combined content: header + concatenated agent contents
+  const parts = [];
+  parts.push('<!-- activated-by: tools/agent-manager.js -->');
+  parts.push('<!-- active: ' + activeList.join(', ') + ' -->');
+  parts.push('');
+  const allAgents = readAgentFiles();
+  for (const name of activeList) {
+    const match = allAgents.find(a => ((a.meta && a.meta.name) && a.meta.name === name) || path.basename(a.filename, '.md') === name || a.filename === name || a.filename.toLowerCase() === name.toLowerCase());
+    if (match) {
+      parts.push(`<!-- agent: ${match.filename} -->`);
+      parts.push(match.content);
+      parts.push('\n');
+    }
+  }
+  fs.writeFileSync(COPILOT_PATH, parts.join('\n'), 'utf8');
+}
+
+function deactivateAgent(name) {
+  // If name provided, remove only that; else clear all and restore core
+  const active = readActive();
+  if (name) {
+    const key = name;
+    const idx = active.findIndex(x => x.toLowerCase() === key.toLowerCase());
+    if (idx === -1) { console.log('Agent not active:', name); return; }
+    active.splice(idx, 1);
+    writeActive(active);
+    if (active.length) {
+      writeActiveToCopilot(active);
+      console.log('Deactivated', name, '- remaining active:', active.join(', '));
+      return;
+    }
+  }
+
+  // No active topics left: try to restore backup, else restore core
+  const dir = path.dirname(COPILOT_PATH);
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
+  const baks = files.filter(f => f.startsWith('copilot-instructions.md.bak.'))
+    .map(f => ({ f, t: Number(f.split('.').pop()) }))
+    .sort((a,b) => b.t - a.t);
+  if (baks.length) {
+    const most = path.join(dir, baks[0].f);
+    fs.copyFileSync(most, COPILOT_PATH);
+    writeActive([]);
+    console.log('Restored backup', most, '-> .github/copilot-instructions.md');
+    return;
+  }
+  // Otherwise, fall back to core agent (wordpress.dev.agent.md)
+  const core = readAgentFiles().find(a => a.filename.toLowerCase().includes('wordpress.dev'));
+  if (core) {
+    fs.writeFileSync(COPILOT_PATH, `<!-- activated-by: tools/agent-manager.js (core restore) -->\n\n${core.content}`);
+    writeActive([]);
+    console.log('Restored core agent to .github/copilot-instructions.md');
+    return;
+  }
+  console.log('No backup or core agent found; .github/copilot-instructions.md left unchanged');
+}
+
+function help() {
+  console.log('Usage: node tools/agent-manager.js <command> [agent-name]');
+  console.log('Commands:');
+  console.log('  list                 List all agents and visibility');
+  console.log('  show <name>          Print agent file contents');
+  console.log('  activate <name>      Copy selected agent into .github/copilot-instructions.md (manual activation)');
+  console.log('  deactivate [name]    Deactivate a named topic, or with no name restore core');
+  console.log('  status               Show currently active topic agents');
+}
+
+async function main() {
+  const argv = process.argv.slice(2);
+  const cmd = argv[0];
+  if (!cmd) return help();
+  if (cmd === 'list') return listAgents();
+  if (cmd === 'show') return showAgent(argv[1]);
+  if (cmd === 'activate') return activateAgent(argv[1]);
+  if (cmd === 'deactivate') return deactivateAgent(argv[1]);
+  if (cmd === 'status') {
+    const active = readActive();
+    console.log('Active topics:', active.length ? active.join(', ') : '(none)');
+    // show which agent is in copilot file
+    if (fs.existsSync(COPILOT_PATH)) {
+      const top = fs.readFileSync(COPILOT_PATH, 'utf8');
+      const m = top.match(/<!-- active: (.*) -->/);
+      if (m) console.log('copilot-instructions.md contains:', m[1]);
+    }
+    return;
+  }
+  return help();
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
+*/

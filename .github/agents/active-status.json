@@ -1,0 +1,12 @@
+{
+  "wordpress.theme.agent.md": "active",
+  "topics/accessibility.md": "offline",
+  "topics/block.md": "offline",
+  "topics/classic.md": "offline",
+  "topics/demo-content.md": "offline",
+  "topics/marketplace-marketing.md": "offline",
+  "topics/performance.md": "offline",
+  "topics/security.md": "offline",
+  "topics/testing.md": "offline",
+  "topics/woocommerce.md": "offline"
+}

@@ -1,0 +1,33 @@
+name: Fetch workflow run logs
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Workflow run id to download logs for'
+        required: true
+        default: '20516149400'
+
+jobs:
+  fetch-logs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download workflow run logs
+        env:
+          RUN_ID: ${{ github.event.inputs.run_id }}
+        run: |
+          echo "Downloading logs for run $RUN_ID"
+          curl -sSL -H "Authorization: token ${{ secrets.THEME_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID/logs" -o logs.zip
+          if [ -f logs.zip ]; then
+            echo "Downloaded logs.zip (size: $(stat -c%s logs.zip) bytes)"
+          else
+            echo "Failed to download logs.zip" >&2
+            exit 1
+          fi
+
+      - name: Upload logs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-logs-${{ github.event.inputs.run_id }}
+          path: logs.zip

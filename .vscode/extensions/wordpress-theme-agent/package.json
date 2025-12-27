@@ -1,0 +1,47 @@
+{
+  "name": "wordpress-theme-agent",
+  "displayName": "WordPress Theme Agent (Local)",
+  "publisher": "local",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "main": "extension.js",
+  "activationEvents": [
+    "onCommand:wordpressThemeAgent.run",
+    "onCommand:wordpressThemeAgent.runWithArgs"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "wordpressThemeAgent.run",
+        "title": "Run WordPress Theme Agent"
+      },
+      {
+        "command": "wordpressThemeAgent.runWithArgs",
+        "title": "Run WordPress Theme Agent (with args)"
+      }
+      ,
+      {
+        "command": "wordpressThemeAgent.processCommand",
+        "title": "Process Agent @-command"
+      },
+      {
+        "command": "wordpressThemeAgent.showAgents",
+        "title": "Show/Manage Active Agents"
+      }
+    ]
+    ,
+    "configuration": {
+      "type": "object",
+      "title": "WordPress Theme Agent",
+      "properties": {
+        "wordpressThemeAgent.showKnownAgents": {
+          "type": "boolean",
+          "default": false,
+          "description": "When false, the UI hides non-active known agents (e.g. security, testing). Set to true to reveal them for quick activation."
+        }
+      }
+    }
+  }
+}

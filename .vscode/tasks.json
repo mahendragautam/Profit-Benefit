@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Agent: List",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/tools/agent-manager.js",
+        "list"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

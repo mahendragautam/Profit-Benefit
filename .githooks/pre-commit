@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+# Pre-commit hook: check staged files against protected patterns
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# Get list of staged files
+CHANGED=$(git diff --name-only --cached || true)
+if [ -z "$CHANGED" ]; then
+  # nothing staged
+  exit 0
+fi
+
+echo "Running protected-files check on staged files..."
+printf "%s\n" "$CHANGED" | python3 "$REPO_ROOT/scripts/check_protected_files.py"
+RC=$?
+if [ $RC -ne 0 ]; then
+  echo "Commit aborted: protected files would be modified."
+  exit $RC
+fi
+
+exit 0
