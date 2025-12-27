@@ -7,8 +7,16 @@
   --primary: #1a2e4a;
   --secondary: #2d6a4f;
   --accent: #40916c;
-  --light: #f8f9fa;
-  --border: #dee2e6;
+    --light: #f8f9fa;
+    --border: #dee2e6;
+    /* Added color variables */
+    --color-white: #ffffff;
+    --color-primary: #667eea;
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+    /* Text size tokens */
+    --text-xs: 12px; /* was 11px */
+    --text-sm: 14px; /* was 13px */
+    --text-base: 16px; /* was 15px */
 }
 
 /* Reset and box model */
@@ -17,12 +25,12 @@ html, body { height: 100%; }
 
 /* Base (mobile, min 320px) */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--primary);
-  background: #fff;
-  min-width: 320px; /* Minimum supported width */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--primary);
+    background: var(--color-white);
+    min-width: 320px; /* Minimum supported width */
 }
 
 .container { width: 100%; margin: 0 auto; padding: 0 15px; }
@@ -36,13 +44,12 @@ header { background: white; border-bottom: 1px solid var(--border); position: st
 .mobile-menu-btn { display: block; background: none; border: none; font-size: 20px; padding: 8px; }
 nav ul { display: none; list-style: none; }
 
-/* Hero (compact) */
-.hero-section { padding: 28px 0; text-align: center; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; }
+.hero-section { padding: 28px 0; text-align: center; background: var(--gradient-primary); color: var(--color-white); }
 .hero-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
 .hero-subtitle { font-size: 1rem; margin-bottom: 12px; opacity: 0.95; }
 .hero-cta { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 .hero-button, .btn { display: inline-block; min-width: 44px; min-height: 44px; padding: 12px 20px; border-radius: 8px; font-weight: 600; text-align: center; }
-.hero-button-primary { background: white; color: #667eea; }
+.hero-button-primary { background: var(--color-white); color: var(--color-primary); }
 
 /* Articles / lists */
 .article-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: center; }
@@ -50,9 +57,15 @@ nav ul { display: none; list-style: none; }
 
 /* CTA and forms */
 .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
-.cta-primary { width: 100%; padding: 14px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
+.cta-primary { width: 100%; padding: 16px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
 .newsletter-form { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
-.newsletter-input { padding: 12px 14px; border-radius: 999px; border: 1px solid var(--border); }
+.newsletter-input { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border); }
+.cta-primary { width: 100%; padding: 16px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
+.newsletter-form { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
+.newsletter-input { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border); }
+.cta-primary { width: 100%; padding: 16px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
+.newsletter-form { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
+.newsletter-input { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border); }
 .newsletter-btn { padding: 12px 20px; border-radius: 999px; background: var(--secondary); color: white; border: none; }
 
 /* Footer (mobile) */
@@ -73,7 +86,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Print */
 @media print {
-  body { color: #000; background: #fff; }
+    body { color: #000; background: var(--color-white); }
   .hero-section, header, footer { display: none !important; }
 }
 
@@ -103,7 +116,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--primary);
-    background: #fff;
+    background: var(--color-white);
     min-width: 320px; /* Minimum supported width */
 }
 
@@ -123,12 +136,12 @@ nav ul { display: none; list-style: none; }
 .content-wrapper, .article-grid, .featured-grid { display: block; width: 100%; }
 
 /* Hero - compact for mobile */
-.hero-section { padding: 28px 0; text-align: center; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; }
+.hero-section { padding: 28px 0; text-align: center; background: var(--gradient-primary); color: var(--color-white); }
 .hero-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
 .hero-subtitle { font-size: 1rem; margin-bottom: 12px; opacity: 0.95; }
 .hero-cta { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 .hero-button, .btn { display: inline-block; min-width: 44px; min-height: 44px; padding: 12px 20px; border-radius: 8px; font-weight: 600; text-align: center; }
-.hero-button-primary { background: white; color: #667eea; }
+.hero-button-primary { background: var(--color-white); color: var(--color-primary); }
 
 /* Cards & lists */
 .article-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: center; }
@@ -136,11 +149,11 @@ nav ul { display: none; list-style: none; }
 
 /* CTA constraints on small screens */
 .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
-.cta-primary { width: 100%; padding: 14px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
+.cta-primary { width: 100%; padding: 16px; border-radius: 8px; background: var(--secondary); color: white; border: none; }
 
 /* Forms - stacked on mobile */
 .newsletter-form { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
-.newsletter-input { padding: 12px 14px; border-radius: 999px; border: 1px solid var(--border); }
+.newsletter-input { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border); }
 .newsletter-btn { padding: 12px 20px; border-radius: 999px; background: var(--secondary); color: white; border: none; }
 
 /* Footer - simplified */
@@ -158,21 +171,21 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* Category tabs (numbered) */
-.category-header { display:flex; align-items:center; gap:18px; }
-.dont-miss-label { background: var(--secondary); color: #fff; padding: 10px 16px; border-radius: 6px; font-weight:700; }
+.category-header { display:flex; align-items:center; gap:20px; }
+.dont-miss-label { background: var(--secondary); color: var(--color-white); padding: 12px 16px; border-radius: 6px; font-weight:700; }
 .category-tabs { display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow:hidden; }
 .tab-button { background: transparent; border: none; padding: 8px; cursor: pointer; border-radius: 8px; min-width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; }
 .tab-button .tab-label { display:inline-block; padding:8px 12px; background: var(--light); color: var(--primary); border-radius: 8px; font-weight:700; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-.tab-button.active .tab-label { background: var(--secondary); color: #fff; box-shadow: 0 6px 18px rgba(45,106,79,0.18); transform: translateY(-2px); }
+.tab-button.active .tab-label { background: var(--secondary); color: var(--color-white); box-shadow: 0 6px 18px rgba(45,106,79,0.18); transform: translateY(-2px); }
 .more-dropdown { position:relative; }
 .more-button { display:flex; align-items:center; gap:6px; }
-.dropdown-menu { position:absolute; right:0; top:calc(100% + 8px); background:#fff; border:1px solid var(--border); box-shadow:0 6px 20px rgba(0,0,0,0.08); padding:8px; display:none; z-index:50; border-radius:8px; }
+.dropdown-menu { position:absolute; right:0; top:calc(100% + 12px); background:var(--color-white); border:1px solid var(--border); box-shadow:0 6px 20px rgba(0,0,0,0.08); padding:12px; display:none; z-index:50; border-radius:8px; }
 .more-dropdown.open .dropdown-menu { display:block; }
 .dropdown-menu button { display:block; width:100%; text-align:left; padding:8px 12px; border-radius:6px; background:transparent; border:none; }
-.dropdown-menu button.active { background:var(--secondary); color:#fff; }
+.dropdown-menu button.active { background:var(--secondary); color:var(--color-white); }
 
 /* Print minimal rules */
-@media print { body { color: #000; background: #fff; } .hero-section, header, footer { display: none !important; } }
+@media print { body { color: #000; background: var(--color-white); } .hero-section, header, footer { display: none !important; } }
 
 /* Notes: desktop/large-screen rules were intentionally removed. See
    `main.css.desktop-backup` to restore responsive/desktop styles. */
@@ -217,7 +230,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             margin-bottom: 40px;
         }
 
@@ -227,7 +240,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: var(--gradient-primary);
             background-size: 200% 200%;
             animation: gradientShift 15s ease infinite;
             opacity: 0.9;
@@ -297,7 +310,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .hero-title .highlight {
             background: #2d6a4f;
-            padding: 5px 15px;
+            padding: 8px 16px;
             border-radius: 8px;
             display: inline-block;
             box-shadow: 0 4px 15px rgba(45, 106, 79, 0.4);
@@ -347,7 +360,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .hero-button {
             padding: 15px 35px;
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             font-weight: 600;
             border: none;
             border-radius: 50px;
@@ -359,7 +372,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .hero-button-primary {
             background: white;
-            color: #667eea;
+            color: var(--color-primary);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
@@ -385,7 +398,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.125rem;
             }
 
             .hero-cta {
@@ -434,7 +447,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             align-items: center;
             gap: 8px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             opacity: 0.9;
         }
@@ -568,7 +581,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             background: var(--primary);
             color: white;
             padding: 10px 0;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .top-bar .container {
@@ -676,7 +689,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .search-btn {
             background: none;
             border: none;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             padding: 8px;
             border-radius: 50%;
@@ -721,7 +734,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             transition: gap 0.3s;
         }
 
@@ -757,9 +770,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .dont-miss-label {
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 0.5px;
             padding: 15px 28px;
             text-transform: uppercase;
@@ -788,7 +801,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: #666;
             font-size: 14px;
             font-weight: 500;
-            padding: 18px 20px;
+            padding: 20px 20px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
             border-bottom: 3px solid transparent;
@@ -819,7 +832,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .more-dropdown .tab-button {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .more-dropdown.open .tab-button {
@@ -866,7 +879,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             text-align: left;
             background: none;
             border: none;
-            padding: 14px 20px;
+            padding: 16px 20px;
             color: #666;
             font-size: 14px;
             cursor: pointer;
@@ -928,7 +941,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             position: absolute;
             font-size: 24px;
             font-weight: 700;
-            color: #fff;
+            color: var(--color-white);
             pointer-events: none;
             animation: growthRise 1s ease-out forwards;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
@@ -997,10 +1010,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             position: absolute;
             width: 3px;
             height: 3px;
-            background: #fff;
+            background: var(--color-white);
             border-radius: 50%;
             pointer-events: none;
-            box-shadow: 0 0 6px #fff;
+            box-shadow: 0 0 6px var(--color-white);
         }
 
         /* Subtle scale on hover for hero content */
@@ -1076,11 +1089,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             left: 20px;
             background: var(--secondary);
             color: white;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 8px 14px;
+            padding: 12px 16px;
             border-radius: 4px;
             z-index: 1;
         }
@@ -1108,7 +1121,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             margin-bottom: 12px;
         }
@@ -1121,7 +1134,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .featured-excerpt {
             color: #666;
             line-height: 1.7;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .comment-count {
@@ -1129,11 +1142,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: white;
             font-size: 12px;
             font-weight: 700;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 4px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             margin-top: 15px;
         }
 
@@ -1153,7 +1166,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             color: #666;
             transition: all 0.3s ease;
             border-radius: 4px;
@@ -1213,7 +1226,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .article-date {
-            font-size: 13px;
+            font-size: 14px;
             color: #999;
         }
 
@@ -1272,7 +1285,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: inline-block;
             background: var(--secondary);
             color: white;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             padding: 6px 12px;
@@ -1414,7 +1427,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             width: 36px;
             height: 36px;
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
             font-size: 16px;
             font-weight: 700;
             border-radius: 50%;
@@ -1483,7 +1496,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-column-header {
-            padding: 18px 25px;
+            padding: 20px 24px;
             border-bottom: 3px solid;
             display: flex;
             align-items: center;
@@ -1510,7 +1523,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .category-column-header a {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
             text-decoration: none;
             font-weight: 500;
         }
@@ -1541,7 +1554,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-featured-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 10px;
@@ -1575,7 +1588,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             height: 28px;
             background: #f0f0f0;
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             border-radius: 50%;
             display: flex;
@@ -1585,7 +1598,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .category-list-item:hover .category-list-number {
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
         }
 
         .category-list-title {
@@ -1666,7 +1679,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             content: '';
             border-style: solid;
             border-width: 12px 0 12px 20px;
-            border-color: transparent transparent transparent white;
+            border-color: transparent transparent transparent var(--color-white);
             margin-left: 5px;
         }
 
@@ -1676,7 +1689,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .video-main:hover .video-play-btn::before {
-            border-color: transparent transparent transparent #fff;
+            border-color: transparent transparent transparent var(--color-white);
         }
 
         .video-overlay {
@@ -1771,7 +1784,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: var(--accent);
             font-size: 12px;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .video-item-title {
@@ -1835,7 +1848,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .opinion-quote {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.7;
             color: #444;
             margin-bottom: 20px;
@@ -1851,7 +1864,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .opinion-role {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
             margin-top: 3px;
         }
 
@@ -1896,17 +1909,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             padding: 16px 24px;
             border: none;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 16px;
             outline: none;
         }
 
         .newsletter-btn {
             padding: 16px 32px;
-            background: #fff;
+            background: var(--color-white);
             color: var(--primary);
             border: none;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1916,7 +1929,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             background: var(--accent-light);
-            color: #fff;
+            color: var(--color-white);
         }
 
         /* ============================================
@@ -1975,7 +1988,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .footer-social a:hover {
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
         }
 
         .footer-column h4 {
@@ -2092,7 +2105,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
             .dont-miss-label {
                 padding: 12px 16px;
-                font-size: 11px;
+                font-size: 12px;
             }
 
             .category-tabs {
@@ -2101,7 +2114,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
             .tab-button {
                 padding: 12px 15px;
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .content-wrapper.active {
@@ -2109,7 +2122,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .featured-title {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .category-grid {
@@ -2165,7 +2178,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .featured-title {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .featured-image-wrapper {
@@ -2173,7 +2186,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .section-title {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .newsletter-title {
@@ -2206,7 +2219,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
             line-height: 1.7;
-            background: #fff;
+            background: var(--color-white);
         }
 
         .container {
@@ -2220,7 +2233,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             background: var(--primary);
             color: white;
             padding: 10px 0;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .top-bar .container {
@@ -2347,9 +2360,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .dont-miss-label {
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 0.5px;
             padding: 15px 28px;
             text-transform: uppercase;
@@ -2376,7 +2389,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: #666;
             font-size: 14px;
             font-weight: 500;
-            padding: 18px 20px;
+            padding: 20px 20px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
             border-bottom: 3px solid transparent;
@@ -2442,11 +2455,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             left: 20px;
             background: var(--secondary);
             color: white;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 8px 14px;
+            padding: 12px 16px;
             border-radius: 4px;
             z-index: 1;
         }
@@ -2474,7 +2487,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             margin-bottom: 12px;
         }
@@ -2487,7 +2500,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .featured-excerpt {
             color: #666;
             line-height: 1.7;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .related-articles {
@@ -2536,7 +2549,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .article-date {
-            font-size: 13px;
+            font-size: 14px;
             color: #999;
         }
 
@@ -2625,7 +2638,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             width: 30px;
             height: 30px;
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
             font-size: 14px;
             font-weight: 700;
             border-radius: 50%;
@@ -2653,14 +2666,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .trending-box .trending-category {
             color: var(--secondary);
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
 
         .trending-box .trending-title {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             line-height: 1.3;
             color: var(--primary);
@@ -2751,7 +2764,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             left: 15px;
             background: var(--secondary);
             color: white;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
@@ -2784,7 +2797,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: flex;
             gap: 10px;
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 12px;
         }
 
@@ -2886,14 +2899,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: white;
             padding: 4px 10px;
             border-radius: 12px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 8px;
         }
 
         .other-post-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 8px;
@@ -2976,7 +2989,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             width: 36px;
             height: 36px;
             background: var(--secondary);
-            color: #fff;
+            color: var(--color-white);
             font-size: 16px;
             font-weight: 700;
             border-radius: 50%;
@@ -3043,7 +3056,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-column-header {
-            padding: 18px 25px;
+            padding: 20px 24px;
             border-bottom: 3px solid;
             display: flex;
             align-items: center;
@@ -3071,7 +3084,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .category-column-header a {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
             text-decoration: none;
             font-weight: 500;
         }
@@ -3101,7 +3114,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-featured-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 10px;
@@ -3115,7 +3128,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-featured-date {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--gray);
         }
 
@@ -3139,11 +3152,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .category-list-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             line-height: 1.4;
             color: var(--primary);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             transition: color 0.3s;
         }
 
@@ -3196,7 +3209,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: inline-block;
             background: var(--secondary);
             color: white;
-            padding: 5px 14px;
+            padding: 8px 16px;
             border-radius: 15px;
             font-size: 12px;
             font-weight: 600;
@@ -3231,7 +3244,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: var(--text-light);
             margin-bottom: 15px;
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -3243,7 +3256,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-light);
             margin-bottom: 15px;
         }
@@ -3251,7 +3264,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .blog-card-meta-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .blog-card-footer {
@@ -3426,7 +3439,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .popular-post-info h4 {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             line-height: 1.4;
         }
 
@@ -3447,7 +3460,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             color: var(--text-dark);
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 14px;
             text-decoration: none;
             border: 1px solid var(--border);
             transition: all 0.3s;
@@ -3578,8 +3591,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
                 padding: 20px 15px;
             }
 
-            .featured-title {
-                font-size: 22px;
+                .featured-title {
+                font-size: 24px;
             }
 
             .article-item {
@@ -3646,7 +3659,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .dont-miss-label {
-                font-size: 11px;
+                font-size: 12px;
                 padding: 12px 16px;
             }
 
@@ -3656,7 +3669,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .featured-title {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .featured-image-wrapper {
@@ -3711,7 +3724,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             }
 
             .pagination {
-                gap: 5px;
+                gap: 8px;
             }
 
             .pagination a,
@@ -3744,7 +3757,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
             line-height: 1.7;
-            background: #fff;
+            background: var(--color-white);
         }
 
         .container {
@@ -3868,7 +3881,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             display: inline-block;
             background: var(--secondary);
             color: white;
-            padding: 6px 16px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
@@ -3940,7 +3953,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         /* Post Content */
         .post-content {
-            font-size: 18px;
+            font-size: 20px;
             line-height: 1.8;
         }
 
@@ -4016,14 +4029,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         }
 
         .comparison-table th {
-            padding: 18px 15px;
+            padding: 20px 16px;
             text-align: left;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .comparison-table td {
-            padding: 18px 15px;
+            padding: 20px 16px;
             border-bottom: 1px solid var(--border);
         }
 
@@ -4044,7 +4057,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         .price-cell {
             font-weight: 700;
             color: var(--secondary);
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .rating {
@@ -4109,7 +4122,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
             font-size: 14px;
             color: var(--text-light);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .price-amount {
@@ -4136,7 +4149,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .rating-text {
             color: var(--text-light);
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .provider-description {
@@ -4162,7 +4175,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .feature-icon {
             color: var(--secondary);
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .pros-cons {
@@ -4207,13 +4220,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .pros li {
             color: #155724;
-            padding: 6px 0;
+            padding: 8px 0;
             font-size: 14px;
         }
 
         .cons li {
             color: #721c24;
-            padding: 6px 0;
+            padding: 8px 0;
             font-size: 14px;
         }
 
@@ -4278,9 +4291,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
         /* Best For Badge */
         .best-for {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 8px 18px;
+            padding: 12px 20px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
@@ -4398,7 +4411,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
         .top-pick-btn {
             display: block;
-            padding: 14px;
+            padding: 16px;
             background: white;
             color: var(--secondary);
             border-radius: 8px;
@@ -4576,11 +4589,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 /* Best For Badge */
 .best-for {
     display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
-    padding: 8px 18px;
+    padding: 12px 20px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 20px;
     animation: pulse 2s ease-in-out infinite;
@@ -4673,7 +4686,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     font-size: 14px;
     color: #666;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .price-amount {
@@ -4700,7 +4713,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .rating-text {
     color: #666;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .provider-description {
@@ -4727,7 +4740,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .feature-icon {
     color: #40916c;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Pros and Cons */
@@ -4773,13 +4786,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .pros li {
     color: #155724;
-    padding: 6px 0;
+    padding: 8px 0;
     font-size: 14px;
 }
 
 .cons li {
     color: #721c24;
-    padding: 6px 0;
+    padding: 8px 0;
     font-size: 14px;
 }
 
@@ -4873,7 +4886,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .top-pick-btn {
     display: block;
-    padding: 14px;
+    padding: 16px;
     background: white;
     color: #40916c;
     border-radius: 8px;
@@ -4922,7 +4935,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
     
     .provider-info h3 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     
     .price-amount {
@@ -5049,7 +5062,7 @@ img {
 
 /* Fluid base font size */
 html {
-    font-size: clamp(14px, 1.5vw, 20px);
+    font-size: clamp(16px, 1.5vw, 20px);
 }
 
 /* Fluid headings for smooth transitions */
@@ -5069,7 +5082,7 @@ h3 {
 }
 
 h4 {
-    font-size: clamp(1.1rem, 2vw + 0.5rem, 2rem);
+    font-size: clamp(1.125rem, 2vw + 0.5rem, 2rem);
     line-height: 1.4;
 }
 
@@ -5150,9 +5163,49 @@ a:focus:not(:focus-visible) {
     /* Optimize for printing */
     body {
         font-size: 12pt;
+
+    .home-layout .home-hero {
+    padding: 24px 16px;
+    text-align: center;
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+    .home-layout .hero-title { font-size: 1.5rem; font-weight:800; margin-bottom:8px; }
+    .home-layout .hero-subtitle { font-size: 1rem; opacity:0.95; margin-bottom:12px; }
+    .home-layout .hero-button { padding: 12px 20px; border-radius: 999px; }
+
+    .home-layout .dont-miss-section { padding: 0 12px; }
+    .home-layout .dont-miss-container { background: var(--color-white); border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden; }
+    .home-layout .category-header { display:flex; align-items:center; gap:16px; padding:12px; }
+    .home-layout .dont-miss-label { padding:10px 12px; font-size:12px; border-radius:6px; }
+    .home-layout .category-tabs { display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; }
+    .home-layout .tab-button { padding:8px 12px; font-size:14px; border-radius:8px; background:var(--light); color:var(--primary); font-weight:700; border:none; }
+    .home-layout .tab-button.active { background:var(--secondary); color:var(--color-white); }
+
+    .home-layout .featured-article { padding:16px; display:block; }
+    .home-layout .featured-image { width:100%; height:auto; border-radius:8px; margin-bottom:12px; }
+    .home-layout .featured-title { font-size:1.125rem; margin-bottom:8px; }
+    .home-layout .featured-excerpt { color:var(--text-light); font-size:1rem; }
+
+    .home-layout .trending-section { padding: 20px 12px; }
+    .home-layout .trending-scroll { display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; }
+    .home-layout .trending-card { flex:0 0 200px; border-radius:8px; overflow:hidden; background:var(--color-white); box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+    .home-layout .trending-card img { width:100%; height:120px; object-fit:cover; display:block; }
+    .home-layout .trending-info { padding:10px; }
+
+    .home-layout .newsletter-section { padding: 20px 12px; }
+    .home-layout .newsletter-input { padding:12px 16px; border-radius:999px; width:100%; margin-bottom:12px; }
+    .home-layout .newsletter-btn { width:100%; padding:14px 16px; border-radius:999px; }
+
+    /* Ensure controls are accessible on small screens */
+    .home-layout .tab-button, .home-layout .hero-button, .home-layout .newsletter-btn { min-height:44px; }
+
         line-height: 1.5;
         color: #000;
-        background: #fff;
+        background: var(--color-white);
     }
     
     .container {

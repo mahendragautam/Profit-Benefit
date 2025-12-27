@@ -74,7 +74,7 @@
                     const tempBtn = document.createElement('button');
                     tempBtn.className = 'tab-button';
                     tempBtn.textContent = cat.label;
-                    tempBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+                    tempBtn.style.cssText = 'padding:20px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
                     measureContainer.appendChild(tempBtn);
                     tabWidths[cat.id] = tempBtn.offsetWidth;
                     measureContainer.removeChild(tempBtn);
@@ -84,7 +84,7 @@
                 const moreBtn = document.createElement('button');
                 moreBtn.className = 'tab-button';
                 moreBtn.innerHTML = 'More <span style="font-size:10px;">▼</span>';
-                moreBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+                moreBtn.style.cssText = 'padding:20px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
                 measureContainer.appendChild(moreBtn);
                 tabWidths['more'] = moreBtn.offsetWidth + 10;
                 measureContainer.removeChild(moreBtn);
