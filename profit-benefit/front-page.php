@@ -133,7 +133,12 @@ get_header();
             <div class="category-header">
                 <div class="dont-miss-label">DON'T MISS</div>
                 <div class="category-tabs">
-                    <!-- Tabs are built dynamically by JavaScript based on available pixel width -->
+                    <!-- Static numeric tabs (fallback) -->
+                    <button class="tab-button" data-category="all" aria-label="All"><span class="tab-number">1</span></button>
+                    <button class="tab-button" data-category="health" aria-label="Health &amp; Fitness"><span class="tab-number">2</span></button>
+                    <button class="tab-button" data-category="travel" aria-label="Travel"><span class="tab-number">3</span></button>
+                    <button class="tab-button" data-category="tech" aria-label="Technology"><span class="tab-number">4</span></button>
+                    <button class="tab-button" data-category="business" aria-label="Business"><span class="tab-number">5</span></button>
                 </div>
             </div>
 
