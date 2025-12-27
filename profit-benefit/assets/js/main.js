@@ -55,6 +55,8 @@
                 { id: 'science', label: 'Science' },
                 { id: 'food', label: 'Food & Recipes' }
             ];
+            // Force a fixed number of visible numeric tabs (as requested)
+            const MAX_VISIBLE_TABS = 5;
             
             let activeCategory = 'all';
             let tabWidths = {};
@@ -110,7 +112,17 @@
                         hiddenTabs.push(cat);
                     }
                 }
-                
+
+                // Enforce a maximum visible tab count so we get exactly the numbered tabs
+                if (visibleTabs.length > MAX_VISIBLE_TABS) {
+                    const overflow = visibleTabs.slice(MAX_VISIBLE_TABS);
+                    hiddenTabs.unshift(...overflow);
+                    visibleTabs = visibleTabs.slice(0, MAX_VISIBLE_TABS);
+                }
+
+                // If available space is extremely small and we didn't reach MAX_VISIBLE_TABS,
+                // leave behavior as-is so the more dropdown will appear as needed.
+
                 return { visibleTabs, hiddenTabs };
             }
             
