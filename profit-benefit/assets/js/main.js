@@ -278,24 +278,49 @@
         trendingScroll.addEventListener('pointermove', (e) => moveDrag(e.clientX));
     })();
 
-    // Newsletter Form Handler (keeps behavior but guards DOM)
-    (function() {
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (!newsletterForm) return;
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const input = newsletterForm.querySelector('.newsletter-input');
-            if (!input) return;
-            const email = input.value.trim();
+        // Newsletter Form Handler (inline feedback instead of alert)
+        (function() {
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (!newsletterForm) return;
 
-            if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Thank you for subscribing! Check your email for confirmation.');
-                input.value = '';
-            } else {
-                alert('Please enter a valid email address.');
+            // Ensure a feedback container exists
+            let feedback = newsletterForm.querySelector('.newsletter-feedback');
+            if (!feedback) {
+                feedback = document.createElement('div');
+                feedback.className = 'newsletter-feedback';
+                feedback.style.display = 'none';
+                feedback.style.marginTop = '8px';
+                newsletterForm.appendChild(feedback);
             }
-        });
-    })();
+
+            function showFeedback(message, type = 'success') {
+                feedback.textContent = message;
+                feedback.classList.remove('success', 'error');
+                feedback.classList.add(type);
+                feedback.setAttribute('role', 'status');
+                feedback.setAttribute('aria-live', 'polite');
+                feedback.style.display = 'block';
+                clearTimeout(feedback._timer);
+                feedback._timer = setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.textContent = '';
+                }, 4000);
+            }
+
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = newsletterForm.querySelector('.newsletter-input');
+                if (!input) return;
+                const email = input.value.trim();
+
+                if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showFeedback('Thank you for subscribing! Check your email for confirmation.', 'success');
+                    input.value = '';
+                } else {
+                    showFeedback('Please enter a valid email address.', 'error');
+                }
+            });
+        })();
             
             // All tab categories in order
             const allCategories = [
