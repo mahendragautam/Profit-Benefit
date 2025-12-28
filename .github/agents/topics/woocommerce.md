@@ -1,7 +1,8 @@
 ---
 name: woocommerce
 hidden: true
-protected: false
+protected: true
+undeletable: true
 always_on: false
 ---
 

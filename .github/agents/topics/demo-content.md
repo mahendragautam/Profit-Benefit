@@ -2,6 +2,7 @@
 name: demo-content
 hidden: true
 protected: true
+undeletable: true
 ---
 
 # Demo Content & Import - Complete Guide

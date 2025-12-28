@@ -3,6 +3,8 @@
 ---
 name: testing
 hidden: true
+protected: true
+undeletable: true
 
 > **Load this file when**: Keywords detected - test theme, theme check, validate theme, accessibility test, browser test
 >

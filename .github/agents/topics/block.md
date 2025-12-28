@@ -5,6 +5,8 @@ name: block
 
 hidden: true
 always_on: false
+protected: true
+undeletable: true
  
 
 > **Load this file when**: Keywords detected - block theme, theme.json, FSE, full site editing, patterns, templates, template parts

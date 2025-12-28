@@ -3,6 +3,8 @@
 ---
 name: performance
 hidden: true
+protected: true
+undeletable: true
 
 > **Load this file when**: Keywords detected - optimize, performance, slow theme, Core Web Vitals, lazy load, minify, cache
 >

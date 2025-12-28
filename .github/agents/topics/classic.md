@@ -3,6 +3,8 @@
 ---
 name: classic
 hidden: true
+protected: true
+undeletable: true
 
 > **Load this file when**: Keywords detected - template, theme structure, functions.php, template hierarchy, child theme, classic theme
 >

@@ -2,6 +2,7 @@
 name: marketplace-marketing
 hidden: true
 protected: true
+undeletable: true
 ---
 
 # Marketplace Marketing & Post-Launch Guide

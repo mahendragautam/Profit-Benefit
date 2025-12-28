@@ -21,7 +21,20 @@ const ACTIVE_PATH = path.join(AGENTS_DIR, 'active.json');
 const ACTIVE_STATUS_PATH = path.join(AGENTS_DIR, 'active-status.json');
 // Fallback protected set (kept for backward compatibility). Primary protection
 // is controlled via YAML frontmatter `protected: true` in the agent markdown.
-const PROTECTED_AGENTS = new Set();
+// Add known agent filenames and basenames here to ensure protection even if
+// frontmatter is missing or malformed.
+const PROTECTED_AGENTS = new Set([
+  'wordpress.theme.agent.md', 'wordpress.theme.agent',
+  'accessibility.md', 'accessibility',
+  'block.md', 'block',
+  'classic.md', 'classic',
+  'demo-content.md', 'demo-content',
+  'marketplace-marketing.md', 'marketplace-marketing',
+  'performance.md', 'performance',
+  'security.md', 'security',
+  'testing.md', 'testing',
+  'woocommerce.md', 'woocommerce'
+]);
 
 function readFrontmatter(filePath) {
   try {

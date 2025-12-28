@@ -1,6 +1,8 @@
 ---
 name: accessibility
 hidden: true
+protected: true
+undeletable: true
 ---
 
 # Accessibility — WCAG 2.1 AA Requirements for Themes

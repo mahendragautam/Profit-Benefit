@@ -3,6 +3,8 @@
 ---
 name: security
 hidden: true
+protected: true
+undeletable: true
 
 > **Load this file when**: Keywords detected - security, sanitize, escape, XSS, nonce, theme security, output escaping
 > 
