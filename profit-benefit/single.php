@@ -438,7 +438,7 @@ if (have_posts()) : while (have_posts()) : the_post();
                             <span class="blog-card-meta-item">📅 <?php echo get_the_date('M j, Y'); ?></span>
                         </div>
                         <p class="blog-card-excerpt">
-                            <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                            <?php echo esc_html( wp_trim_words( get_the_excerpt(), 15 ) ); ?>
                         </p>
                         <div class="blog-card-footer">
                             <a href="<?php the_permalink(); ?>" class="read-more">Read More →</a>

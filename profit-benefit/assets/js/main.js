@@ -704,23 +704,6 @@
             });
         }
 
-        // ============================================
-        // Newsletter Form Handler
-        // ============================================
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const input = newsletterForm.querySelector('.newsletter-input');
-                const email = input.value.trim();
-
-                if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    alert('Thank you for subscribing! Check your email for confirmation.');
-                    input.value = '';
-                } else {
-                    alert('Please enter a valid email address.');
-                }
-            });
-        }
+        // Duplicate newsletter handler (old alert-based) removed — inline feedback handler kept above.
 
 

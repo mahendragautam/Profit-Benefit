@@ -160,7 +160,7 @@ get_header();
                             <span>•</span>
                             <span><?php echo get_the_date('F j, Y'); ?></span>
                         </div>
-                        <p class="featured-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
+                        <p class="featured-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 20 ) ); ?></p>
                         <span class="comment-count">💬 <?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></span>
                     </div>
                     <div class="nav-arrows">

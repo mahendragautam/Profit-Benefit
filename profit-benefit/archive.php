@@ -59,7 +59,7 @@ get_header();
                             <span>•</span>
                             <span><?php echo get_the_date('F j, Y'); ?></span>
                         </div>
-                        <p class="featured-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 30); ?></p>
+                        <p class="featured-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 30 ) ); ?></p>
                     </div>
                 </div>
                 <?php
@@ -483,7 +483,7 @@ get_header();
                                 <span class="blog-card-meta-item">⏱️ <?php echo esc_html(profitbenefit_reading_time()); ?> min read</span>
                             </div>
                             <p class="blog-card-excerpt">
-                                <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
+                                <?php echo esc_html( wp_trim_words( get_the_excerpt(), 20 ) ); ?>
                             </p>
                             <div class="blog-card-footer">
                                 <a href="<?php the_permalink(); ?>" class="read-more">Read More →</a>

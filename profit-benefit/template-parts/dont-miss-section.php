@@ -66,7 +66,7 @@ $categories = get_categories( array(
                                 <span>•</span>
                                 <span><?php echo get_the_date(); ?></span>
                             </div>
-                            <p class="featured-excerpt"><?php echo wp_trim_words( get_the_excerpt(), 30 ); ?></p>
+                            <p class="featured-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 30 ) ); ?></p>
                         </div>
                     </div>
                 <?php endwhile; ?>

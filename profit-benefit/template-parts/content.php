@@ -28,7 +28,7 @@
         </h2>
 
         <div class="blog-card-excerpt">
-            <?php the_excerpt(); ?>
+            <?php echo esc_html( wp_strip_all_tags( get_the_excerpt() ) ); ?>
         </div>
 
         <div class="blog-card-meta">
