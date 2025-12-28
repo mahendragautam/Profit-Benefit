@@ -3419,6 +3419,26 @@
                 gap: 20px;
             }
 
+            /* Newsletter inline feedback */
+            .newsletter-feedback {
+                font-size: 14px;
+                padding: 8px 12px;
+                border-radius: 6px;
+                margin-top: 8px;
+                display: inline-block;
+                transition: opacity 220ms ease, transform 220ms ease;
+            }
+            .newsletter-feedback.success {
+                background-color: #e6ffed;
+                color: #064e2c;
+                border: 1px solid #b7f0c6;
+            }
+            .newsletter-feedback.error {
+                background-color: #fff1f0;
+                color: #7a1f1f;
+                border: 1px solid #f3c0c0;
+            }
+
             .other-posts-sidebar {
                 display: none;
             }
