@@ -1,0 +1,3 @@
+#!/bin/sh
+# Reapply protections after checkout
+node "$(dirname "$0")/protect.js" || true
