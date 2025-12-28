@@ -372,7 +372,7 @@ if (have_posts()) : while (have_posts()) : the_post();
                             <li class="popular-post">
                                 <a href="<?php the_permalink(); ?>" class="popular-post-link">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb')); ?>
+                                        <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb', 'alt' => get_the_title())); ?>
                                     <?php endif; ?>
                                     <div class="popular-post-info">
                                         <h4><?php the_title(); ?></h4>
@@ -418,7 +418,7 @@ if (have_posts()) : while (have_posts()) : the_post();
     <section class="related-posts-section">
         <div class="container">
             <h2 class="section-title">Related Articles</h2>
-            <div class="blog-grid">
+            <div class="blog-grid cards-grid">
                 <?php while ($related->have_posts()) : $related->the_post();
                     $categories = get_the_category();
                 ?>

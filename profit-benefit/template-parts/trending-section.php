@@ -23,7 +23,7 @@ if ( $trending_posts->have_posts() ) :
                         <span class="trending-number"><?php echo esc_html( $count ); ?></span>
                         <a href="<?php the_permalink(); ?>">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail( 'profitbenefit-trending' ); ?>
+                                <?php the_post_thumbnail( 'profitbenefit-trending', array( 'alt' => get_the_title() ) ); ?>
                             <?php endif; ?>
                             <div class="trending-info">
                                 <?php if ( ! empty( $categories ) ) : ?>

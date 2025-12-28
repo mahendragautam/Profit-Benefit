@@ -20,7 +20,7 @@ get_header();
                 <h1 class="page-title">
                     <?php
                     /* translators: %s: search query */
-                    printf(esc_html__('Search Results for: %s', 'profitbenefit-theme'), '<span>' . get_search_query() . '</span>');
+                    printf(esc_html__('Search Results for: %s', 'profitbenefit-theme'), '<span>' . esc_html( get_search_query() ) . '</span>');
                     ?>
                 </h1>
                 <p class="page-subtitle">
@@ -34,7 +34,7 @@ get_header();
                 <p class="page-subtitle">
                     <?php
                     /* translators: %s: search query */
-                    printf(esc_html__('Sorry, no results found for: %s', 'profitbenefit-theme'), '<span>' . get_search_query() . '</span>');
+                    printf(esc_html__('Sorry, no results found for: %s', 'profitbenefit-theme'), '<span>' . esc_html( get_search_query() ) . '</span>');
                     ?>
                 </p>
             <?php endif; ?>
@@ -44,7 +44,7 @@ get_header();
     <div class="container">
         <div class="main-content">
             <?php if (have_posts()) : ?>
-                <div class="blog-grid">
+                <div class="blog-grid cards-grid">
                     <?php
                     while (have_posts()) : the_post();
                         get_template_part('template-parts/content');
@@ -70,7 +70,7 @@ get_header();
 
                     <div class="suggestions">
                         <h4><?php esc_html_e('Popular Articles', 'profitbenefit-theme'); ?></h4>
-                        <div class="blog-grid">
+                        <div class="blog-grid cards-grid">
                             <?php
                             $popular = new WP_Query(array(
                                 'posts_per_page' => 6,

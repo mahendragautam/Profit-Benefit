@@ -10,7 +10,7 @@
     <?php if ( has_post_thumbnail() ) : ?>
         <div class="blog-card-image-wrapper image-with-gradient">
             <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail( 'profitbenefit-featured', array( 'class' => 'blog-card-image' ) ); ?>
+                <?php the_post_thumbnail( 'profitbenefit-featured', array( 'class' => 'blog-card-image', 'alt' => get_the_title() ) ); ?>
             </a>
         </div>
     <?php endif; ?>

@@ -48,7 +48,7 @@ $categories = get_categories( array(
                     <div class="featured-article">
                         <div class="featured-image-wrapper has-gradient image-with-gradient">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail( 'profitbenefit-featured', array( 'class' => 'featured-image' ) ); ?>
+                                <?php the_post_thumbnail( 'profitbenefit-featured', array( 'class' => 'featured-image', 'alt' => get_the_title() ) ); ?>
                             <?php endif; ?>
                             <?php
                             $categories_list = get_the_category();

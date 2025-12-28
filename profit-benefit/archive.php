@@ -459,7 +459,7 @@ get_header();
                 </aside>
 
                 <!-- Blog Grid -->
-                <div class="blog-grid">
+                <div class="blog-grid cards-grid">
                     <?php
                     if (have_posts()) :
                         while (have_posts()) : the_post();

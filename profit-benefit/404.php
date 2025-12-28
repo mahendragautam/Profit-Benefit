@@ -31,7 +31,7 @@ get_header();
 
         <div class="error-404-suggestions">
             <h3><?php esc_html_e('You might be interested in:', 'profitbenefit-theme'); ?></h3>
-            <div class="blog-grid">
+            <div class="blog-grid cards-grid">
                 <?php
                 $recent_posts = new WP_Query(array(
                     'posts_per_page' => 3,
