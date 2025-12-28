@@ -369,7 +369,7 @@ get_header();
                     <li class="popular-post">
                         <a href="<?php the_permalink(); ?>" class="popular-post-link">
                             <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb')); ?>
+                                <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb', 'alt' => get_the_title())); ?>
                             <?php endif; ?>
                             <div class="popular-post-info">
                                 <h4><?php the_title(); ?></h4>
@@ -502,7 +502,7 @@ get_header();
                     <div class="sidebar-widget">
                         <h3 class="widget-title">Search</h3>
                         <form class="search-form" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="text" class="search-input" name="s" placeholder="Search articles..." value="<?php echo get_search_query(); ?>">
+                            <input type="text" class="search-input" name="s" placeholder="Search articles..." value="<?php echo esc_attr( get_search_query() ); ?>">
                             <button type="submit" class="search-btn" aria-label="<?php esc_attr_e('Search', 'profitbenefit-theme'); ?>">
                                 <span class="search-icon"></span>
                             </button>
@@ -538,8 +538,8 @@ get_header();
                             <li class="popular-post">
                                 <a href="<?php the_permalink(); ?>" class="popular-post-link">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb')); ?>
-                                    <?php endif; ?>
+                                            <?php the_post_thumbnail('thumbnail', array('class' => 'popular-post-thumb', 'alt' => get_the_title())); ?>
+                                        <?php endif; ?>
                                     <div class="popular-post-info">
                                         <h4><?php the_title(); ?></h4>
                                         <span class="popular-post-date"><?php echo get_the_date('M j, Y'); ?></span>
