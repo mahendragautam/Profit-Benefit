@@ -89,8 +89,12 @@
         // Measure "More" button width
         const moreBtn = document.createElement('button');
         moreBtn.className = 'tab-button';
-        moreBtn.innerHTML = 'More <span style="font-size:10px;">▼</span>';
         moreBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+        moreBtn.textContent = 'More ';
+        const moreSpan = document.createElement('span');
+        moreSpan.style.fontSize = '10px';
+        moreSpan.textContent = '▼';
+        moreBtn.appendChild(moreSpan);
         measureContainer.appendChild(moreBtn);
         tabWidths['more'] = moreBtn.offsetWidth + 10;
         measureContainer.removeChild(moreBtn);
@@ -161,7 +165,11 @@
             if (activeInHidden) {
                 moreBtn.classList.add('active');
             }
-            moreBtn.innerHTML = 'More <span class="dropdown-arrow">▼</span>';
+            moreBtn.textContent = 'More ';
+            const arrow = document.createElement('span');
+            arrow.className = 'dropdown-arrow';
+            arrow.textContent = '▼';
+            moreBtn.appendChild(arrow);
             
             const menu = document.createElement('div');
             menu.className = 'dropdown-menu';
@@ -361,8 +369,12 @@
                 // Measure "More" button width
                 const moreBtn = document.createElement('button');
                 moreBtn.className = 'tab-button';
-                moreBtn.innerHTML = 'More <span style="font-size:10px;">▼</span>';
                 moreBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+                moreBtn.textContent = 'More ';
+                const mspan = document.createElement('span');
+                mspan.style.fontSize = '10px';
+                mspan.textContent = '▼';
+                moreBtn.appendChild(mspan);
                 measureContainer.appendChild(moreBtn);
                 tabWidths['more'] = moreBtn.offsetWidth + 10;
                 measureContainer.removeChild(moreBtn);
@@ -433,7 +445,11 @@
                     if (activeInHidden) {
                         moreBtn.classList.add('active');
                     }
-                    moreBtn.innerHTML = 'More <span class="dropdown-arrow">▼</span>';
+                    moreBtn.textContent = 'More ';
+                    const darr = document.createElement('span');
+                    darr.className = 'dropdown-arrow';
+                    darr.textContent = '▼';
+                    moreBtn.appendChild(darr);
                     
                     const menu = document.createElement('div');
                     menu.className = 'dropdown-menu';
