@@ -1,5 +1,14 @@
+echo "Running protected-files check on staged files..."
 #!/usr/bin/env bash
 set -e
+
+# Block commits directly to the user's checkpoint branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+if [ "$BRANCH" = "back-up" ]; then
+  echo "ERROR: Committing to branch 'back-up' is disabled."
+  echo "Create and switch to a feature branch (git checkout -b my-branch) instead."
+  exit 1
+fi
 
 # Pre-commit hook: check staged files against protected patterns
 REPO_ROOT="$(git rev-parse --show-toplevel)"
