@@ -55,8 +55,6 @@
                 { id: 'science', label: 'Science' },
                 { id: 'food', label: 'Food & Recipes' }
             ];
-            // Force a fixed number of visible numeric tabs (as requested)
-            const MAX_VISIBLE_TABS = 5;
             
             let activeCategory = 'all';
             let tabWidths = {};
@@ -74,7 +72,7 @@
                     const tempBtn = document.createElement('button');
                     tempBtn.className = 'tab-button';
                     tempBtn.textContent = cat.label;
-                    tempBtn.style.cssText = 'padding:20px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+                    tempBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
                     measureContainer.appendChild(tempBtn);
                     tabWidths[cat.id] = tempBtn.offsetWidth;
                     measureContainer.removeChild(tempBtn);
@@ -84,7 +82,7 @@
                 const moreBtn = document.createElement('button');
                 moreBtn.className = 'tab-button';
                 moreBtn.innerHTML = 'More <span style="font-size:10px;">▼</span>';
-                moreBtn.style.cssText = 'padding:20px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
+                moreBtn.style.cssText = 'padding:18px 20px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;';
                 measureContainer.appendChild(moreBtn);
                 tabWidths['more'] = moreBtn.offsetWidth + 10;
                 measureContainer.removeChild(moreBtn);
@@ -112,17 +110,7 @@
                         hiddenTabs.push(cat);
                     }
                 }
-
-                // Enforce a maximum visible tab count so we get exactly the numbered tabs
-                if (visibleTabs.length > MAX_VISIBLE_TABS) {
-                    const overflow = visibleTabs.slice(MAX_VISIBLE_TABS);
-                    hiddenTabs.unshift(...overflow);
-                    visibleTabs = visibleTabs.slice(0, MAX_VISIBLE_TABS);
-                }
-
-                // If available space is extremely small and we didn't reach MAX_VISIBLE_TABS,
-                // leave behavior as-is so the more dropdown will appear as needed.
-
+                
                 return { visibleTabs, hiddenTabs };
             }
             
@@ -143,16 +131,12 @@
                 // Clear and rebuild tabs container
                 categoryTabs.innerHTML = '';
                 
-                // Add visible tabs (render numeric tabs referencing category order)
+                // Add visible tabs
                 visibleTabs.forEach(cat => {
                     const btn = document.createElement('button');
                     btn.className = 'tab-button' + (activeCategory === cat.id ? ' active' : '');
                     btn.dataset.category = cat.id;
-                    // Use the category label text for the tab (short label)
-                    btn.setAttribute('aria-label', cat.label);
-                    // Use a short label for visual tab text; keep long label in aria
-                    const shortLabel = (cat.label.length > 12) ? cat.label.split(' ')[0] : cat.label;
-                    btn.innerHTML = '<span class="tab-label">' + shortLabel + '</span>';
+                    btn.textContent = cat.label;
                     btn.addEventListener('click', () => switchCategory(cat.id));
                     categoryTabs.appendChild(btn);
                 });
