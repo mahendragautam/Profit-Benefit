@@ -64,7 +64,7 @@ $categories = get_categories( array(
                             <div class="featured-meta">
                                 <span class="author"><?php echo get_the_author(); ?></span>
                                 <span>•</span>
-                                <span><?php echo get_the_date(); ?></span>
+                                <span><?php echo esc_html( profitbenefit_print_date() ); ?></span>
                             </div>
                             <p class="featured-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 30 ) ); ?></p>
                         </div>
