@@ -34,7 +34,7 @@
         <div class="blog-card-meta">
             <span class="blog-card-meta-item"><?php echo esc_html( get_the_author() ); ?></span>
             <span class="blog-card-meta-item">•</span>
-            <span class="blog-card-meta-item"><?php echo esc_html( profitbenefit_print_date() ); ?></span>
+            <span class="blog-card-meta-item"><?php echo get_the_date(); ?></span>
             <span class="blog-card-meta-item">•</span>
             <span class="blog-card-meta-item"><?php echo esc_html( profitbenefit_reading_time() ); ?> min read</span>
         </div>

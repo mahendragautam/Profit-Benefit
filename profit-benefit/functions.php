@@ -681,39 +681,3 @@ function profitbenefit_save_post_meta($post_id) {
     }
 }
 add_action('save_post', 'profitbenefit_save_post_meta');
-
-/**
- * Print post date once per post render
- *
- * Returns the formatted date the first time it's called for a given post ID
- * during a single request. Subsequent calls for the same post will return
- * an empty string to avoid duplicate date output when multiple template
- * parts include the date.
- *
- * @since 1.0.0
- * @param string $format Date format (default 'F j, Y').
- * @param WP_Post|int|null $post Post or post ID. Defaults to global post.
- * @return string Formatted date or empty string if already printed for this post.
- */
-function profitbenefit_print_date( $format = 'F j, Y', $post = null ) {
-    if ( is_null( $post ) ) {
-        global $post;
-    }
-
-    $post_id = is_object( $post ) ? $post->ID : intval( $post );
-    if ( $post_id <= 0 ) {
-        return '';
-    }
-
-    if ( ! isset( $GLOBALS['profitbenefit_date_printed'] ) || ! is_array( $GLOBALS['profitbenefit_date_printed'] ) ) {
-        $GLOBALS['profitbenefit_date_printed'] = array();
-    }
-
-    if ( isset( $GLOBALS['profitbenefit_date_printed'][ $post_id ] ) ) {
-        return '';
-    }
-
-    $GLOBALS['profitbenefit_date_printed'][ $post_id ] = true;
-
-    return get_the_date( $format, $post );
-}
