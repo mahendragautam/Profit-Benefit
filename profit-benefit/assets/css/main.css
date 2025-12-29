@@ -9,12 +9,27 @@
     --light: #f8f9fa;
     --gray: #8895a7;
     --border: #dee2e6;
+    
+    /* Optimized color variables */
+    --white: #fff;
+    --black: #000;
+    --text-muted: #666;
+    --text-dark: #333;
+    
+    /* Gradients */
     --gradient-1: linear-gradient(135deg, #1a2e4a 0%, #2d6a4f 100%);
     --gradient-2: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
     --gradient-3: linear-gradient(135deg, #40916c 0%, #52b788 100%);
+    --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --gradient-overlay-dark: linear-gradient(transparent, rgb(0 0 0 / 90%));
+    --gradient-overlay-medium: linear-gradient(transparent, rgb(0 0 0 / 85%));
+    
+    /* Shadows */
     --shadow-sm: 0 2px 8px rgb(26 46 74 / 8%);
     --shadow-md: 0 4px 20px rgb(26 46 74 / 12%);
     --shadow-lg: 0 10px 40px rgb(26 46 74 / 15%);
+    
     /* Spacing scale (4px grid system) */
     --space-1: 0.25rem; /* 4px */
     --space-2: 0.5rem; /* 8px */
@@ -81,8 +96,8 @@ img {
     position: absolute;
     left: -999px;
     top: 0;
-    background: #000;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
     padding: var(--space-2) var(--space-3);
     z-index: 9999;
 }
@@ -117,14 +132,14 @@ select {
     padding: var(--space-3) var(--space-4);
     border: 1px solid var(--border);
     border-radius: 8px;
-    background: #fff;
+    background: var(--white);
     color: var(--primary);
     transition: box-shadow 150ms ease, border-color 150ms ease;
 }
 
 /* Card */
 .card {
-    background: #fff;
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: 12px;
     box-shadow: 0 6px 20px var(--shadow-sm);
@@ -398,7 +413,7 @@ nav a:hover::after {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-hero);
     margin-bottom: 40px;
     cursor: pointer;
 }
@@ -409,7 +424,7 @@ nav a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: var(--gradient-hero-bg);
     background-size: 200% 200%;
     animation: gradientShift 15s ease infinite;
     opacity: 0.9;
@@ -541,7 +556,7 @@ nav a:hover::after {
 }
 
 .hero-title .highlight {
-    background: #2d6a4f;
+    background: var(--secondary);
     padding: 5px 15px;
     border-radius: 8px;
     display: inline-block;
@@ -699,7 +714,7 @@ nav a:hover::after {
     position: absolute;
     font-size: 24px;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
     pointer-events: none;
     animation: growthRise 1s ease-out forwards;
     text-shadow: 0 2px 10px rgb(0 0 0 / 30%);
@@ -744,10 +759,10 @@ nav a:hover::after {
     position: absolute;
     width: 3px;
     height: 3px;
-    background: #fff;
+    background: var(--white);
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: 0 0 6px #fff;
+    box-shadow: 0 0 6px var(--white);
 }
 
 /* ============================================
@@ -778,7 +793,7 @@ nav a:hover::after {
 
 .dont-miss-label {
     background: var(--secondary);
-    color: #fff;
+    color: var(--white);
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -805,7 +820,7 @@ nav a:hover::after {
 .tab-button {
     background: none;
     border: none;
-    color: #666;
+    color: var(--text-muted);
     font-size: 14px;
     font-weight: 500;
     padding: 18px 20px;
@@ -894,7 +909,7 @@ nav a:hover::after {
     background: none;
     border: none;
     padding: 14px 20px;
-    color: #666;
+    color: var(--text-muted);
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -910,8 +925,8 @@ nav a:hover::after {
 }
 
 .dropdown-menu button:hover {
-    background: #f8f9fa;
-    color: #000;
+    background: var(--light);
+    color: var(--black);
     border-left-color: var(--secondary);
 }
 
@@ -995,7 +1010,7 @@ nav a:hover::after {
     font-size: 28px;
     font-weight: 700;
     line-height: 1.3;
-    color: #000;
+    color: var(--black);
     margin-bottom: 12px;
     transition: color 0.3s ease;
     cursor: pointer;
@@ -1010,17 +1025,17 @@ nav a:hover::after {
     align-items: center;
     gap: 10px;
     font-size: 13px;
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 12px;
 }
 
 .author {
     font-weight: 700;
-    color: #000;
+    color: var(--black);
 }
 
 .featured-excerpt {
-    color: #666;
+    color: var(--text-muted);
     line-height: 1.7;
     font-size: 15px;
 }
@@ -1055,7 +1070,7 @@ nav a:hover::after {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    color: #666;
+    color: var(--text-muted);
     transition: all 0.3s ease;
     border-radius: 4px;
 }
@@ -1085,7 +1100,7 @@ nav a:hover::after {
 }
 
 .article-item:hover {
-    background: #f8f9fa;
+    background: var(--light);
 }
 
 .article-thumbnail {
@@ -1104,7 +1119,7 @@ nav a:hover::after {
     font-size: 16px;
     font-weight: 700;
     line-height: 1.4;
-    color: #000;
+    color: var(--black);
     margin-bottom: 8px;
     transition: color 0.3s ease;
 }
@@ -1166,7 +1181,7 @@ nav a:hover::after {
     left: 0;
     right: 0;
     padding: 40px;
-    background: linear-gradient(transparent, rgb(0 0 0 / 90%));
+    background: var(--gradient-overlay-dark);
     color: white;
 }
 
@@ -1246,7 +1261,7 @@ nav a:hover::after {
     left: 0;
     right: 0;
     padding: 20px;
-    background: linear-gradient(transparent, rgb(0 0 0 / 85%));
+    background: var(--gradient-overlay-medium);
     color: white;
 }
 
@@ -1321,7 +1336,7 @@ nav a:hover::after {
     width: 36px;
     height: 36px;
     background: var(--secondary);
-    color: #fff;
+    color: var(--white);
     font-size: 16px;
     font-weight: 700;
     border-radius: 50%;
@@ -1344,7 +1359,7 @@ nav a:hover::after {
 
 .trending-info {
     padding: 20px;
-    background: #f8f9fa;
+    background: var(--light);
 }
 
 .trending-category {
@@ -1359,7 +1374,7 @@ nav a:hover::after {
     font-size: 16px;
     font-weight: 700;
     line-height: 1.4;
-    color: #000;
+    color: var(--black);
     transition: color 0.3s;
 }
 
@@ -1497,7 +1512,7 @@ nav a:hover::after {
 
 .category-list-item:hover .category-list-number {
     background: var(--secondary);
-    color: #fff;
+    color: var(--white);
 }
 
 .category-list-title {
@@ -1592,7 +1607,7 @@ nav a:hover::after {
     left: 0;
     right: 0;
     padding: 30px;
-    background: linear-gradient(transparent, rgb(0 0 0 / 90%));
+    background: var(--gradient-overlay-dark);
     color: white;
 }
 
@@ -1752,7 +1767,7 @@ nav a:hover::after {
 
 .opinion-author {
     font-weight: 700;
-    color: #000;
+    color: var(--black);
     font-size: 14px;
 }
 
@@ -1809,7 +1824,7 @@ nav a:hover::after {
 
 .newsletter-btn {
     padding: 16px 32px;
-    background: #fff;
+    background: var(--white);
     color: var(--primary);
     border: none;
     border-radius: 50px;
@@ -1823,7 +1838,7 @@ nav a:hover::after {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
     background: var(--accent-light);
-    color: #fff;
+    color: var(--white);
 }
 
 /* Newsletter inline feedback */
@@ -1904,7 +1919,7 @@ footer {
 
 .footer-social a:hover {
     background: var(--secondary);
-    color: #fff;
+    color: var(--white);
 }
 
 .footer-column h4 {
@@ -2086,7 +2101,7 @@ footer {
     width: 30px;
     height: 30px;
     background: var(--secondary);
-    color: #fff;
+    color: var(--white);
     font-size: 14px;
     font-weight: 700;
     border-radius: 50%;
@@ -2109,7 +2124,7 @@ footer {
 
 .trending-box .trending-info {
     padding: 12px;
-    background: #f8f9fa;
+    background: var(--light);
 }
 
 .trending-box .trending-category {
@@ -2275,7 +2290,7 @@ footer {
 }
 
 .category-box-dontmiss .article-item:hover {
-    background: #f8f9fa;
+    background: var(--light);
 }
 
 .category-box-dontmiss .article-thumbnail {
@@ -2941,12 +2956,12 @@ footer {
 
 .provider-info h3 {
     font-size: 1.75rem;
-    color: #2d6a4f;
+    color: var(--secondary);
     margin-bottom: 10px;
 }
 
 .provider-tagline {
-    color: #666;
+    color: var(--text-muted);
     font-size: 16px;
 }
 
@@ -2956,7 +2971,7 @@ footer {
 
 .price-label {
     font-size: 14px;
-    color: #666;
+    color: var(--text-muted);
     display: block;
     margin-bottom: 5px;
 }
@@ -2970,7 +2985,7 @@ footer {
 
 .price-period {
     font-size: 16px;
-    color: #666;
+    color: var(--text-muted);
 }
 
 .provider-rating {
@@ -2984,7 +2999,7 @@ footer {
 }
 
 .rating-text {
-    color: #666;
+    color: var(--text-muted);
     font-size: 15px;
 }
 
@@ -2996,7 +3011,7 @@ footer {
 /* Best For Badge */
 .best-for {
     display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-hero);
     color: white;
     padding: 8px 18px;
     border-radius: 20px;
@@ -3017,7 +3032,7 @@ footer {
 
 /* Quick Summary Box */
 .summary-box {
-    background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+    background: var(--gradient-2);
     color: white;
     padding: 35px;
     border-radius: 12px;
@@ -3165,7 +3180,7 @@ footer {
 }
 
 .cta-primary:hover {
-    background: #2d6a4f;
+    background: var(--secondary);
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgb(45 106 79 / 30%);
 }
@@ -3252,7 +3267,7 @@ footer {
 
 .error-404-title {
     font-size: 120px;
-    color: #2d6a4f;
+    color: var(--secondary);
     margin: 0;
 }
 
@@ -3268,7 +3283,7 @@ footer {
 
 .btn-primary {
     display: inline-block;
-    background: #2d6a4f;
+    background: var(--secondary);
     color: white;
     padding: 15px 40px;
     border-radius: 8px;

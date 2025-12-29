@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
@@ -25,7 +25,8 @@ get_header();
             <?php if ( have_posts() ) : ?>
                 <div class="blog-grid cards-grid">
                     <?php
-                    while ( have_posts() ) : the_post();
+                    while ( have_posts() ) :
+                        the_post();
                         get_template_part( 'template-parts/content', get_post_format() );
                     endwhile;
                     ?>
@@ -33,11 +34,13 @@ get_header();
 
                 <div class="pagination">
                     <?php
-                    echo paginate_links( array(
-                        'prev_text' => '←',
-                        'next_text' => '→',
-                        'type'      => 'list',
-                    ) );
+                    echo paginate_links(
+                        array(
+                            'prev_text' => '←',
+                            'next_text' => '→',
+                            'type'      => 'list',
+                        )
+                    );
                     ?>
                 </div>
             <?php else : ?>
@@ -46,5 +49,4 @@ get_header();
         </div>
     </div>
 
-<?php
-get_footer();
+<?php get_footer(); ?>
