@@ -1,0 +1,276 @@
+﻿Duplicate selectors report generated on 12/29/2025 22:25:33
+Source: e:\webiste theme and plugin\a-Profit-Benefit\Profit-Benefit\profit-benefit\assets\css\main.css
+Total used-duplicate selectors: 61
+Category A (only in @media): 60
+Category B (in base and @media): 1
+Category C (no @media  base/print/prefers mixes): 0
+
+Selector: .category-grid
+  Context: @media (width >= 768px) { — Lines: 3616
+  Context: @media print { — Lines: 1683
+  Context: @media (width >= 1024px) { — Lines: 3867
+---
+Selector: .sidebar
+  Context: @media (width >= 768px) { — Lines: 3741
+  Context: @media print { — Lines: 2834
+---
+Selector: .trending-card
+  Context: @media (width >= 768px) { — Lines: 3799
+  Context: @media print { — Lines: 1607
+---
+Selector: .footer-bottom
+  Context: @media (width >= 768px) { — Lines: 3686
+  Context: @media print { — Lines: 2248
+  Context: @media (width >= 1024px) { — Lines: 3948
+---
+Selector: .blog-card-image
+  Context: @media (width >= 768px) { — Lines: 3825
+  Context: @media print { — Lines: 2699
+---
+Selector: .video-grid
+  Context: @media (width >= 768px) { — Lines: 3621
+  Context: @media print { — Lines: 1837
+---
+Selector: .newsletter-title
+  Context: @media (width >= 768px) { — Lines: 3702
+  Context: @media print { — Lines: 2082
+---
+Selector: .footer-links a
+  Context: @media (width >= 768px) { — Lines: 3692
+  Context: @media print { — Lines: 2260
+  Context: @media (width >= 1024px) { — Lines: 3954
+---
+Selector: .featured-image-wrapper
+  Context: @media (width >= 768px) { — Lines: 3791
+  Context: @media print { — Lines: 1277
+---
+Selector: .blog-card-content
+  Context: @media (width >= 768px) { — Lines: 3829
+  Context: @media print { — Lines: 2705
+---
+Selector: .btn-primary
+  Context: @media (min-width: 768px) { — Lines: 279
+  Context: @media print { — Lines: 3568
+---
+Selector: .top-bar .container
+  Context: @media (width >= 768px) { — Lines: 3763
+  Context: @media print { — Lines: 635
+---
+Selector: .hero-title
+  Context: @media (width >= 768px) { — Lines: 3639
+  Context: @media print { — Lines: 1501
+  Context: @media (width >= 1024px) { — Lines: 3884
+---
+Selector: .hero-sidebar
+  Context: @media (width >= 768px) { — Lines: 3605
+  Context: @media print { — Lines: 1536
+  Context: @media (width >= 1024px) { — Lines: 3862
+---
+Selector: .summary-grid
+  Context: @media (width >= 768px) { — Lines: 3723
+  Context: @media print { — Lines: 3336
+---
+Selector: h3
+  Context: @media (min-width: 768px) { — Lines: 207
+  Context: @media print { — Lines: 553
+---
+Selector: .footer-grid
+  Context: @media (width >= 768px) { — Lines: 3629
+  Context: @media print { — Lines: 2161
+  Context: @media (width >= 1024px) { — Lines: 3876
+---
+Selector: .trending-title
+  Context: @media (width >= 768px) { — Lines: 3817
+  Context: @media print { — Lines: 1662
+---
+Selector: .trending-info
+  Context: @media (width >= 768px) { — Lines: 3813
+  Context: @media print { — Lines: 1649
+---
+Selector: .category-boxes-grid
+  Context: @media (width >= 768px) { — Lines: 3667
+  Context: @media print { — Lines: 2479
+  Context: @media (width >= 1024px) { — Lines: 3929
+---
+Selector: select
+  Context: @media (min-width: 768px) { — Lines: 319
+  Context: @media (prefers-color-scheme: dark) { — Lines: 136
+---
+Selector: .article-thumbnail
+  Context: @media (width >= 768px) { — Lines: 3751
+  Context: @media print { — Lines: 1407
+---
+Selector: .logo
+  Context: @media (width >= 768px) { — Lines: 3696
+  Context: @media print { — Lines: 691
+  Context: @media (width >= 1024px) { — Lines: 3958
+---
+Selector: .trending-number
+  Context: @media (width >= 768px) { — Lines: 3803
+  Context: @media print { — Lines: 1621
+---
+Selector: .container
+  Context: @media (width >= 768px) { — Lines: 3599
+  Context: @media (prefers-color-scheme: dark) { — Lines: 180
+  Context: @media (min-width: 768px) { — Lines: 188
+  Context: @media (width >= 640px) { — Lines: 3590
+  Context: @media (width >= 1024px) { — Lines: 3856
+---
+Selector: .other-posts-sidebar
+  Context: @media (width >= 768px) { — Lines: 3715
+  Context: @media print { — Lines: 2609
+---
+Selector: .tab-button
+  Context: @media (width >= 768px) { — Lines: 3782
+  Context: @media print { — Lines: 1136
+  Context: @media (width >= 1024px) { — Lines: 3905
+---
+Selector: .trending-card img
+  Context: @media (width >= 768px) { — Lines: 3809
+  Context: @media print { — Lines: 1638
+---
+Selector: .page-subtitle
+  Context: @media (width >= 768px) { — Lines: 3773
+  Context: @media print { — Lines: 2288
+---
+Selector: .newsletter-form
+  Context: @media (width >= 768px) { — Lines: 3672
+  Context: @media print { — Lines: 2095
+  Context: @media (width >= 1024px) { — Lines: 3934
+---
+Selector: h2
+  Context: @media (min-width: 768px) { — Lines: 206
+  Context: @media print { — Lines: 547
+---
+Selector: :focus-visible
+  Context: @media print { — Lines: 610
+  Context: @media (min-width: 1024px) { — Lines: 495
+---
+Selector: :focus:not(:focus-visible)
+  Context: @media print { — Lines: 616
+  Context: @media (min-width: 1024px) { — Lines: 494
+---
+Selector: .category-header
+  Context: @media (width >= 768px) { — Lines: 3647
+  Context: @media print { — Lines: 1100
+  Context: @media (width >= 1024px) { — Lines: 3892
+---
+Selector: .pagination span
+  Context: @media (width >= 768px) { — Lines: 3847
+  Context: @media print { — Lines: 2805
+---
+Selector: .featured-title
+  Context: @media (width >= 768px) { — Lines: 3787
+  Context: @media print { — Lines: 1309
+  Context: @media (width >= 1024px) { — Lines: 3916
+---
+Selector: .page-title
+  Context: @media (width >= 768px) { — Lines: 3732
+  Context: @media print { — Lines: 2281
+---
+Selector: .hero-main
+  Context: @media (width >= 768px) { — Lines: 3635
+  Context: @media print { — Lines: 1456
+  Context: @media (width >= 1024px) { — Lines: 3880
+---
+Selector: .widgets-grid-container
+  Context: @media (width >= 1024px) { — Lines: 3920
+  Context: @media (width >= 768px) { — Lines: 3658
+---
+Selector: .category-tabs
+  Context: @media (width >= 768px) { — Lines: 3652
+  Context: @media print { — Lines: 1123
+  Context: @media (width >= 1024px) { — Lines: 3901
+---
+Selector: .footer-column h4::after
+  Context: @media (width >= 768px) { — Lines: 3676
+  Context: @media print { — Lines: 2219
+  Context: @media (width >= 1024px) { — Lines: 3938
+---
+Selector: h1
+  Context: @media (min-width: 768px) { — Lines: 205
+  Context: @media print { — Lines: 541
+---
+Selector: .trending-box
+  Context: @media (width >= 768px) { — Lines: 3663
+  Context: @media print { — Lines: 2331
+  Context: @media (width >= 1024px) { — Lines: 3925
+---
+Selector: .blog-grid
+  Context: @media (width >= 768px) { — Lines: 3707
+  Context: @media print { — Lines: 2677
+---
+Selector: .blog-card-title
+  Context: @media (width >= 768px) { — Lines: 3821
+  Context: @media print { — Lines: 2725
+---
+Selector: .section-title
+  Context: @media (width >= 768px) { — Lines: 3795
+  Context: @media print { — Lines: 750
+---
+Selector: .content-wrapper.active
+  Context: @media (width >= 768px) { — Lines: 3610
+  Context: @media print { — Lines: 1255
+  Context: @media (width >= 1024px) { — Lines: 3910
+---
+Selector: .content-grid
+  Context: @media (width >= 768px) { — Lines: 3736
+  Context: @media print { — Lines: 2297
+---
+Selector: .features-grid
+  Context: @media (width >= 768px) { — Lines: 3719
+  Context: @media print { — Lines: 3358
+---
+Selector: .dont-miss-label
+  Context: @media (width >= 768px) { — Lines: 3777
+  Context: @media print { — Lines: 1110
+  Context: @media (width >= 1024px) { — Lines: 3896
+---
+Selector: :root
+  Context: Base — Lines: 4
+  Context: @media (prefers-color-scheme: dark) { — Lines: 110
+---
+Selector: .pagination
+  Context: @media (width >= 768px) { — Lines: 3842
+  Context: @media print { — Lines: 2797
+---
+Selector: h4
+  Context: @media (min-width: 768px) { — Lines: 208
+  Context: @media print { — Lines: 559
+---
+Selector: .article-info h3
+  Context: @media (width >= 768px) { — Lines: 3756
+  Context: @media print { — Lines: 1419
+---
+Selector: .article-item
+  Context: @media (width >= 768px) { — Lines: 3746
+  Context: @media print { — Lines: 1393
+---
+Selector: .opinion-grid
+  Context: @media (width >= 768px) { — Lines: 3625
+  Context: @media print { — Lines: 2006
+  Context: @media (width >= 1024px) { — Lines: 3872
+---
+Selector: .footer-brand .logo
+  Context: @media (width >= 768px) { — Lines: 3682
+  Context: @media print { — Lines: 2170
+  Context: @media (width >= 1024px) { — Lines: 3944
+---
+Selector: .hero-side-item
+  Context: @media (width >= 768px) { — Lines: 3643
+  Context: @media print { — Lines: 1541
+  Context: @media (width >= 1024px) { — Lines: 3888
+---
+Selector: .blog-card-meta
+  Context: @media (width >= 768px) { — Lines: 3833
+  Context: @media print { — Lines: 2761
+---
+Selector: *::after
+  Context: @media (prefers-reduced-motion: reduce) { — Lines: 505
+  Context: @media print { — Lines: 517
+  Context: @media (prefers-color-scheme: dark) { — Lines: 144
+---
+Selector: .sidebar-widget
+  Context: @media (width >= 768px) { — Lines: 3838
+  Context: @media print { — Lines: 2840
+---
